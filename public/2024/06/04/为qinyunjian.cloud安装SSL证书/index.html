@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>为qinyunjian.cloud安装SSL证书 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="安装SSL证书。​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书， 步骤 1: 安装 CertbotCertbot 是 Let’s Encrypt 的官方客户端，用于自动化安装和更新 SSL 证书。  启用 EPEL 仓库：(在安装docker的时候已经安装EPEL 仓库，不必重复安装) 1sudo yum install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为qinyunjian.cloud安装SSL证书">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装SSL证书。​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书， 步骤 1: 安装 CertbotCertbot 是 Let’s Encrypt 的官方客户端，用于自动化安装和更新 SSL 证书。  启用 EPEL 仓库：(在安装docker的时候已经安装EPEL 仓库，不必重复安装) 1sudo yum install">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-04T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-06-05T03:35:56.092Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-为qinyunjian.cloud安装SSL证书" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      为qinyunjian.cloud安装SSL证书
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装SSL证书。"><a href="#安装SSL证书。" class="headerlink" title="安装SSL证书。"></a>安装SSL证书。</h3><p>​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书，</p>
+<h4 id="步骤-1-安装-Certbot"><a href="#步骤-1-安装-Certbot" class="headerlink" title="步骤 1: 安装 Certbot"></a>步骤 1: 安装 Certbot</h4><p>Certbot 是 Let’s Encrypt 的官方客户端，用于自动化安装和更新 SSL 证书。</p>
+<ol>
+<li><p><strong>启用 EPEL 仓库</strong>：(在安装docker的时候已经安装EPEL 仓库，不必重复安装)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安装 Certbot</strong>：</p>
+<p>对于Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install certbot-nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="步骤-2-获取和安装证书"><a href="#步骤-2-获取和安装证书" class="headerlink" title="步骤 2: 获取和安装证书"></a>步骤 2: 获取和安装证书</h4><p>使用 Certbot 为您的域名获取和安装证书：</p>
+<ul>
+<li><p>Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d qinyunjian.cloud -d www.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 Certbot 成功安装证书，它将自动修改您的 Nginx 配置文件以使用 SSL，如果说运行了这一步，但是<code>nginx.conf</code>文件没有能被正确的更改，则需要手动配置<code>nginx.conf</code>。</p>
+</li>
+</ul>
+<h4 id="步骤-3-自动续订证书"><a href="#步骤-3-自动续订证书" class="headerlink" title="步骤 3: 自动续订证书"></a>步骤 3: 自动续订证书</h4><p>Let’s Encrypt 证书有效期为 90 天，可以通过 Certbot 自动续订：</p>
+<ul>
+<li><p>测试自动续订</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果测试成功，Certbot 将自动设置定时任务来续订证书。</p>
+</li>
+</ul>
+<h4 id="步骤-4-确认-HTTPS-生效"><a href="#步骤-4-确认-HTTPS-生效" class="headerlink" title="步骤 4: 确认 HTTPS 生效"></a>步骤 4: 确认 HTTPS 生效</h4><p>在完成上述步骤后，您可以通过访问 <code>https://qinyunjian.cloud</code> 来确认 SSL 证书是否成功安装。浏览器应该显示一个锁图标，表示连接是安全的。</p>
+<h4 id="手动配置nginx-conf"><a href="#手动配置nginx-conf" class="headerlink" title="手动配置nginx.conf"></a>手动配置<code>nginx.conf</code></h4><p>​	如果 Certbot 运行失败，没有自动修改 Nginx 的配置文件来启用 HTTPS 和配置 HTTP 到 HTTPS 的重定向，您可以手动编辑 Nginx 的配置文件来实现这些功能。以下是一个基本的示例，展示如何为您的域名 <code>qinyunjian.cloud</code> 配置 SSL 证书和重定向。</p>
+<h4 id="步骤-1-打开您的-Nginx-配置文件"><a href="#步骤-1-打开您的-Nginx-配置文件" class="headerlink" title="步骤 1: 打开您的 Nginx 配置文件"></a>步骤 1: 打开您的 Nginx 配置文件</h4><p>对于大多数 Nginx 安装来说，配置文件通常位于 <code>/etc/nginx/nginx.conf</code> 或者 <code>/etc/nginx/sites-available/</code> 目录下的某个文件。如果您使用的是后者，那么您的配置可能位于一个特定的域名文件中，例如 <code>/etc/nginx/sites-available/qinyunjian.cloud.conf</code>。</p>
+<h4 id="步骤-2-配置-SSL"><a href="#步骤-2-配置-SSL" class="headerlink" title="步骤 2: 配置 SSL"></a>步骤 2: 配置 SSL</h4><p>以下是一个配置 SSL 的示例。请确保您已经通过 Certbot 获取了证书，并知道证书和私钥文件的路径。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 重定向所有 HTTP 请求到 HTTPS</span><br><span class="line">    return 301 https://$server_name$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 指定 SSL 证书和密钥的路径</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/qinyunjian.cloud/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/qinyunjian.cloud/privkey.pem;</span><br><span class="line"></span><br><span class="line">    # 其他 SSL 设置...</span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers &#x27;ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256&#x27;;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    # 配置网站根目录</span><br><span class="line">    root /var/www/qinyunjian.cloud/html;</span><br><span class="line"></span><br><span class="line">    # 其他配置...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-3-检查-Nginx-配置并重启服务"><a href="#步骤-3-检查-Nginx-配置并重启服务" class="headerlink" title="步骤 3: 检查 Nginx 配置并重启服务"></a>步骤 3: 检查 Nginx 配置并重启服务</h4><p>在编辑配置文件之后，您应该检查配置是否正确：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>如果显示配置文件语法正确，那么您可以重启 Nginx 以应用更改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" data-id="clx19s52n0004iotl8bnafz91" data-title="为qinyunjian.cloud安装SSL证书" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Docker操作命令练习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">为qinyunjian.cloud配置二级域名</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -73,6 +73,496 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Docker安装Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="docker安装Redis"><a href="#docker安装Redis" class="headerlink" title="docker安装Redis"></a>docker安装Redis</h2><h3 id="安装-Redis-使用-Docker-的步骤"><a href="#安装-Redis-使用-Docker-的步骤" class="headerlink" title="安装 Redis 使用 Docker 的步骤"></a>安装 Redis 使用 Docker 的步骤</h3><h4 id="步骤-1-拉取-Redis-镜像"><a href="#步骤-1-拉取-Redis-镜像" class="headerlink" title="步骤 1: 拉取 Redis 镜像"></a>步骤 1: 拉取 Redis 镜像</h4><p>首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+<p>这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 <code>redis:6.0</code>。</p>
+<h4 id="步骤-2-运行-Redis-容器（含数据持久化）"><a href="#步骤-2-运行-Redis-容器（含数据持久化）" class="headerlink" title="步骤 2: 运行 Redis 容器（含数据持久化）"></a>步骤 2: 运行 Redis 容器（含数据持久化）</h4><p>使用以下命令启动一个包含数据持久化的 Redis 容器实例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-redis -p 6379:6379 -d -v redis-data:/data redis</span><br></pre></td></tr></table></figure>
+
+<p>这里的命令参数解释如下：</p>
+<ul>
+<li><code>--name my-redis</code>：为容器指定一个名称，这里使用 <code>my-redis</code>。</li>
+<li><code>-p 6379:6379</code>：将容器的 6379 端口（Redis 的默认端口）映射到宿主机的同一端口。</li>
+<li><code>-d</code>：以“分离模式”运行容器，即容器在后台运行。</li>
+<li><code>-v redis-data:/data</code>：创建并挂载一个名为 <code>redis-data</code> 的 Docker 卷到容器的 <code>/data</code> 目录。Redis 会将其数据存储在 <code>/data</code> 目录中，从而实现数据的持久化。</li>
+<li><code>redis</code>：指定使用 Redis 的官方 Docker 镜像。</li>
+</ul>
+<h4 id="步骤-3-验证-Redis-容器"><a href="#步骤-3-验证-Redis-容器" class="headerlink" title="步骤 3: 验证 Redis 容器"></a>步骤 3: 验证 Redis 容器</h4><p>要确认 Redis 容器已经成功启动并运行，可以运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>这将列出所有正在运行的容器。您应该能在列表中看到名为 <code>my-redis</code> 的容器。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker安装MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Docker安装MySQL"><a href="#Docker安装MySQL" class="headerlink" title="Docker安装MySQL"></a>Docker安装MySQL</h2><h3 id="安装-MySQL-5-7-到-Docker-的详细步骤"><a href="#安装-MySQL-5-7-到-Docker-的详细步骤" class="headerlink" title="安装 MySQL 5.7 到 Docker 的详细步骤"></a>安装 MySQL 5.7 到 Docker 的详细步骤</h3><h4 id="步骤-1-拉取-MySQL-5-7-镜像"><a href="#步骤-1-拉取-MySQL-5-7-镜像" class="headerlink" title="步骤 1: 拉取 MySQL 5.7 镜像"></a>步骤 1: 拉取 MySQL 5.7 镜像</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。</li>
+<li><code>docker pull</code> 是 Docker 获取镜像的命令。</li>
+<li><code>mysql:5.7</code> 指定了您想要拉取的镜像及其版本。这里是 MySQL 版本 5.7。</li>
+</ul>
+<h4 id="注：可以先使用docker-volume-create-name-mysql-data"><a href="#注：可以先使用docker-volume-create-name-mysql-data" class="headerlink" title="注：可以先使用docker volume create --name mysql-data"></a>注：可以先使用<code>docker volume create --name mysql-data</code></h4><h4 id="步骤-2-创建并运行-MySQL-容器"><a href="#步骤-2-创建并运行-MySQL-容器" class="headerlink" title="步骤 2: 创建并运行 MySQL 容器"></a>步骤 2: 创建并运行 MySQL 容器</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-5.7 -e MYSQL_ROOT_PASSWORD=123456 -v mysql-data:/var/lib/mysql -p 3306:3306 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>docker run</strong>：<ul>
+<li>这是 Docker 用于启动新容器的基本命令。</li>
+</ul>
+</li>
+<li><strong>–name mysql-5.7</strong>：<ul>
+<li><code>--name</code> 选项用于为容器指定一个名字，这里命名为 <code>mysql-5.7</code>。这个名字用于识别和引用容器。</li>
+</ul>
+</li>
+<li><strong>-e MYSQL_ROOT_PASSWORD&#x3D;123456</strong>：<ul>
+<li><code>-e</code> 选项用于设置环境变量。在这个例子中，它设置了 MySQL 的 root 用户的密码为 <code>123456</code>。这是 MySQL 容器启动所必需的。</li>
+</ul>
+</li>
+<li><strong>-v mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql</strong>：<ul>
+<li><code>-v</code> 选项用于挂载卷（volume）。这里，它将名为 <code>mysql-data</code> 的 Docker 卷挂载到容器内的 <code>/var/lib/mysql</code> 目录。</li>
+<li>这个操作的目的是数据持久化。即使容器被停止或删除，存储在 <code>/var/lib/mysql</code> 目录中的数据（即 MySQL 数据库文件）仍然会保留在 <code>mysql-data</code> 卷中。</li>
+</ul>
+</li>
+<li><strong>-p 3306:3306</strong>：<ul>
+<li><code>-p</code> 选项用于端口映射。这里，它将容器内的 3306 端口（MySQL 默认端口）映射到宿主机的同一端口。</li>
+<li>这样可以通过宿主机的 3306 端口访问 MySQL 容器。</li>
+</ul>
+</li>
+<li><strong>-d</strong>：<ul>
+<li><code>-d</code> 选项告诉 Docker 以“分离模式”运行容器，即在后台运行。</li>
+</ul>
+</li>
+<li><strong>mysql:5.7</strong>：<ul>
+<li>指定使用的 Docker 镜像和标签。在这个例子中，它使用的是 MySQL 5.7 版本的官方 Docker 镜像</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤-3-检查容器运行状态"><a href="#步骤-3-检查容器运行状态" class="headerlink" title="步骤 3: 检查容器运行状态"></a>步骤 3: 检查容器运行状态</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>使用 <code>docker ps</code> 可以查看当前正在运行的 Docker 容器的列表。</li>
+<li>如果 MySQL 容器已经启动并运行，它应该会出现在这个列表中。</li>
+</ul>
+<h4 id="步骤4：重新安装MySQL"><a href="#步骤4：重新安装MySQL" class="headerlink" title="步骤4：重新安装MySQL"></a>步骤4：重新安装MySQL</h4><p>停止原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>删除原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>因为我删除了原先的数据库，但是保留了宿主机上的配置，我希望把保留的配置和数据卷重新映射到容器，以下是我重新安装mysql-5.7的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name mysql-5.7 \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>这条命令通过Docker在后台启动了一个MySQL 5.7版本的容器，并配置了一系列的参数来满足特定的需求：</p>
+<ul>
+<li><p><strong><code>-d</code></strong>: 表示容器在后台运行，让终端不会被当前容器的运行过程占用。</p>
+</li>
+<li><p><strong><code>--name mysql-5.7</code></strong>: 为运行的容器指定一个名字<code>mysql-5.7</code>，这样可以更方便地对容器进行管理。</p>
+</li>
+<li><p><strong><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code></strong>: 设置环境变量<code>MYSQL_ROOT_PASSWORD</code>为<code>my-secret-pw</code>，这是为MySQL的root用户设置的密码，是MySQL容器启动时必需的配置项。</p>
+</li>
+<li><p><strong><code>-p 3306:3306</code></strong>: 将容器内部使用的3306端口映射到宿主机的3306端口上，这样可以通过宿主机的端口来访问容器中的MySQL服务。</p>
+</li>
+<li><p><strong><code>-v mysql-data:/var/lib/mysql</code></strong>: 将名为<code>mysql-data</code>的数据卷挂载到容器内的<code>/var/lib/mysql</code>目录。这是MySQL存储数据的默认位置，使用数据卷可以实现数据的持久化保存，确保数据不会因为容器的删除而丢失，并且可以在不同的容器间共享这部分数据。</p>
+</li>
+<li><p><strong><code>-v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf</code></strong>: 将宿主机上的<code>/etc/my.cnf.d/mysql-clients.cnf</code>配置文件挂载到容器内的<code>/etc/mysql/conf.d/mysql-clients.cnf</code>位置。这样做是为了自定义MySQL服务器的配置，可以根据需要调整MySQL的行为和性能。</p>
+</li>
+<li><p><strong><code>mysql:5.7</code></strong>: 指定使用<code>mysql:5.7</code>镜像创建容器，这个镜像是MySQL官方发布的，版本号为5.7，保证了MySQL服务的标准化和一致性。</p>
+</li>
+</ul>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java 应用（jar 包）打包成 Docker 镜像" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Java-应用（jar-包）打包成-Docker-镜像"><a href="#Java-应用（jar-包）打包成-Docker-镜像" class="headerlink" title="Java 应用（jar 包）打包成 Docker 镜像"></a>Java 应用（jar 包）打包成 Docker 镜像</h3><p>​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 <code>Dockerfile</code>，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。</p>
+<p>​	1、使用Xftp，把jar上传到指定的目录下。2、创建Dockerfile文件。</p>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226162321338.png"></p>
+<h4 id="步骤-1-准备-Dockerfile"><a href="#步骤-1-准备-Dockerfile" class="headerlink" title="步骤 1: 准备 Dockerfile"></a>步骤 1: 准备 Dockerfile</h4><ol>
+<li><strong>创建 Dockerfile</strong>: 在你的 Java 项目根目录下创建一个名为 <code>Dockerfile</code> 的文件（无文件扩展名）。</li>
+<li><strong>编辑 Dockerfile</strong>: 使用文本编辑器打开 <code>Dockerfile</code>，并添加以下内容：</li>
+</ol>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方的Java运行环境作为基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add --no-cache fontconfig ttf-dejavu</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置时区（可选）</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">ln</span> -snf /usr/share/zoneinfo/<span class="variable">$TZ</span> /etc/localtime &amp;&amp; <span class="built_in">echo</span> <span class="variable">$TZ</span> &gt; /etc/timezone</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将jar包添加到容器中，注意修改路径以匹配你的jar包位置</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> jinzijing-hotel-2.0.0.jar app.jar</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露容器内部的端口号，与Spring Boot应用的端口一致</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">84</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器启动时运行jar包</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/app.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2-构建-Docker-镜像"><a href="#步骤-2-构建-Docker-镜像" class="headerlink" title="步骤 2: 构建 Docker 镜像"></a>步骤 2: 构建 Docker 镜像</h4><p>在包含 <code>Dockerfile</code> 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker 镜像：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t hotel-service .</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-t hotel-service</code> 为新构建的镜像设置了一个名字 <code>hotel-service</code>。</li>
+<li><code>.</code> 指定了 Dockerfile 所在的目录（当前目录）。</li>
+</ul>
+<h4 id="步骤-3-运行-Docker-容器"><a href="#步骤-3-运行-Docker-容器" class="headerlink" title="步骤 3: 运行 Docker 容器"></a>步骤 3: 运行 Docker 容器</h4><p>使用以下命令运行你的应用：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d -p 84:84 myapplication</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-d</code> 表示后台运行容器。</li>
+<li><code>-p 84:84</code> 将容器的 84 端口映射到宿主机的 84 端口，允许外部访问。</li>
+</ul>
+<p>确保你的应用配置为在 84 端口上监听，或者根据需要调整端口映射。</p>
+<h4 id="步骤4：测试SpringBoot服务"><a href="#步骤4：测试SpringBoot服务" class="headerlink" title="步骤4：测试SpringBoot服务"></a>步骤4：测试SpringBoot服务</h4><p>使用以下命令测试你的应用是否能正常运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:84</span><br></pre></td></tr></table></figure>
+
+<p>如果出现<code>WELCOME</code>则说明服务正常运行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" data-id="clx19s52l0002iotlbaoi3yec" data-title="Java 应用（jar 包）打包成 Docker 镜像" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker操作命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Docker操作命令"><a href="#Docker操作命令" class="headerlink" title="Docker操作命令"></a>Docker操作命令</h3><h4 id="一、简单的hello-world示例"><a href="#一、简单的hello-world示例" class="headerlink" title="一、简单的hello-world示例"></a>一、简单的<code>hello-world</code>示例</h4><h4 id="步骤-1-拉取-hello-world-镜像"><a href="#步骤-1-拉取-hello-world-镜像" class="headerlink" title="步骤 1: 拉取 hello-world 镜像"></a>步骤 1: 拉取 <code>hello-world</code> 镜像</h4><p>运行以下命令以拉取最新的 <code>hello-world</code> 镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2-运行-hello-world-容器并命名"><a href="#步骤-2-运行-hello-world-容器并命名" class="headerlink" title="步骤 2: 运行 hello-world 容器并命名"></a>步骤 2: 运行 <code>hello-world</code> 容器并命名</h4><p>运行以下命令启动一个 <code>hello-world</code> 容器，并给它命名为 <code>my-hello-world</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-hello-world hello-world</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会启动一个 <code>hello-world</code> 容器，容器运行后会显示一条欢迎消息然后退出。因为 <code>hello-world</code> 容器是为了演示目的而设计，它会立即退出并不会长时间运行。</p>
+<h4 id="二、使用-my-redis-容器作为示例"><a href="#二、使用-my-redis-容器作为示例" class="headerlink" title="二、使用 my-redis 容器作为示例"></a>二、使用 <code>my-redis</code> 容器作为示例</h4><p>因为我已经拉取了<code>redis</code>的镜像，并且已经成功的运行了<code>redis</code>容器，命名为<code>my-redis</code>，以下使用 <code>my-redis</code> 容器作为示例，提供更多的 Docker 命令。</p>
+<h4 id="启动已停止的容器"><a href="#启动已停止的容器" class="headerlink" title="启动已停止的容器"></a>启动已停止的容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的实时日志"><a href="#查看容器的实时日志" class="headerlink" title="查看容器的实时日志"></a>查看容器的实时日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="检查容器的详细信息"><a href="#检查容器的详细信息" class="headerlink" title="检查容器的详细信息"></a>检查容器的详细信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器内部的进程"><a href="#查看容器内部的进程" class="headerlink" title="查看容器内部的进程"></a>查看容器内部的进程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的资源使用情况（如-CPU、内存）"><a href="#查看容器的资源使用情况（如-CPU、内存）" class="headerlink" title="查看容器的资源使用情况（如 CPU、内存）"></a>查看容器的资源使用情况（如 CPU、内存）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入容器内部的命令"><a href="#进入容器内部的命令" class="headerlink" title="进入容器内部的命令"></a>进入容器内部的命令</h4><p>假设你想在 <code>my-redis</code> 容器内部：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/bash (/bin/sh)</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>Redis</code> 命令行界面：终端输入<code>redis-cli</code>，进入命令行界面。</p>
+<h4 id="复制文件到-从容器"><a href="#复制文件到-从容器" class="headerlink" title="复制文件到&#x2F;从容器"></a>复制文件到&#x2F;从容器</h4><p>假设你想从你的主机复制一个名为 <code>dump.rdb</code> 的文件到 <code>my-redis</code> 容器的 <code>/data</code> 目录中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp dump.rdb my-redis:/data/dump.rdb</span><br></pre></td></tr></table></figure>
+
+<p>反向操作，从容器复制文件到主机：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp my-redis:/data/dump.rdb ./dump.rdb</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、使用hotel-service作为例子。"><a href="#三、使用hotel-service作为例子。" class="headerlink" title="三、使用hotel-service作为例子。"></a>三、使用<code>hotel-service</code>作为例子。</h4><h4 id="查看特定数量的尾部日志行并持续更新"><a href="#查看特定数量的尾部日志行并持续更新" class="headerlink" title="查看特定数量的尾部日志行并持续更新"></a>查看特定数量的尾部日志行并持续更新</h4><p>可以结合使用 <code>-n</code>（或 <code>--tail</code>）选项和 <code>-f</code> 选项。例如，查看最后50行日志并持续更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --tail 50 -f hotel-service</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入hotel-service容器"><a href="#进入hotel-service容器" class="headerlink" title="进入hotel-service容器"></a>进入<code>hotel-service</code>容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>查看日志，我的日志目录和系统的目录是同级的，（根据实际情况来定，具体还是得看自己的日志目录配在什么地方）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd app-log/</span><br></pre></td></tr></table></figure>
+
+<p>查看错误日志，</p>
+<p>要在 Linux 中查看文件末尾的 100 行，您可以使用 <code>tail</code> 命令配合 <code>-n</code> 选项，如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 syslog</span><br></pre></td></tr></table></figure>
+
+<p>或者直接输入文件的路径。例如，如果您想查看名为 <code>/var/log/syslog</code> 的文件的末尾 100 行，命令将是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" data-id="clx19s52m0003iotl9q5408l6" data-title="Docker操作命令练习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-为qinyunjian.cloud安装SSL证书" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装SSL证书。"><a href="#安装SSL证书。" class="headerlink" title="安装SSL证书。"></a>安装SSL证书。</h3><p>​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书，</p>
+<h4 id="步骤-1-安装-Certbot"><a href="#步骤-1-安装-Certbot" class="headerlink" title="步骤 1: 安装 Certbot"></a>步骤 1: 安装 Certbot</h4><p>Certbot 是 Let’s Encrypt 的官方客户端，用于自动化安装和更新 SSL 证书。</p>
+<ol>
+<li><p><strong>启用 EPEL 仓库</strong>：(在安装docker的时候已经安装EPEL 仓库，不必重复安装)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安装 Certbot</strong>：</p>
+<p>对于Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install certbot-nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="步骤-2-获取和安装证书"><a href="#步骤-2-获取和安装证书" class="headerlink" title="步骤 2: 获取和安装证书"></a>步骤 2: 获取和安装证书</h4><p>使用 Certbot 为您的域名获取和安装证书：</p>
+<ul>
+<li><p>Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d qinyunjian.cloud -d www.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 Certbot 成功安装证书，它将自动修改您的 Nginx 配置文件以使用 SSL，如果说运行了这一步，但是<code>nginx.conf</code>文件没有能被正确的更改，则需要手动配置<code>nginx.conf</code>。</p>
+</li>
+</ul>
+<h4 id="步骤-3-自动续订证书"><a href="#步骤-3-自动续订证书" class="headerlink" title="步骤 3: 自动续订证书"></a>步骤 3: 自动续订证书</h4><p>Let’s Encrypt 证书有效期为 90 天，可以通过 Certbot 自动续订：</p>
+<ul>
+<li><p>测试自动续订</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果测试成功，Certbot 将自动设置定时任务来续订证书。</p>
+</li>
+</ul>
+<h4 id="步骤-4-确认-HTTPS-生效"><a href="#步骤-4-确认-HTTPS-生效" class="headerlink" title="步骤 4: 确认 HTTPS 生效"></a>步骤 4: 确认 HTTPS 生效</h4><p>在完成上述步骤后，您可以通过访问 <code>https://qinyunjian.cloud</code> 来确认 SSL 证书是否成功安装。浏览器应该显示一个锁图标，表示连接是安全的。</p>
+<h4 id="手动配置nginx-conf"><a href="#手动配置nginx-conf" class="headerlink" title="手动配置nginx.conf"></a>手动配置<code>nginx.conf</code></h4><p>​	如果 Certbot 运行失败，没有自动修改 Nginx 的配置文件来启用 HTTPS 和配置 HTTP 到 HTTPS 的重定向，您可以手动编辑 Nginx 的配置文件来实现这些功能。以下是一个基本的示例，展示如何为您的域名 <code>qinyunjian.cloud</code> 配置 SSL 证书和重定向。</p>
+<h4 id="步骤-1-打开您的-Nginx-配置文件"><a href="#步骤-1-打开您的-Nginx-配置文件" class="headerlink" title="步骤 1: 打开您的 Nginx 配置文件"></a>步骤 1: 打开您的 Nginx 配置文件</h4><p>对于大多数 Nginx 安装来说，配置文件通常位于 <code>/etc/nginx/nginx.conf</code> 或者 <code>/etc/nginx/sites-available/</code> 目录下的某个文件。如果您使用的是后者，那么您的配置可能位于一个特定的域名文件中，例如 <code>/etc/nginx/sites-available/qinyunjian.cloud.conf</code>。</p>
+<h4 id="步骤-2-配置-SSL"><a href="#步骤-2-配置-SSL" class="headerlink" title="步骤 2: 配置 SSL"></a>步骤 2: 配置 SSL</h4><p>以下是一个配置 SSL 的示例。请确保您已经通过 Certbot 获取了证书，并知道证书和私钥文件的路径。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 重定向所有 HTTP 请求到 HTTPS</span><br><span class="line">    return 301 https://$server_name$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 指定 SSL 证书和密钥的路径</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/qinyunjian.cloud/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/qinyunjian.cloud/privkey.pem;</span><br><span class="line"></span><br><span class="line">    # 其他 SSL 设置...</span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers &#x27;ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256&#x27;;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    # 配置网站根目录</span><br><span class="line">    root /var/www/qinyunjian.cloud/html;</span><br><span class="line"></span><br><span class="line">    # 其他配置...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-3-检查-Nginx-配置并重启服务"><a href="#步骤-3-检查-Nginx-配置并重启服务" class="headerlink" title="步骤 3: 检查 Nginx 配置并重启服务"></a>步骤 3: 检查 Nginx 配置并重启服务</h4><p>在编辑配置文件之后，您应该检查配置是否正确：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>如果显示配置文件语法正确，那么您可以重启 Nginx 以应用更改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" data-id="clx19s52n0004iotl8bnafz91" data-title="为qinyunjian.cloud安装SSL证书" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-为qinyunjian.cloud配置二级域名" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/">为qinyunjian.cloud配置二级域名</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="为qinyunjian-cloud配置二级域名"><a href="#为qinyunjian-cloud配置二级域名" class="headerlink" title="为qinyunjian.cloud配置二级域名"></a>为<code>qinyunjian.cloud</code>配置二级域名</h3><p>​	前提，我现在购买了一个域名<code>qinyunjian.cloud</code>，现在我需要为这个域名添加二级域名<code>hotel.qinyunjian.cloud</code>，同时可以把前端Web应用和后端服务部署到这个域名。</p>
+<h4 id="步骤-1-确保域名解析"><a href="#步骤-1-确保域名解析" class="headerlink" title="步骤 1: 确保域名解析"></a>步骤 1: 确保域名解析</h4><p>​	首先，确保您的二级域名 <code>hotel.qinyunjian.cloud</code> 已经通过 DNS 正确解析到您的服务器的公网 IP 地址。我这里购买的是阿里云的域名，所以需要到阿里云解析中心，添加记录。</p>
+<p>​	1、点击域名解析。2、点击你的域名。3、点击添加记录。</p>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226093320058.png"></p>
+<h4 id="步骤-2-使用-Certbot-获取证书"><a href="#步骤-2-使用-Certbot-获取证书" class="headerlink" title="步骤 2: 使用 Certbot 获取证书"></a>步骤 2: 使用 Certbot 获取证书</h4><p>​	运行 Certbot 并选择 Nginx 插件来自动获取和配置 Let’s Encrypt SSL 证书：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d hotel.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会自动为您的二级域名 <code>hotel.qinyunjian.cloud</code> 获取 SSL 证书，并更新 Nginx 的配置文件来使用这个证书。</p>
+<h4 id="步骤3：配置-etc-nginx-conf-d文件"><a href="#步骤3：配置-etc-nginx-conf-d文件" class="headerlink" title="步骤3：配置/etc/nginx/conf.d文件"></a>步骤3：配置<code>/etc/nginx/conf.d</code>文件</h4><p>​	编辑您的 Nginx 配置文件（通常位于 <code>/etc/nginx/nginx.conf</code> 或 <code>/etc/nginx/sites-available/</code> 目录下的某个文件），添加一个新的 <code>server</code> 块，以便将 <code>hotel.qinyunjian.cloud</code> ，（以下文件是需要自己新建的）的请求代理到您的 SpringBoot 服务：</p>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/9132726f9a8ad29222730bed828cae8.png"></p>
+<p>​	以下是配置文件详细说明。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># 重定向所有 HTTP 请求到 HTTPS</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80; # 监听 80 端口</span><br><span class="line">    server_name hotel.qinyunjian.cloud; # 为 hotel.qinyunjian.cloud 配置</span><br><span class="line">    return 301 https://$host$request_uri; # 将所有 HTTP 请求重定向到 HTTPS</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 处理 HTTPS 请求</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2; # 监听 443 端口，启用 SSL 和 HTTP/2</span><br><span class="line">    server_name hotel.qinyunjian.cloud; # 为 hotel.qinyunjian.cloud 配置</span><br><span class="line"></span><br><span class="line">    # SSL 证书配置</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/hotel.qinyunjian.cloud/fullchain.pem; # 指定证书文件</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/hotel.qinyunjian.cloud/privkey.pem; # 指定证书密钥文件</span><br><span class="line"></span><br><span class="line">    # SSL 性能优化配置</span><br><span class="line">    ssl_session_cache shared:SSL:10m; # 启用 SSL 会话缓存，提高性能</span><br><span class="line">    ssl_session_timeout 10m; # 设置 SSL 会话的超时时间</span><br><span class="line">    ssl_ciphers &#x27;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-CHACHA20-POLY1305&#x27;; # 指定加密套件</span><br><span class="line">    ssl_prefer_server_ciphers on; # 服务器优先选择加密算法</span><br><span class="line"></span><br><span class="line">    # Web 应用根目录</span><br><span class="line">    root /var/www/hotelweb; # 设置 Web 应用的根目录</span><br><span class="line"></span><br><span class="line">    # 前端应用路由处理</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html; # 尝试返回请求的文件或目录，如果不存在则返回 index.html</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 代理 /service 路径到后端 Spring Boot 应用</span><br><span class="line">    location /service &#123;</span><br><span class="line">        rewrite ^/service(.*) /$1 break; # 重写 URL，去除 /service 前缀</span><br><span class="line">        proxy_pass http://localhost:84; # 代理请求到本地的 84 端口</span><br><span class="line">        proxy_http_version 1.1; # 使用 HTTP/1.1 与代理服务器通信</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade; # 传递升级头部，用于 WebSocket 支持</span><br><span class="line">        proxy_set_header Connection &#x27;upgrade&#x27;; # 传递连接头部，同样用于 WebSocket</span><br><span class="line">        proxy_set_header Host $host; # 传递原始请求的 Host 头部</span><br><span class="line">        proxy_cache_bypass $http_upgrade; # 绕过缓存处理 WebSocket 请求</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一个-server-块"><a href="#第一个-server-块" class="headerlink" title="第一个 server 块"></a>第一个 server 块</h4><ol>
+<li><code>listen 80;</code>：这行配置指示 Nginx 监听 80 端口（HTTP）上的请求。</li>
+<li><code>server_name hotel.qinyunjian.cloud;</code>：定义了此配置块处理请求的域名。</li>
+<li><code>return 301 https://$host$request_uri;</code>：所有 http (80 端口) 的请求将被永久重定向到 https 版本的相同 URI。这是一种常见的做法，用于强制使用 HTTPS。</li>
+</ol>
+<h4 id="第二个-server-块"><a href="#第二个-server-块" class="headerlink" title="第二个 server 块"></a>第二个 server 块</h4><ol>
+<li><code>listen 443 ssl http2;</code>：这行配置指示 Nginx 监听 443 端口上的请求，并启用 SSL 和 HTTP&#x2F;2 支持。443 端口是 HTTPS 默认使用的端口。</li>
+<li><code>server_name hotel.qinyunjian.cloud;</code>：同样定义了此配置块处理请求的域名。</li>
+<li><code>ssl_certificate /etc/letsencrypt/live/hotel.qinyunjian.cloud/fullchain.pem;</code>：指定 SSL 证书的位置。这个证书用于 HTTPS 加密。</li>
+<li><code>ssl_certificate_key /etc/letsencrypt/live/hotel.qinyunjian.cloud/privkey.pem;</code>：指定 SSL 证书的私钥位置。</li>
+<li><code>ssl_session_cache shared:SSL:10m;</code>：启用 SSL 会话缓存，以提高后续请求的性能。</li>
+<li><code>ssl_session_timeout 10m;</code>：设置 SSL 会话的超时时间为 10 分钟。</li>
+<li><code>ssl_ciphers [...]</code>：指定加密套件的列表，这些加密套件用于 SSL&#x2F;TLS 握手过程中。</li>
+<li><code>ssl_prefer_server_ciphers on;</code>：指示服务器优先使用自己的加密套件偏好，而不是客户端提供的。</li>
+<li><code>root /var/www/hotelweb;</code>：定义了服务器的根目录。这是 Nginx 用来查找文件的路径。</li>
+<li><code>location / &#123;</code>：这个块指定了对于根路径（<code>/</code>）的请求，如何处理。<ul>
+<li><code>try_files $uri $uri/ /index.html;</code>：尝试按顺序返回请求的文件、目录或 <code>/index.html</code>。这用于单页应用，确保路由可以由前端 JavaScript 框架处理。</li>
+</ul>
+</li>
+<li><code>location /service &#123;</code>：指定了对于 <code>/service</code> 路径的请求，如何处理。<ul>
+<li><code>rewrite ^/service(.*) /$1 break;</code>：这行将请求中的 <code>/service</code> 重写为 <code>/</code>，并停止处理后续的 rewrite 规则。这允许将 API 请求代理到应用而不改变路径。</li>
+<li><code>proxy_pass http://localhost:84;</code>：将请求代理到本地 84 端口的应用（通常是一个后端服务，如 Spring Boot 应用）。</li>
+<li><code>proxy_http_version 1.1;</code>：使用 HTTP 1.1 协议与代理服务器通信。</li>
+<li><code>proxy_set_header Upgrade $http_upgrade;</code>：设置 HTTP 升级头部，用于 WebSockets 支持。</li>
+<li><code>proxy_set_header Connection &#39;upgrade&#39;;</code>：设置连接头部，同样是为了 WebSockets。</li>
+<li><code>proxy_set_header Host $host;</code>：设置请求的 Host 头部为原始请求的 Host，确保后端服务能正确识别请求的域名。</li>
+<li><code>proxy_cache_bypass $http_upgrade;</code>：如果有 HTTP 升级请求，绕过缓存处理。</li>
+</ul>
+</li>
+</ol>
+<h4 id="步骤-4-检查-Nginx-配置并重启服务"><a href="#步骤-4-检查-Nginx-配置并重启服务" class="headerlink" title="步骤 4: 检查 Nginx 配置并重启服务"></a>步骤 4: 检查 Nginx 配置并重启服务</h4><p>​	在编辑配置文件后，您需要检查 Nginx 配置文件的语法是否正确：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>​	如果没有问题，重启 Nginx 服务以应用更改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+<p>​	现在，当访问 <code>https://hotel.qinyunjian.cloud</code> 时，请求应该会被自动代理到运行在服务器 84 端口的 SpringBoot 服务。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/" data-id="clx19s52o0005iotl1t143b39" data-title="为qinyunjian.cloud配置二级域名" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/01/20/Docker/" class="article-date">
@@ -87,7 +577,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/20/Docker/">Docker基础知识</a>
+      <a class="p-name article-title" href="/blog/2024/01/20/Docker/">Docker安装</a>
     </h1>
   
 
@@ -163,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/01/20/Docker/" data-id="clrm844iy000010tl9xu0c4a6" data-title="Docker基础知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/01/20/Docker/" data-id="clrm844iy000010tl9xu0c4a6" data-title="Docker安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -348,7 +838,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
     </div>
   </div>
 
@@ -361,19 +851,23 @@
       <ul>
         
           <li>
-            <a href="/blog/2024/01/20/Docker/">Docker基础知识</a>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
           </li>
         
           <li>
-            <a href="/blog/2024/01/20/Nginx/">Nginx基础知识</a>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
           </li>
         
           <li>
-            <a href="/blog/2024/01/12/hello-world/">Hello World</a>
+            <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
           </li>
         
           <li>
-            <a href="/blog/2024/01/11/test/">test</a>
+            <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
           </li>
         
       </ul>
