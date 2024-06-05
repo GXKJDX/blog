@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker安装MySQL | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Docker安装MySQL安装 MySQL 5.7 到 Docker 的详细步骤步骤 1: 拉取 MySQL 5.7 镜像操作： 1docker pull mysql:5.7  解释：  这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。 docker pull 是 Docker 获取镜像的命令。 mysql:5.7 指定了您想要拉取的镜像及其版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker安装MySQL">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker安装MySQL安装 MySQL 5.7 到 Docker 的详细步骤步骤 1: 拉取 MySQL 5.7 镜像操作： 1docker pull mysql:5.7  解释：  这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。 docker pull 是 Docker 获取镜像的命令。 mysql:5.7 指定了您想要拉取的镜像及其版本">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png">
+<meta property="article:published_time" content="2024-06-04T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-06-05T03:32:49.178Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Docker安装MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker安装MySQL
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Docker安装MySQL"><a href="#Docker安装MySQL" class="headerlink" title="Docker安装MySQL"></a>Docker安装MySQL</h2><h3 id="安装-MySQL-5-7-到-Docker-的详细步骤"><a href="#安装-MySQL-5-7-到-Docker-的详细步骤" class="headerlink" title="安装 MySQL 5.7 到 Docker 的详细步骤"></a>安装 MySQL 5.7 到 Docker 的详细步骤</h3><h4 id="步骤-1-拉取-MySQL-5-7-镜像"><a href="#步骤-1-拉取-MySQL-5-7-镜像" class="headerlink" title="步骤 1: 拉取 MySQL 5.7 镜像"></a>步骤 1: 拉取 MySQL 5.7 镜像</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。</li>
+<li><code>docker pull</code> 是 Docker 获取镜像的命令。</li>
+<li><code>mysql:5.7</code> 指定了您想要拉取的镜像及其版本。这里是 MySQL 版本 5.7。</li>
+</ul>
+<h4 id="注：可以先使用docker-volume-create-name-mysql-data"><a href="#注：可以先使用docker-volume-create-name-mysql-data" class="headerlink" title="注：可以先使用docker volume create --name mysql-data"></a>注：可以先使用<code>docker volume create --name mysql-data</code></h4><h4 id="步骤-2-创建并运行-MySQL-容器"><a href="#步骤-2-创建并运行-MySQL-容器" class="headerlink" title="步骤 2: 创建并运行 MySQL 容器"></a>步骤 2: 创建并运行 MySQL 容器</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-5.7 -e MYSQL_ROOT_PASSWORD=123456 -v mysql-data:/var/lib/mysql -p 3306:3306 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>docker run</strong>：<ul>
+<li>这是 Docker 用于启动新容器的基本命令。</li>
+</ul>
+</li>
+<li><strong>–name mysql-5.7</strong>：<ul>
+<li><code>--name</code> 选项用于为容器指定一个名字，这里命名为 <code>mysql-5.7</code>。这个名字用于识别和引用容器。</li>
+</ul>
+</li>
+<li><strong>-e MYSQL_ROOT_PASSWORD&#x3D;123456</strong>：<ul>
+<li><code>-e</code> 选项用于设置环境变量。在这个例子中，它设置了 MySQL 的 root 用户的密码为 <code>123456</code>。这是 MySQL 容器启动所必需的。</li>
+</ul>
+</li>
+<li><strong>-v mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql</strong>：<ul>
+<li><code>-v</code> 选项用于挂载卷（volume）。这里，它将名为 <code>mysql-data</code> 的 Docker 卷挂载到容器内的 <code>/var/lib/mysql</code> 目录。</li>
+<li>这个操作的目的是数据持久化。即使容器被停止或删除，存储在 <code>/var/lib/mysql</code> 目录中的数据（即 MySQL 数据库文件）仍然会保留在 <code>mysql-data</code> 卷中。</li>
+</ul>
+</li>
+<li><strong>-p 3306:3306</strong>：<ul>
+<li><code>-p</code> 选项用于端口映射。这里，它将容器内的 3306 端口（MySQL 默认端口）映射到宿主机的同一端口。</li>
+<li>这样可以通过宿主机的 3306 端口访问 MySQL 容器。</li>
+</ul>
+</li>
+<li><strong>-d</strong>：<ul>
+<li><code>-d</code> 选项告诉 Docker 以“分离模式”运行容器，即在后台运行。</li>
+</ul>
+</li>
+<li><strong>mysql:5.7</strong>：<ul>
+<li>指定使用的 Docker 镜像和标签。在这个例子中，它使用的是 MySQL 5.7 版本的官方 Docker 镜像</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤-3-检查容器运行状态"><a href="#步骤-3-检查容器运行状态" class="headerlink" title="步骤 3: 检查容器运行状态"></a>步骤 3: 检查容器运行状态</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>使用 <code>docker ps</code> 可以查看当前正在运行的 Docker 容器的列表。</li>
+<li>如果 MySQL 容器已经启动并运行，它应该会出现在这个列表中。</li>
+</ul>
+<h4 id="步骤4：重新安装MySQL"><a href="#步骤4：重新安装MySQL" class="headerlink" title="步骤4：重新安装MySQL"></a>步骤4：重新安装MySQL</h4><p>停止原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>删除原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>因为我删除了原先的数据库，但是保留了宿主机上的配置，我希望把保留的配置和数据卷重新映射到容器，以下是我重新安装mysql-5.7的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name mysql-5.7 \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>这条命令通过Docker在后台启动了一个MySQL 5.7版本的容器，并配置了一系列的参数来满足特定的需求：</p>
+<ul>
+<li><p><strong><code>-d</code></strong>: 表示容器在后台运行，让终端不会被当前容器的运行过程占用。</p>
+</li>
+<li><p><strong><code>--name mysql-5.7</code></strong>: 为运行的容器指定一个名字<code>mysql-5.7</code>，这样可以更方便地对容器进行管理。</p>
+</li>
+<li><p><strong><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code></strong>: 设置环境变量<code>MYSQL_ROOT_PASSWORD</code>为<code>my-secret-pw</code>，这是为MySQL的root用户设置的密码，是MySQL容器启动时必需的配置项。</p>
+</li>
+<li><p><strong><code>-p 3306:3306</code></strong>: 将容器内部使用的3306端口映射到宿主机的3306端口上，这样可以通过宿主机的端口来访问容器中的MySQL服务。</p>
+</li>
+<li><p><strong><code>-v mysql-data:/var/lib/mysql</code></strong>: 将名为<code>mysql-data</code>的数据卷挂载到容器内的<code>/var/lib/mysql</code>目录。这是MySQL存储数据的默认位置，使用数据卷可以实现数据的持久化保存，确保数据不会因为容器的删除而丢失，并且可以在不同的容器间共享这部分数据。</p>
+</li>
+<li><p><strong><code>-v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf</code></strong>: 将宿主机上的<code>/etc/my.cnf.d/mysql-clients.cnf</code>配置文件挂载到容器内的<code>/etc/mysql/conf.d/mysql-clients.cnf</code>位置。这样做是为了自定义MySQL服务器的配置，可以根据需要调整MySQL的行为和性能。</p>
+</li>
+<li><p><strong><code>mysql:5.7</code></strong>: 指定使用<code>mysql:5.7</code>镜像创建容器，这个镜像是MySQL官方发布的，版本号为5.7，保证了MySQL服务的标准化和一致性。</p>
+</li>
+</ul>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Docker安装Redis
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java 应用（jar 包）打包成 Docker 镜像</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
