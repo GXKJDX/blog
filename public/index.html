@@ -73,6 +73,255 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ubuntu-Docker安装minio" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>MinIO 是一个高性能的分布式对象存储服务，它可以用于存储大量非结构化数据，如照片、视频、日志文件等。通过 Docker 安装和运行 MinIO 是一种快速且方便的方法。下面是在 Docker 上安装和运行 MinIO 的步骤：</p>
+<h2 id="Docker安装minio"><a href="#Docker安装minio" class="headerlink" title="Docker安装minio"></a>Docker安装minio</h2><h3 id="1-拉取-MinIO-Docker-镜像"><a href="#1-拉取-MinIO-Docker-镜像" class="headerlink" title="1. 拉取 MinIO Docker 镜像"></a>1. 拉取 MinIO Docker 镜像</h3><p>首先，你需要从 Docker Hub 拉取最新的 MinIO 镜像。在你的终端中运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动minio容器"><a href="#2-启动minio容器" class="headerlink" title="2.启动minio容器"></a>2.启动minio容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line"> --name minio \</span><br><span class="line"> --cgroupns host \</span><br><span class="line"> --env MINIO_ROOT_USER=admin \</span><br><span class="line"> --env MINIO_ROOT_PASSWORD=******** \</span><br><span class="line"> -p 9000:9000/tcp \</span><br><span class="line"> -p 9090:9090/tcp \</span><br><span class="line"> --restart=always \</span><br><span class="line"> -v /mydata/minio/data:/data \</span><br><span class="line"> minio/minio server /data --console-address :9090 --address :9000 </span><br></pre></td></tr></table></figure>
+
+<p> Docker 运行 MinIO 服务，一个高性能的分布式对象存储服务，常用于存储大规模的非结构化数据。下面我将详细解释这个命令的各个部分：</p>
+<ol>
+<li><code>docker run -d</code>：<ul>
+<li><code>docker run</code>：告诉 Docker 运行一个新的容器。</li>
+<li><code>-d</code>：代表后台运行，让容器在后台执行。</li>
+</ul>
+</li>
+<li><code>--name minio</code>：<ul>
+<li><code>--name</code>：设置容器的名称，这里名称被设为 <code>minio</code>。</li>
+</ul>
+</li>
+<li><code>--cgroupns host</code>：<ul>
+<li><code>--cgroupns</code>：指定容器使用的 cgroup 命名空间类型。这里使用的是 <code>host</code>，意味着容器将使用宿主机的 cgroup 命名空间，而不是创建新的。</li>
+</ul>
+</li>
+<li><code>--env MINIO_ROOT_USER=admin</code> 和 <code>--env MINIO_ROOT_PASSWORD=********</code>：<ul>
+<li><code>--env</code>：设置环境变量。</li>
+<li><code>MINIO_ROOT_USER</code> 和 <code>MINIO_ROOT_PASSWORD</code>：分别设置 MinIO 服务的根用户名称和密码。</li>
+</ul>
+</li>
+<li><code>-p 9000:9000/tcp</code> 和 <code>-p 9090:9090/tcp</code>：<ul>
+<li><code>-p</code>：端口映射，格式为 <code>宿主机端口:容器端口/tcp</code>。</li>
+<li><code>9000:9000/tcp</code>：将容器的 9000 端口映射到宿主机的 9000 端口，MinIO 的主服务通常在此端口运行。</li>
+<li><code>9090:9090/tcp</code>：将容器的 9090 端口映射到宿主机的 9090 端口，MinIO 的管理控制台通常在此端口运行。</li>
+</ul>
+</li>
+<li><code>--restart=always</code>：<ul>
+<li><code>--restart</code>：设置容器的重启策略。<code>always</code> 意味着无论容器的退出状态如何，只要 Docker 守护进程被重新启动，容器也将被重新启动。</li>
+</ul>
+</li>
+<li><code>-v /mydata/minio/data:/data</code>：<ul>
+<li><code>-v</code>：挂载卷，格式为 <code>宿主机路径:容器内路径</code>。</li>
+<li><code>/mydata/minio/data:/data</code>：将宿主机的 <code>/mydata/minio/data</code> 目录挂载到容器内的 <code>/data</code> 目录，用于数据持久化。</li>
+</ul>
+</li>
+<li><code>minio/minio server /data</code>：<ul>
+<li><code>minio/minio</code>：Docker 镜像名称，表示使用 MinIO 的官方 Docker 镜像。</li>
+<li><code>server /data</code>：MinIO 服务的启动命令，指定 <code>/data</code> 为数据存储位置。</li>
+</ul>
+</li>
+<li><code>--console-address :9090 --address :9000</code>：<ul>
+<li><code>--console-address :9090</code>：设置 MinIO 控制台的监听地址和端口。</li>
+<li><code>--address :9000</code>：设置 MinIO 服务的监听地址和端口。</li>
+</ul>
+</li>
+</ol>
+<p>整个命令的作用是在 Docker 中运行一个名为 <code>minio</code> 的容器，配置了环境变量、端口映射和卷挂载，并设定了服务及控制台的监听端口，用于提供一个持久化的分布式对象存储服务。</p>
+<h2 id="Docker安装MinIO-Client-mc"><a href="#Docker安装MinIO-Client-mc" class="headerlink" title="Docker安装MinIO Client (mc)"></a>Docker安装MinIO Client (<code>mc</code>)</h2><h3 id="1-拉取-mc-Docker-镜像"><a href="#1-拉取-mc-Docker-镜像" class="headerlink" title="1. 拉取 mc Docker 镜像"></a>1. 拉取 <code>mc</code> Docker 镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/mc</span><br></pre></td></tr></table></figure>
+
+<p>这个命令从 Docker Hub 上拉取最新的 MinIO Client (<code>mc</code>) 镜像。这样可以确保你使用的是最新版的客户端。</p>
+<h3 id="2-通过-Docker-运行-mc-并进入其-Shell"><a href="#2-通过-Docker-运行-mc-并进入其-Shell" class="headerlink" title="2. 通过 Docker 运行 mc 并进入其 Shell"></a>2. 通过 Docker 运行 <code>mc</code> 并进入其 Shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --entrypoint=/bin/sh minio/mc</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-配置-MinIO-客户端"><a href="#3-配置-MinIO-客户端" class="headerlink" title="3. 配置 MinIO 客户端"></a>3. 配置 MinIO 客户端</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc config host add &lt;ALIAS&gt; &lt;YOUR-S3-ENDPOINT&gt; &lt;YOUR-ACCESS-KEY&gt; &lt;YOUR-SECRET-KEY&gt; [--api API-SIGNATURE]</span><br></pre></td></tr></table></figure>
+
+<p>这个命令用于配置 <code>mc</code>，使其可以连接到一个特定的 MinIO 服务或兼容 S3 的存储服务。</p>
+<ul>
+<li><code>&lt;ALIAS&gt;</code> 是你为这个存储服务定义的简称。</li>
+<li><code>&lt;YOUR-S3-ENDPOINT&gt;</code> 是服务的访问 URL。</li>
+<li><code>&lt;YOUR-ACCESS-KEY&gt;</code> 和 <code>&lt;YOUR-SECRET-KEY&gt;</code> 是你的访问密钥和密钥密码，用于身份验证。</li>
+<li><code>[--api API-SIGNATURE]</code> 是可选的，用于指定 API 签名类型，通常是 <code>S3v4</code>。</li>
+</ul>
+<h3 id="4-添加特定的-MinIO-服务配置"><a href="#4-添加特定的-MinIO-服务配置" class="headerlink" title="4. 添加特定的 MinIO 服务配置"></a>4. 添加特定的 MinIO 服务配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc config host add minio http://47.113.216.154:9000 admin ********</span><br></pre></td></tr></table></figure>
+
+<p>这个命令添加一个名为 <code>minio</code> 的 MinIO 服务配置，使用的是 IP 地址 <code>117.72.14.166</code> 和端口 <code>9000</code>，以及提供的访问密钥和密钥密码。</p>
+<h3 id="5-列出存储桶创建名qyj的储存桶"><a href="#5-列出存储桶创建名qyj的储存桶" class="headerlink" title="5. 列出存储桶创建名qyj的储存桶"></a>5. 列出存储桶创建名<code>qyj</code>的储存桶</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mc ls minio</span><br><span class="line">mc mb minio/qyj</span><br></pre></td></tr></table></figure>
+
+<p>这个命令列出与别名 <code>minio</code> 相关联的存储服务中的所有存储桶。</p>
+<h3 id="6-启用匿名访问模式"><a href="#6-启用匿名访问模式" class="headerlink" title="6. 启用匿名访问模式"></a>6. 启用匿名访问模式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc anonymous</span><br></pre></td></tr></table></figure>
+
+<p>这个命令启动 <code>mc</code> 的匿名访问模式，允许用户在没有提供 API 密钥的情况下执行操作。</p>
+<h3 id="7-设置匿名下载权限"><a href="#7-设置匿名下载权限" class="headerlink" title="7. 设置匿名下载权限"></a>7. 设置匿名下载权限</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc anonymous set download minio/qyj</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" data-id="clxbmxg700000lotl5k8e5oah" data-title="Docker安装minio" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu-Nginx和Certbot安装和minio的域名映射" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Nginx和Certbot安装和minio的域名映射"><a href="#Nginx和Certbot安装和minio的域名映射" class="headerlink" title="Nginx和Certbot安装和minio的域名映射"></a>Nginx和Certbot安装和minio的域名映射</h3><h3 id="步骤1-更新软件包列表"><a href="#步骤1-更新软件包列表" class="headerlink" title="步骤1: 更新软件包列表"></a>步骤1: 更新软件包列表</h3><p>首先，打开终端并更新Ubuntu的软件包列表以确保安装最新版本的软件。运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤2-安装Nginx"><a href="#步骤2-安装Nginx" class="headerlink" title="步骤2: 安装Nginx"></a>步骤2: 安装Nginx</h3><p>使用<code>apt</code>命令安装Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤3-安装-Certbot"><a href="#步骤3-安装-Certbot" class="headerlink" title="步骤3: 安装 Certbot"></a>步骤3: 安装 Certbot</h3><p>对于大多数 Linux 发行版，如 Ubuntu，你可以使用以下命令安装 Certbot：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install certbot</span><br><span class="line">sudo apt-get install python3-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤4-使用-Certbot-获取和安装证书"><a href="#步骤4-使用-Certbot-获取和安装证书" class="headerlink" title="步骤4: 使用 Certbot 获取和安装证书"></a>步骤4: 使用 Certbot 获取和安装证书</h3><p>对于 Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d minio.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤5：编辑配置，路径：-etc-nginx-conf-d"><a href="#步骤5：编辑配置，路径：-etc-nginx-conf-d" class="headerlink" title="步骤5：编辑配置，路径：&#x2F;etc&#x2F;nginx&#x2F;conf.d"></a>步骤5：编辑配置，路径：&#x2F;etc&#x2F;nginx&#x2F;conf.d</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name minio.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/minio.qinyunjian.cloud/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/minio.qinyunjian.cloud/privkey.pem;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:9090;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤6："><a href="#步骤6：" class="headerlink" title="步骤6："></a>步骤6：</h3><ol>
+<li><p><strong>保存配置文件</strong>：保存Nginx 配置文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/nginx/conf.d/minio.qinyunjian.cloud.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>检查配置并重启 Nginx</strong>：在保存修改后，再次运行  来验证配置文件是否正确。<code>nginx -t</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>如果输出显示“test is successful”，则表示配置文件没有语法错误。 然后，你可以安全地重启 Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" data-id="clxbmxg740001lotlh18s04yp" data-title="Nginx和Certbot安装和minio的域名映射" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu-安装docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源：</p>
+<h3 id="1-更新软件包索引"><a href="#1-更新软件包索引" class="headerlink" title="1. 更新软件包索引"></a>1. 更新软件包索引</h3><p>打开你的终端，并执行以下命令以更新你的软件包索引：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装-HTTPS-支持和证书"><a href="#2-安装-HTTPS-支持和证书" class="headerlink" title="2. 安装 HTTPS 支持和证书"></a>2. 安装 HTTPS 支持和证书</h3><p>首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加-Docker-的官方-GPG-密钥"><a href="#3-添加-Docker-的官方-GPG-密钥" class="headerlink" title="3. 添加 Docker 的官方 GPG 密钥"></a>3. 添加 Docker 的官方 GPG 密钥</h3><p>为了确保下载的 Docker 软件包的真实性，需要导入 Docker 的官方 GPG 密钥。使用阿里云的镜像服务器来替代 Docker 的官方密钥服务器，可以加快这一过程：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-设置-Docker-稳定版仓库"><a href="#4-设置-Docker-稳定版仓库" class="headerlink" title="4. 设置 Docker 稳定版仓库"></a>4. 设置 Docker 稳定版仓库</h3><p>要使用阿里云的 Docker 仓库地址设置 APT 源，执行以下命令来添加阿里云的 Docker 稳定版仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-安装-Docker-Engine"><a href="#5-安装-Docker-Engine" class="headerlink" title="5. 安装 Docker Engine"></a>5. 安装 Docker Engine</h3><p>现在，更新 apt 索引，并安装 Docker Engine 和 containerd：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-验证-Docker-是否安装成功"><a href="#6-验证-Docker-是否安装成功" class="headerlink" title="6. 验证 Docker 是否安装成功"></a>6. 验证 Docker 是否安装成功</h3><p>安装完成后，启动 Docker 并运行 <code>hello-world</code> 镜像来验证是否正确安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p>如果看到返回消息，说明 Docker 已经正确安装并运行。</p>
+<h3 id="7-配置-Docker-Hub"><a href="#7-配置-Docker-Hub" class="headerlink" title="7. 配置 Docker Hub"></a>7. 配置 Docker Hub</h3><p>为了进一步提高镜像拉取速度，可以配置 Docker 使用阿里云的镜像加速器：</p>
+<ol>
+<li><p>创建或编辑 <code>/etc/docker/daemon.json</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /inc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下内容（替换 <code>&lt;你的阿里云加速器地址&gt;</code> 为你实际的加速器地址）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://docker.nju.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://mirror.baidubce.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://2e63y970.mirror.aliyuncs.com&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存并关闭文件，然后重启 Docker 服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>默认情况下，只有 root 或者 有 sudo 权限的用户可以执行 Docker 命令。想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $USER</span><br></pre></td></tr></table></figure>
+
+<p><code>$USER</code>是一个环境变量，代表当前用户名。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Docker安装Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" class="article-date">
@@ -665,162 +914,12 @@
 
 
   
-    <article id="post-Nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/01/20/Nginx/" class="article-date">
-  <time class="dt-published" datetime="2024-01-20T14:31:50.000Z" itemprop="datePublished">2024-01-20</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/20/Nginx/">Nginx基础知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="一、Nginx安装"><a href="#一、Nginx安装" class="headerlink" title="一、Nginx安装"></a>一、Nginx安装</h2><p>在 CentOS 7.8 上安装 Nginx 通常分为几个步骤：</p>
-<h3 id="1-更新系统"><a href="#1-更新系统" class="headerlink" title="1. 更新系统"></a>1. 更新系统</h3><p>在开始之前，最好确保所有的系统软件都是最新的。打开终端并输入以下命令来更新您的系统：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会更新系统中所有已安装的软件包到最新版本。</p>
-<h3 id="2-添加-EPEL-仓库"><a href="#2-添加-EPEL-仓库" class="headerlink" title="2. 添加 EPEL 仓库"></a>2. 添加 EPEL 仓库</h3><p>由于 Nginx 不包含在 CentOS 的默认 YUM 仓库中，您需要添加 EPEL（Extra Packages for Enterprise Linux）仓库来获取 Nginx 的软件包。运行以下命令添加 EPEL 仓库：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h3><p>现在 EPEL 仓库已经添加，您可以安装 Nginx 了。使用以下命令安装：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-启动-Nginx-服务"><a href="#4-启动-Nginx-服务" class="headerlink" title="4. 启动 Nginx 服务"></a>4. 启动 Nginx 服务</h3><p>安装完成后，您需要启动 Nginx 服务。使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-自动启动-Nginx"><a href="#5-自动启动-Nginx" class="headerlink" title="5. 自动启动 Nginx"></a>5. 自动启动 Nginx</h3><p>为了确保 Nginx 在每次系统启动时自动运行，使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-调整防火墙设置"><a href="#6-调整防火墙设置" class="headerlink" title="6. 调整防火墙设置"></a>6. 调整防火墙设置</h3><p>如果您的服务器运行的是 firewalld（CentOS 7 的默认防火墙），您需要允许 HTTP 和 HTTPS 流量。运行以下命令来更新防火墙设置：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-验证-Nginx-安装"><a href="#7-验证-Nginx-安装" class="headerlink" title="7. 验证 Nginx 安装"></a>7. 验证 Nginx 安装</h3><p>在浏览器中输入您服务器的 IP 地址。如果 Nginx 安装成功，您应该会看到 Nginx 的默认欢迎页面。</p>
-<h3 id="8-配置-Nginx（可选）"><a href="#8-配置-Nginx（可选）" class="headerlink" title="8. 配置 Nginx（可选）"></a>8. 配置 Nginx（可选）</h3><p>Nginx 的主配置文件位于 <code>/etc/nginx/nginx.conf</code>。您可能需要根据您的需求来编辑此文件。网站的配置文件通常位于 <code>/etc/nginx/conf.d/</code> 目录中。</p>
-<h2 id="二、Nginx的配置文件"><a href="#二、Nginx的配置文件" class="headerlink" title="二、Nginx的配置文件"></a>二、Nginx的配置文件</h2><p>已经成功的安装了Nginx，以下是对配置文件的解释说明。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/01/20/Nginx/" data-id="clrm844j1000110tlfro33mdo" data-title="Nginx基础知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/01/12/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-01-11T16:15:50.716Z" itemprop="datePublished">2024-01-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/01/12/hello-world/" data-id="clr9ftd2t00003ctl83y49rpu" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/01/11/test/" class="article-date">
-  <time class="dt-published" datetime="2024-01-11T14:37:50.000Z" itemprop="datePublished">2024-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/11/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="页面信息初始化"><a href="#页面信息初始化" class="headerlink" title="页面信息初始化"></a>页面信息初始化</h3><p>hexo学习记录</p>
-<p>hexo new “test” 生成新的文档</p>
-<p>hexo g 重新编译代码</p>
-<p>hexo s 运行项目</p>
-<p>hexo d 部署到git仓库</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/01/11/test/" data-id="clr9ftd2z00013ctl6xdt5wfh" data-title="test" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -851,23 +950,23 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
           </li>
         
           <li>
             <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
           </li>
         
       </ul>
