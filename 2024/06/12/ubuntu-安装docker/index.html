@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Ubuntu安装docker | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源： 1. 更新软件包索引打开你的终端，并执行以下命令以更新你的软件包索引： 1sudo apt-get update  2. 安装 HTTPS 支持和证书首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖： 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安装docker">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源： 1. 更新软件包索引打开你的终端，并执行以下命令以更新你的软件包索引： 1sudo apt-get update  2. 安装 HTTPS 支持和证书首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖： 1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-12T09:33:50.000Z">
+<meta property="article:modified_time" content="2024-06-12T09:33:28.427Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ubuntu-安装docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Ubuntu安装docker
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源：</p>
+<h3 id="1-更新软件包索引"><a href="#1-更新软件包索引" class="headerlink" title="1. 更新软件包索引"></a>1. 更新软件包索引</h3><p>打开你的终端，并执行以下命令以更新你的软件包索引：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装-HTTPS-支持和证书"><a href="#2-安装-HTTPS-支持和证书" class="headerlink" title="2. 安装 HTTPS 支持和证书"></a>2. 安装 HTTPS 支持和证书</h3><p>首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加-Docker-的官方-GPG-密钥"><a href="#3-添加-Docker-的官方-GPG-密钥" class="headerlink" title="3. 添加 Docker 的官方 GPG 密钥"></a>3. 添加 Docker 的官方 GPG 密钥</h3><p>为了确保下载的 Docker 软件包的真实性，需要导入 Docker 的官方 GPG 密钥。使用阿里云的镜像服务器来替代 Docker 的官方密钥服务器，可以加快这一过程：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-设置-Docker-稳定版仓库"><a href="#4-设置-Docker-稳定版仓库" class="headerlink" title="4. 设置 Docker 稳定版仓库"></a>4. 设置 Docker 稳定版仓库</h3><p>要使用阿里云的 Docker 仓库地址设置 APT 源，执行以下命令来添加阿里云的 Docker 稳定版仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-安装-Docker-Engine"><a href="#5-安装-Docker-Engine" class="headerlink" title="5. 安装 Docker Engine"></a>5. 安装 Docker Engine</h3><p>现在，更新 apt 索引，并安装 Docker Engine 和 containerd：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-验证-Docker-是否安装成功"><a href="#6-验证-Docker-是否安装成功" class="headerlink" title="6. 验证 Docker 是否安装成功"></a>6. 验证 Docker 是否安装成功</h3><p>安装完成后，启动 Docker 并运行 <code>hello-world</code> 镜像来验证是否正确安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p>如果看到返回消息，说明 Docker 已经正确安装并运行。</p>
+<h3 id="7-配置-Docker-Hub"><a href="#7-配置-Docker-Hub" class="headerlink" title="7. 配置 Docker Hub"></a>7. 配置 Docker Hub</h3><p>为了进一步提高镜像拉取速度，可以配置 Docker 使用阿里云的镜像加速器：</p>
+<ol>
+<li><p>创建或编辑 <code>/etc/docker/daemon.json</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /inc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下内容（替换 <code>&lt;你的阿里云加速器地址&gt;</code> 为你实际的加速器地址）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://docker.nju.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://mirror.baidubce.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://2e63y970.mirror.aliyuncs.com&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存并关闭文件，然后重启 Docker 服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>默认情况下，只有 root 或者 有 sudo 权限的用户可以执行 Docker 命令。想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $USER</span><br></pre></td></tr></table></figure>
+
+<p><code>$USER</code>是一个环境变量，代表当前用户名。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nginx和Certbot安装和minio的域名映射
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker安装Redis</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
