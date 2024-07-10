@@ -73,6 +73,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css伪类选择器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T14:50:50.000Z" itemprop="datePublished">2024-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">css伪类选择器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="css-伪类选择器"><a href="#css-伪类选择器" class="headerlink" title="css 伪类选择器"></a>css 伪类选择器</h3><p>css 伪类选择器是一种用于选择元素的特定状态的方式，常见的伪类选择器包括 <code>:hover</code>、<code>:active</code>、<code>:nth-child</code> 等。以下是一些常用的 css 伪类选择器及其使用示例。</p>
+<h4 id="常见的-css-伪类选择器"><a href="#常见的-css-伪类选择器" class="headerlink" title="常见的 css 伪类选择器"></a>常见的 css 伪类选择器</h4><ol>
+<li>**<code>:hover</code>**：用于选择用户鼠标悬停在其上的元素。</li>
+<li>**<code>:active</code>**：用于选择用户激活（比如点击）元素。</li>
+<li>**<code>:nth-child(n)</code>**：用于选择属于其父元素的第 n 个子元素，n 可以是关键字（如 odd、even）或公式。</li>
+<li>**<code>:first-child</code>**：用于选择属于其父元素的第一个子元素。</li>
+<li>**<code>:last-child</code>**：用于选择属于其父元素的最后一个子元素。</li>
+<li>**<code>:nth-of-type(n)</code>**：用于选择属于其父元素特定类型的第 n 个子元素。</li>
+<li>**<code>:not(selector)</code>**：用于选择非某个选择器的元素。</li>
+</ol>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><p>以下是一个使用不同伪类选择器的综合示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>css 伪类选择器示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">display</span>: grid;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">1</span>fr);</span></span><br><span class="line"><span class="language-css">            <span class="attribute">gap</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">320px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">50px</span> auto;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">justify-content</span>: center;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">24px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:nth-child</span>(odd) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="number">#FF6347</span>; <span class="comment">/* 番茄色 */</span></span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:nth-child</span>(even) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="number">#4682B4</span>; <span class="comment">/* 钢蓝色 */</span></span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="number">#FFD700</span>; <span class="comment">/* 金色 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: black;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:active</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="number">#6A5ACD</span>; <span class="comment">/* 板岩蓝色 */</span></span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:first</span>-child &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="number">#000</span>; <span class="comment">/* 黑色边框 */</span></span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:last-child</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="number">#fff</span>; <span class="comment">/* 白色边框 */</span></span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">3</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:nth-child</span>(<span class="number">5</span>)) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>6<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>7<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>9<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ul>
+<li><strong>奇数格子</strong> (<code>.box:nth-child(odd)</code>): 背景色设置为番茄色。</li>
+<li><strong>偶数格子</strong> (<code>.box:nth-child(even)</code>): 背景色设置为钢蓝色。</li>
+<li><strong>悬停效果</strong> (<code>.box:hover</code>): 当鼠标悬停在格子上时，背景色变为金色，文字颜色变为黑色。</li>
+<li><strong>激活效果</strong> (<code>.box:active</code>): 当格子被点击时，背景色变为板岩蓝色。</li>
+<li><strong>第一个子元素</strong> (<code>.box:first-child</code>): 为第一个格子添加黑色边框。</li>
+<li><strong>最后一个子元素</strong> (<code>.box:last-child</code>): 为最后一个格子添加白色边框。</li>
+<li><strong>特定类型的第 n 个子元素</strong> (<code>.box:nth-of-type(3)</code>): 将第三个格子的字体大小设置为30px。</li>
+<li><strong>非某个选择器的元素</strong> (<code>.box:not(:nth-child(5))</code>): 将除第5个格子以外的所有格子的透明度设置为0.8。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/" data-id="clyg04c7j0000wku41bb26vei" data-title="css伪类选择器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-css布局" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/" class="article-date">
@@ -913,96 +976,6 @@
 
 
   
-    <article id="post-为qinyunjian.cloud配置二级域名" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/">为qinyunjian.cloud配置二级域名</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="为qinyunjian-cloud配置二级域名"><a href="#为qinyunjian-cloud配置二级域名" class="headerlink" title="为qinyunjian.cloud配置二级域名"></a>为<code>qinyunjian.cloud</code>配置二级域名</h3><p>​	前提，我现在购买了一个域名<code>qinyunjian.cloud</code>，现在我需要为这个域名添加二级域名<code>hotel.qinyunjian.cloud</code>，同时可以把前端Web应用和后端服务部署到这个域名。</p>
-<h4 id="步骤-1-确保域名解析"><a href="#步骤-1-确保域名解析" class="headerlink" title="步骤 1: 确保域名解析"></a>步骤 1: 确保域名解析</h4><p>​	首先，确保您的二级域名 <code>hotel.qinyunjian.cloud</code> 已经通过 DNS 正确解析到您的服务器的公网 IP 地址。我这里购买的是阿里云的域名，所以需要到阿里云解析中心，添加记录。</p>
-<p>​	1、点击域名解析。2、点击你的域名。3、点击添加记录。</p>
-<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226093320058.png"></p>
-<h4 id="步骤-2-使用-Certbot-获取证书"><a href="#步骤-2-使用-Certbot-获取证书" class="headerlink" title="步骤 2: 使用 Certbot 获取证书"></a>步骤 2: 使用 Certbot 获取证书</h4><p>​	运行 Certbot 并选择 Nginx 插件来自动获取和配置 Let’s Encrypt SSL 证书：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d hotel.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会自动为您的二级域名 <code>hotel.qinyunjian.cloud</code> 获取 SSL 证书，并更新 Nginx 的配置文件来使用这个证书。</p>
-<h4 id="步骤3：配置-etc-nginx-conf-d文件"><a href="#步骤3：配置-etc-nginx-conf-d文件" class="headerlink" title="步骤3：配置/etc/nginx/conf.d文件"></a>步骤3：配置<code>/etc/nginx/conf.d</code>文件</h4><p>​	编辑您的 Nginx 配置文件（通常位于 <code>/etc/nginx/nginx.conf</code> 或 <code>/etc/nginx/sites-available/</code> 目录下的某个文件），添加一个新的 <code>server</code> 块，以便将 <code>hotel.qinyunjian.cloud</code> ，（以下文件是需要自己新建的）的请求代理到您的 SpringBoot 服务：</p>
-<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/9132726f9a8ad29222730bed828cae8.png"></p>
-<p>​	以下是配置文件详细说明。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># 重定向所有 HTTP 请求到 HTTPS</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80; # 监听 80 端口</span><br><span class="line">    server_name hotel.qinyunjian.cloud; # 为 hotel.qinyunjian.cloud 配置</span><br><span class="line">    return 301 https://$host$request_uri; # 将所有 HTTP 请求重定向到 HTTPS</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 处理 HTTPS 请求</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2; # 监听 443 端口，启用 SSL 和 HTTP/2</span><br><span class="line">    server_name hotel.qinyunjian.cloud; # 为 hotel.qinyunjian.cloud 配置</span><br><span class="line"></span><br><span class="line">    # SSL 证书配置</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/hotel.qinyunjian.cloud/fullchain.pem; # 指定证书文件</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/hotel.qinyunjian.cloud/privkey.pem; # 指定证书密钥文件</span><br><span class="line"></span><br><span class="line">    # SSL 性能优化配置</span><br><span class="line">    ssl_session_cache shared:SSL:10m; # 启用 SSL 会话缓存，提高性能</span><br><span class="line">    ssl_session_timeout 10m; # 设置 SSL 会话的超时时间</span><br><span class="line">    ssl_ciphers &#x27;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-CHACHA20-POLY1305&#x27;; # 指定加密套件</span><br><span class="line">    ssl_prefer_server_ciphers on; # 服务器优先选择加密算法</span><br><span class="line"></span><br><span class="line">    # Web 应用根目录</span><br><span class="line">    root /var/www/hotelweb; # 设置 Web 应用的根目录</span><br><span class="line"></span><br><span class="line">    # 前端应用路由处理</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html; # 尝试返回请求的文件或目录，如果不存在则返回 index.html</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 代理 /service 路径到后端 Spring Boot 应用</span><br><span class="line">    location /service &#123;</span><br><span class="line">        rewrite ^/service(.*) /$1 break; # 重写 URL，去除 /service 前缀</span><br><span class="line">        proxy_pass http://localhost:84; # 代理请求到本地的 84 端口</span><br><span class="line">        proxy_http_version 1.1; # 使用 HTTP/1.1 与代理服务器通信</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade; # 传递升级头部，用于 WebSocket 支持</span><br><span class="line">        proxy_set_header Connection &#x27;upgrade&#x27;; # 传递连接头部，同样用于 WebSocket</span><br><span class="line">        proxy_set_header Host $host; # 传递原始请求的 Host 头部</span><br><span class="line">        proxy_cache_bypass $http_upgrade; # 绕过缓存处理 WebSocket 请求</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一个-server-块"><a href="#第一个-server-块" class="headerlink" title="第一个 server 块"></a>第一个 server 块</h4><ol>
-<li><code>listen 80;</code>：这行配置指示 Nginx 监听 80 端口（HTTP）上的请求。</li>
-<li><code>server_name hotel.qinyunjian.cloud;</code>：定义了此配置块处理请求的域名。</li>
-<li><code>return 301 https://$host$request_uri;</code>：所有 http (80 端口) 的请求将被永久重定向到 https 版本的相同 URI。这是一种常见的做法，用于强制使用 HTTPS。</li>
-</ol>
-<h4 id="第二个-server-块"><a href="#第二个-server-块" class="headerlink" title="第二个 server 块"></a>第二个 server 块</h4><ol>
-<li><code>listen 443 ssl http2;</code>：这行配置指示 Nginx 监听 443 端口上的请求，并启用 SSL 和 HTTP&#x2F;2 支持。443 端口是 HTTPS 默认使用的端口。</li>
-<li><code>server_name hotel.qinyunjian.cloud;</code>：同样定义了此配置块处理请求的域名。</li>
-<li><code>ssl_certificate /etc/letsencrypt/live/hotel.qinyunjian.cloud/fullchain.pem;</code>：指定 SSL 证书的位置。这个证书用于 HTTPS 加密。</li>
-<li><code>ssl_certificate_key /etc/letsencrypt/live/hotel.qinyunjian.cloud/privkey.pem;</code>：指定 SSL 证书的私钥位置。</li>
-<li><code>ssl_session_cache shared:SSL:10m;</code>：启用 SSL 会话缓存，以提高后续请求的性能。</li>
-<li><code>ssl_session_timeout 10m;</code>：设置 SSL 会话的超时时间为 10 分钟。</li>
-<li><code>ssl_ciphers [...]</code>：指定加密套件的列表，这些加密套件用于 SSL&#x2F;TLS 握手过程中。</li>
-<li><code>ssl_prefer_server_ciphers on;</code>：指示服务器优先使用自己的加密套件偏好，而不是客户端提供的。</li>
-<li><code>root /var/www/hotelweb;</code>：定义了服务器的根目录。这是 Nginx 用来查找文件的路径。</li>
-<li><code>location / &#123;</code>：这个块指定了对于根路径（<code>/</code>）的请求，如何处理。<ul>
-<li><code>try_files $uri $uri/ /index.html;</code>：尝试按顺序返回请求的文件、目录或 <code>/index.html</code>。这用于单页应用，确保路由可以由前端 JavaScript 框架处理。</li>
-</ul>
-</li>
-<li><code>location /service &#123;</code>：指定了对于 <code>/service</code> 路径的请求，如何处理。<ul>
-<li><code>rewrite ^/service(.*) /$1 break;</code>：这行将请求中的 <code>/service</code> 重写为 <code>/</code>，并停止处理后续的 rewrite 规则。这允许将 API 请求代理到应用而不改变路径。</li>
-<li><code>proxy_pass http://localhost:84;</code>：将请求代理到本地 84 端口的应用（通常是一个后端服务，如 Spring Boot 应用）。</li>
-<li><code>proxy_http_version 1.1;</code>：使用 HTTP 1.1 协议与代理服务器通信。</li>
-<li><code>proxy_set_header Upgrade $http_upgrade;</code>：设置 HTTP 升级头部，用于 WebSockets 支持。</li>
-<li><code>proxy_set_header Connection &#39;upgrade&#39;;</code>：设置连接头部，同样是为了 WebSockets。</li>
-<li><code>proxy_set_header Host $host;</code>：设置请求的 Host 头部为原始请求的 Host，确保后端服务能正确识别请求的域名。</li>
-<li><code>proxy_cache_bypass $http_upgrade;</code>：如果有 HTTP 升级请求，绕过缓存处理。</li>
-</ul>
-</li>
-</ol>
-<h4 id="步骤-4-检查-Nginx-配置并重启服务"><a href="#步骤-4-检查-Nginx-配置并重启服务" class="headerlink" title="步骤 4: 检查 Nginx 配置并重启服务"></a>步骤 4: 检查 Nginx 配置并重启服务</h4><p>​	在编辑配置文件后，您需要检查 Nginx 配置文件的语法是否正确：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
-
-<p>​	如果没有问题，重启 Nginx 服务以应用更改：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-
-<p>​	现在，当访问 <code>https://hotel.qinyunjian.cloud</code> 时，请求应该会被自动代理到运行在服务器 84 端口的 SpringBoot 服务。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/" data-id="clx19s52o0005iotl1t143b39" data-title="为qinyunjian.cloud配置二级域名" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1053,6 +1026,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">css伪类选择器</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">css布局</a>
           </li>
         
@@ -1066,10 +1043,6 @@
         
           <li>
             <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
           </li>
         
       </ul>
