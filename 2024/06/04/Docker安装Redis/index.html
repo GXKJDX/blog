@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker安装Redis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="docker安装Redis安装 Redis 使用 Docker 的步骤步骤 1: 拉取 Redis 镜像首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令： 1docker pull redis  这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 redis:6.0。 步骤 2: 运行 Redis 容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker安装Redis">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="docker安装Redis安装 Redis 使用 Docker 的步骤步骤 1: 拉取 Redis 镜像首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令： 1docker pull redis  这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 redis:6.0。 步骤 2: 运行 Redis 容">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-04T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-07-10T12:12:27.430Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Docker安装Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker安装Redis
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="docker安装Redis"><a href="#docker安装Redis" class="headerlink" title="docker安装Redis"></a>docker安装Redis</h2><h3 id="安装-Redis-使用-Docker-的步骤"><a href="#安装-Redis-使用-Docker-的步骤" class="headerlink" title="安装 Redis 使用 Docker 的步骤"></a>安装 Redis 使用 Docker 的步骤</h3><h4 id="步骤-1-拉取-Redis-镜像"><a href="#步骤-1-拉取-Redis-镜像" class="headerlink" title="步骤 1: 拉取 Redis 镜像"></a>步骤 1: 拉取 Redis 镜像</h4><p>首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+<p>这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 <code>redis:6.0</code>。</p>
+<h4 id="步骤-2-运行-Redis-容器（含数据持久化）"><a href="#步骤-2-运行-Redis-容器（含数据持久化）" class="headerlink" title="步骤 2: 运行 Redis 容器（含数据持久化）"></a>步骤 2: 运行 Redis 容器（含数据持久化）</h4><p>使用以下命令启动一个包含数据持久化的 Redis 容器实例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-redis -p 6379:6379 -d -v redis-data:/data redis</span><br></pre></td></tr></table></figure>
+
+<p>这里的命令参数解释如下：</p>
+<ul>
+<li><code>--name my-redis</code>：为容器指定一个名称，这里使用 <code>my-redis</code>。</li>
+<li><code>-p 6379:6379</code>：将容器的 6379 端口（Redis 的默认端口）映射到宿主机的同一端口。</li>
+<li><code>-d</code>：以“分离模式”运行容器，即容器在后台运行。</li>
+<li><code>-v redis-data:/data</code>：创建并挂载一个名为 <code>redis-data</code> 的 Docker 卷到容器的 <code>/data</code> 目录。Redis 会将其数据存储在 <code>/data</code> 目录中，从而实现数据的持久化。</li>
+<li><code>redis</code>：指定使用 Redis 的官方 Docker 镜像。</li>
+</ul>
+<h4 id="步骤-3-验证-Redis-容器"><a href="#步骤-3-验证-Redis-容器" class="headerlink" title="步骤 3: 验证 Redis 容器"></a>步骤 3: 验证 Redis 容器</h4><p>要确认 Redis 容器已经成功启动并运行，可以运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>这将列出所有正在运行的容器。您应该能在列表中看到名为 <code>my-redis</code> 的容器。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu安装docker
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker安装MySQL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

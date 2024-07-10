@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker安装minio | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="MinIO 是一个高性能的分布式对象存储服务，它可以用于存储大量非结构化数据，如照片、视频、日志文件等。通过 Docker 安装和运行 MinIO 是一种快速且方便的方法。下面是在 Docker 上安装和运行 MinIO 的步骤： Docker安装minio1. 拉取 MinIO Docker 镜像首先，你需要从 Docker Hub 拉取最新的 MinIO 镜像。在你的终端中运行以下命令： 1d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker安装minio">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MinIO 是一个高性能的分布式对象存储服务，它可以用于存储大量非结构化数据，如照片、视频、日志文件等。通过 Docker 安装和运行 MinIO 是一种快速且方便的方法。下面是在 Docker 上安装和运行 MinIO 的步骤： Docker安装minio1. 拉取 MinIO Docker 镜像首先，你需要从 Docker Hub 拉取最新的 MinIO 镜像。在你的终端中运行以下命令： 1d">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-12T09:33:50.000Z">
+<meta property="article:modified_time" content="2024-07-10T12:13:39.855Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ubuntu-Docker安装minio" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker安装minio
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>MinIO 是一个高性能的分布式对象存储服务，它可以用于存储大量非结构化数据，如照片、视频、日志文件等。通过 Docker 安装和运行 MinIO 是一种快速且方便的方法。下面是在 Docker 上安装和运行 MinIO 的步骤：</p>
+<h2 id="Docker安装minio"><a href="#Docker安装minio" class="headerlink" title="Docker安装minio"></a>Docker安装minio</h2><h3 id="1-拉取-MinIO-Docker-镜像"><a href="#1-拉取-MinIO-Docker-镜像" class="headerlink" title="1. 拉取 MinIO Docker 镜像"></a>1. 拉取 MinIO Docker 镜像</h3><p>首先，你需要从 Docker Hub 拉取最新的 MinIO 镜像。在你的终端中运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动minio容器"><a href="#2-启动minio容器" class="headerlink" title="2.启动minio容器"></a>2.启动minio容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line"> --name minio \</span><br><span class="line"> --cgroupns host \</span><br><span class="line"> --env MINIO_ROOT_USER=admin \</span><br><span class="line"> --env MINIO_ROOT_PASSWORD=******** \</span><br><span class="line"> -p 9000:9000/tcp \</span><br><span class="line"> -p 9090:9090/tcp \</span><br><span class="line"> --restart=always \</span><br><span class="line"> -v /mydata/minio/data:/data \</span><br><span class="line"> minio/minio server /data --console-address :9090 --address :9000 </span><br></pre></td></tr></table></figure>
+
+<p> Docker 运行 MinIO 服务，一个高性能的分布式对象存储服务，常用于存储大规模的非结构化数据。下面我将详细解释这个命令的各个部分：</p>
+<ol>
+<li><code>docker run -d</code>：<ul>
+<li><code>docker run</code>：告诉 Docker 运行一个新的容器。</li>
+<li><code>-d</code>：代表后台运行，让容器在后台执行。</li>
+</ul>
+</li>
+<li><code>--name minio</code>：<ul>
+<li><code>--name</code>：设置容器的名称，这里名称被设为 <code>minio</code>。</li>
+</ul>
+</li>
+<li><code>--cgroupns host</code>：<ul>
+<li><code>--cgroupns</code>：指定容器使用的 cgroup 命名空间类型。这里使用的是 <code>host</code>，意味着容器将使用宿主机的 cgroup 命名空间，而不是创建新的。</li>
+</ul>
+</li>
+<li><code>--env MINIO_ROOT_USER=admin</code> 和 <code>--env MINIO_ROOT_PASSWORD=********</code>：<ul>
+<li><code>--env</code>：设置环境变量。</li>
+<li><code>MINIO_ROOT_USER</code> 和 <code>MINIO_ROOT_PASSWORD</code>：分别设置 MinIO 服务的根用户名称和密码。</li>
+</ul>
+</li>
+<li><code>-p 9000:9000/tcp</code> 和 <code>-p 9090:9090/tcp</code>：<ul>
+<li><code>-p</code>：端口映射，格式为 <code>宿主机端口:容器端口/tcp</code>。</li>
+<li><code>9000:9000/tcp</code>：将容器的 9000 端口映射到宿主机的 9000 端口，MinIO 的主服务通常在此端口运行。</li>
+<li><code>9090:9090/tcp</code>：将容器的 9090 端口映射到宿主机的 9090 端口，MinIO 的管理控制台通常在此端口运行。</li>
+</ul>
+</li>
+<li><code>--restart=always</code>：<ul>
+<li><code>--restart</code>：设置容器的重启策略。<code>always</code> 意味着无论容器的退出状态如何，只要 Docker 守护进程被重新启动，容器也将被重新启动。</li>
+</ul>
+</li>
+<li><code>-v /mydata/minio/data:/data</code>：<ul>
+<li><code>-v</code>：挂载卷，格式为 <code>宿主机路径:容器内路径</code>。</li>
+<li><code>/mydata/minio/data:/data</code>：将宿主机的 <code>/mydata/minio/data</code> 目录挂载到容器内的 <code>/data</code> 目录，用于数据持久化。</li>
+</ul>
+</li>
+<li><code>minio/minio server /data</code>：<ul>
+<li><code>minio/minio</code>：Docker 镜像名称，表示使用 MinIO 的官方 Docker 镜像。</li>
+<li><code>server /data</code>：MinIO 服务的启动命令，指定 <code>/data</code> 为数据存储位置。</li>
+</ul>
+</li>
+<li><code>--console-address :9090 --address :9000</code>：<ul>
+<li><code>--console-address :9090</code>：设置 MinIO 控制台的监听地址和端口。</li>
+<li><code>--address :9000</code>：设置 MinIO 服务的监听地址和端口。</li>
+</ul>
+</li>
+</ol>
+<p>整个命令的作用是在 Docker 中运行一个名为 <code>minio</code> 的容器，配置了环境变量、端口映射和卷挂载，并设定了服务及控制台的监听端口，用于提供一个持久化的分布式对象存储服务。</p>
+<h2 id="Docker安装MinIO-Client-mc"><a href="#Docker安装MinIO-Client-mc" class="headerlink" title="Docker安装MinIO Client (mc)"></a>Docker安装MinIO Client (<code>mc</code>)</h2><h3 id="1-拉取-mc-Docker-镜像"><a href="#1-拉取-mc-Docker-镜像" class="headerlink" title="1. 拉取 mc Docker 镜像"></a>1. 拉取 <code>mc</code> Docker 镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/mc</span><br></pre></td></tr></table></figure>
+
+<p>这个命令从 Docker Hub 上拉取最新的 MinIO Client (<code>mc</code>) 镜像。这样可以确保你使用的是最新版的客户端。</p>
+<h3 id="2-通过-Docker-运行-mc-并进入其-Shell"><a href="#2-通过-Docker-运行-mc-并进入其-Shell" class="headerlink" title="2. 通过 Docker 运行 mc 并进入其 Shell"></a>2. 通过 Docker 运行 <code>mc</code> 并进入其 Shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --entrypoint=/bin/sh minio/mc</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-配置-MinIO-客户端"><a href="#3-配置-MinIO-客户端" class="headerlink" title="3. 配置 MinIO 客户端"></a>3. 配置 MinIO 客户端</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc config host add &lt;ALIAS&gt; &lt;YOUR-S3-ENDPOINT&gt; &lt;YOUR-ACCESS-KEY&gt; &lt;YOUR-SECRET-KEY&gt; [--api API-SIGNATURE]</span><br></pre></td></tr></table></figure>
+
+<p>这个命令用于配置 <code>mc</code>，使其可以连接到一个特定的 MinIO 服务或兼容 S3 的存储服务。</p>
+<ul>
+<li><code>&lt;ALIAS&gt;</code> 是你为这个存储服务定义的简称。</li>
+<li><code>&lt;YOUR-S3-ENDPOINT&gt;</code> 是服务的访问 URL。</li>
+<li><code>&lt;YOUR-ACCESS-KEY&gt;</code> 和 <code>&lt;YOUR-SECRET-KEY&gt;</code> 是你的访问密钥和密钥密码，用于身份验证。</li>
+<li><code>[--api API-SIGNATURE]</code> 是可选的，用于指定 API 签名类型，通常是 <code>S3v4</code>。</li>
+</ul>
+<h3 id="4-添加特定的-MinIO-服务配置"><a href="#4-添加特定的-MinIO-服务配置" class="headerlink" title="4. 添加特定的 MinIO 服务配置"></a>4. 添加特定的 MinIO 服务配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc config host add minio http://47.113.216.154:9000 admin ********</span><br></pre></td></tr></table></figure>
+
+<p>这个命令添加一个名为 <code>minio</code> 的 MinIO 服务配置，使用的是 IP 地址 <code>117.72.14.166</code> 和端口 <code>9000</code>，以及提供的访问密钥和密钥密码。</p>
+<h3 id="5-列出存储桶创建名qyj的储存桶"><a href="#5-列出存储桶创建名qyj的储存桶" class="headerlink" title="5. 列出存储桶创建名qyj的储存桶"></a>5. 列出存储桶创建名<code>qyj</code>的储存桶</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mc ls minio</span><br><span class="line">mc mb minio/qyj</span><br></pre></td></tr></table></figure>
+
+<p>这个命令列出与别名 <code>minio</code> 相关联的存储服务中的所有存储桶。</p>
+<h3 id="6-启用匿名访问模式"><a href="#6-启用匿名访问模式" class="headerlink" title="6. 启用匿名访问模式"></a>6. 启用匿名访问模式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc anonymous</span><br></pre></td></tr></table></figure>
+
+<p>这个命令启动 <code>mc</code> 的匿名访问模式，允许用户在没有提供 API 密钥的情况下执行操作。</p>
+<h3 id="7-设置匿名下载权限"><a href="#7-设置匿名下载权限" class="headerlink" title="7. 设置匿名下载权限"></a>7. 设置匿名下载权限</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc anonymous set download minio/qyj</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" data-id="clxbmxg700000lotl5k8e5oah" data-title="Docker安装minio" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nginx和Certbot安装和minio的域名映射</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

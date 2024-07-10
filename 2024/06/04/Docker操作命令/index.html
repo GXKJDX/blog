@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker操作命令练习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Docker操作命令一、简单的hello-world示例步骤 1: 拉取 hello-world 镜像运行以下命令以拉取最新的 hello-world 镜像： 1docker pull hello-world  步骤 2: 运行 hello-world 容器并命名运行以下命令启动一个 hello-world 容器，并给它命名为 my-hello-world： 1docker run --name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker操作命令练习">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker操作命令一、简单的hello-world示例步骤 1: 拉取 hello-world 镜像运行以下命令以拉取最新的 hello-world 镜像： 1docker pull hello-world  步骤 2: 运行 hello-world 容器并命名运行以下命令启动一个 hello-world 容器，并给它命名为 my-hello-world： 1docker run --name">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-04T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-07-10T12:12:30.176Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Docker操作命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker操作命令练习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Docker操作命令"><a href="#Docker操作命令" class="headerlink" title="Docker操作命令"></a>Docker操作命令</h3><h4 id="一、简单的hello-world示例"><a href="#一、简单的hello-world示例" class="headerlink" title="一、简单的hello-world示例"></a>一、简单的<code>hello-world</code>示例</h4><h4 id="步骤-1-拉取-hello-world-镜像"><a href="#步骤-1-拉取-hello-world-镜像" class="headerlink" title="步骤 1: 拉取 hello-world 镜像"></a>步骤 1: 拉取 <code>hello-world</code> 镜像</h4><p>运行以下命令以拉取最新的 <code>hello-world</code> 镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2-运行-hello-world-容器并命名"><a href="#步骤-2-运行-hello-world-容器并命名" class="headerlink" title="步骤 2: 运行 hello-world 容器并命名"></a>步骤 2: 运行 <code>hello-world</code> 容器并命名</h4><p>运行以下命令启动一个 <code>hello-world</code> 容器，并给它命名为 <code>my-hello-world</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-hello-world hello-world</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会启动一个 <code>hello-world</code> 容器，容器运行后会显示一条欢迎消息然后退出。因为 <code>hello-world</code> 容器是为了演示目的而设计，它会立即退出并不会长时间运行。</p>
+<h4 id="二、使用-my-redis-容器作为示例"><a href="#二、使用-my-redis-容器作为示例" class="headerlink" title="二、使用 my-redis 容器作为示例"></a>二、使用 <code>my-redis</code> 容器作为示例</h4><p>因为我已经拉取了<code>redis</code>的镜像，并且已经成功的运行了<code>redis</code>容器，命名为<code>my-redis</code>，以下使用 <code>my-redis</code> 容器作为示例，提供更多的 Docker 命令。</p>
+<h4 id="启动已停止的容器"><a href="#启动已停止的容器" class="headerlink" title="启动已停止的容器"></a>启动已停止的容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的实时日志"><a href="#查看容器的实时日志" class="headerlink" title="查看容器的实时日志"></a>查看容器的实时日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="检查容器的详细信息"><a href="#检查容器的详细信息" class="headerlink" title="检查容器的详细信息"></a>检查容器的详细信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器内部的进程"><a href="#查看容器内部的进程" class="headerlink" title="查看容器内部的进程"></a>查看容器内部的进程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的资源使用情况（如-CPU、内存）"><a href="#查看容器的资源使用情况（如-CPU、内存）" class="headerlink" title="查看容器的资源使用情况（如 CPU、内存）"></a>查看容器的资源使用情况（如 CPU、内存）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入容器内部的命令"><a href="#进入容器内部的命令" class="headerlink" title="进入容器内部的命令"></a>进入容器内部的命令</h4><p>假设你想在 <code>my-redis</code> 容器内部：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/bash (/bin/sh)</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>Redis</code> 命令行界面：终端输入<code>redis-cli</code>，进入命令行界面。</p>
+<h4 id="复制文件到-从容器"><a href="#复制文件到-从容器" class="headerlink" title="复制文件到&#x2F;从容器"></a>复制文件到&#x2F;从容器</h4><p>假设你想从你的主机复制一个名为 <code>dump.rdb</code> 的文件到 <code>my-redis</code> 容器的 <code>/data</code> 目录中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp dump.rdb my-redis:/data/dump.rdb</span><br></pre></td></tr></table></figure>
+
+<p>反向操作，从容器复制文件到主机：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp my-redis:/data/dump.rdb ./dump.rdb</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、使用hotel-service作为例子。"><a href="#三、使用hotel-service作为例子。" class="headerlink" title="三、使用hotel-service作为例子。"></a>三、使用<code>hotel-service</code>作为例子。</h4><h4 id="查看特定数量的尾部日志行并持续更新"><a href="#查看特定数量的尾部日志行并持续更新" class="headerlink" title="查看特定数量的尾部日志行并持续更新"></a>查看特定数量的尾部日志行并持续更新</h4><p>可以结合使用 <code>-n</code>（或 <code>--tail</code>）选项和 <code>-f</code> 选项。例如，查看最后50行日志并持续更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --tail 50 -f hotel-service</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入hotel-service容器"><a href="#进入hotel-service容器" class="headerlink" title="进入hotel-service容器"></a>进入<code>hotel-service</code>容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>查看日志，我的日志目录和系统的目录是同级的，（根据实际情况来定，具体还是得看自己的日志目录配在什么地方）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd app-log/</span><br></pre></td></tr></table></figure>
+
+<p>查看错误日志，</p>
+<p>要在 Linux 中查看文件末尾的 100 行，您可以使用 <code>tail</code> 命令配合 <code>-n</code> 选项，如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 syslog</span><br></pre></td></tr></table></figure>
+
+<p>或者直接输入文件的路径。例如，如果您想查看名为 <code>/var/log/syslog</code> 的文件的末尾 100 行，命令将是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" data-id="clx19s52m0003iotl9q5408l6" data-title="Docker操作命令练习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java 应用（jar 包）打包成 Docker 镜像
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">为qinyunjian.cloud安装SSL证书</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
