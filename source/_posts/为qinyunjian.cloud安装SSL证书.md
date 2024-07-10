@@ -1,7 +1,7 @@
 ---
 title: 为qinyunjian.cloud安装SSL证书
 date: 2024-06-04 22:32:50
-tags:
+tags: nginx
 ---
 ### 安装SSL证书。
 

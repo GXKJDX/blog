@@ -1,7 +1,7 @@
 ---
 title: Docker操作命令练习
 date: 2024-06-04 22:32:50
-tags:
+tags: docker
 ---
 ### Docker操作命令
 

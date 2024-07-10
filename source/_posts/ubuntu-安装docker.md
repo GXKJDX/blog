@@ -1,7 +1,7 @@
 ---
 title: Ubuntu安装docker
 date: 2024-06-12 17:33:50
-tags:
+tags: ubuntu
 ---
 
 安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源：

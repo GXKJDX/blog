@@ -1,7 +1,7 @@
 ---
 title: Docker安装minio
 date: 2024-06-12 17:33:50
-tags:
+tags: ubuntu
 ---
 
 MinIO 是一个高性能的分布式对象存储服务，它可以用于存储大量非结构化数据，如照片、视频、日志文件等。通过 Docker 安装和运行 MinIO 是一种快速且方便的方法。下面是在 Docker 上安装和运行 MinIO 的步骤：

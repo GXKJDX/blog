@@ -1,7 +1,7 @@
 ---
 title: Java 应用（jar 包）打包成 Docker 镜像
 date: 2024-06-04 22:32:50
-tags:
+tags: docker
 ---
 ### Java 应用（jar 包）打包成 Docker 镜像
 

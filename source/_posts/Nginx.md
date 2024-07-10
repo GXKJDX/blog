@@ -1,7 +1,7 @@
 ---
 title: Nginx基础知识
 date: 2024-01-20 22:31:50
-tags:
+tags: nginx
 ---
 
 ## 一、Nginx安装
