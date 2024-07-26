@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>二、Mybatis-Plus常见用法-Service_impl常用的基础方法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Mybatis-Plus常见用法-Service_impl常用的基础方法2Crud相关操作在 MyBatis-Plus 中，IService 和 ServiceImpl 提供了一些常用的 CRUD 方法，这些方法大大简化了对数据库的基本操作。下面是 IService 中常用的 CRUD 方法： 1. 插入操作 **insert(T entity)**：插入一条记录。 123public boole">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二、Mybatis-Plus常见用法-Service_impl常用的基础方法">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mybatis-Plus常见用法-Service_impl常用的基础方法2Crud相关操作在 MyBatis-Plus 中，IService 和 ServiceImpl 提供了一些常用的 CRUD 方法，这些方法大大简化了对数据库的基本操作。下面是 IService 中常用的 CRUD 方法： 1. 插入操作 **insert(T entity)**：插入一条记录。 123public boole">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-24T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-07-26T15:45:15.921Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="mybatisplus">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Mybatis-Plus常见用法-Service_impl常用的基础方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2024-07-24T14:32:50.000Z" itemprop="datePublished">2024-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      二、Mybatis-Plus常见用法-Service_impl常用的基础方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis-Plus常见用法-Service-impl常用的基础方法"><a href="#Mybatis-Plus常见用法-Service-impl常用的基础方法" class="headerlink" title="Mybatis-Plus常见用法-Service_impl常用的基础方法"></a>Mybatis-Plus常见用法-Service_impl常用的基础方法</h3><h4 id="2Crud相关操作"><a href="#2Crud相关操作" class="headerlink" title="2Crud相关操作"></a>2Crud相关操作</h4><p>在 MyBatis-Plus 中，<code>IService</code> 和 <code>ServiceImpl</code> 提供了一些常用的 CRUD 方法，这些方法大大简化了对数据库的基本操作。下面是 <code>IService</code> 中常用的 CRUD 方法：</p>
+<h3 id="1-插入操作"><a href="#1-插入操作" class="headerlink" title="1. 插入操作"></a>1. 插入操作</h3><ul>
+<li><p>**insert(T entity)**：插入一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.save(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**saveBatch(Collection<T> entityList)**：批量插入记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.saveBatch(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-删除操作"><a href="#2-删除操作" class="headerlink" title="2. 删除操作"></a>2. 删除操作</h3><ul>
+<li><p>**removeById(Serializable id)**：根据 ID 删除一条记录（逻辑删除）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**removeByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeByMap(columnMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**remove(Wrapper<T> wrapper)**：根据条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; wrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.remove(wrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**removeBatchByIds(Collection&lt;? extends Serializable&gt; idList)**：批量删除记录（逻辑删除）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeBatchByIds(ids);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-更新操作"><a href="#3-更新操作" class="headerlink" title="3. 更新操作"></a>3. 更新操作</h3><ul>
+<li><p>**updateById(T entity)**：根据 ID 更新一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.updateById(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**update(T entity, Wrapper<T> updateWrapper)**：根据 whereWrapper 条件更新记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user, LambdaUpdateWrapper&lt;User&gt; updateWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.update(user, updateWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**updateBatchById(Collection<T> entityList)**：批量更新记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.updateBatchById(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-查询操作"><a href="#4-查询操作" class="headerlink" title="4. 查询操作"></a>4. 查询操作</h3><ul>
+<li><p>**getById(Serializable id)**：根据 ID 查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.getById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**listByIds(Collection&lt;? extends Serializable&gt; idList)**：根据 ID 集合批量查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.listByIds(ids);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**listByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.listByMap(columnMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**getOne(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> User <span class="title function_">getOneUser</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.getOne(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**list(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.list(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**page(Page<T> page, Wrapper<T> queryWrapper)**：根据 wrapper 条件分页查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page, LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.page(page, queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**count(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询记录数量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.count(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**list()**：查询所有记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUsers</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.list();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**page(Page<T> page)**：分页查询所有记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.page(page);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>以下是一个完整的 <code>UserService</code> 实现示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;UserMapper, User&gt; <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> saveBatch(users);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeByMap(columnMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; wrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> remove(wrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeBatchByIds(ids);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> updateById(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user, LambdaUpdateWrapper&lt;User&gt; updateWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> update(user, updateWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> updateBatchById(users);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> listByIds(ids);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> listByMap(columnMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getOneUser</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getOne(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page, LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> page(page, queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> page(page);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" data-id="clz2vkaxl0001scu43d00c2jl" data-title="二、Mybatis-Plus常见用法-Service_impl常用的基础方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          三、Mybatis-Plus常见用法-Mapper常用的基础方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一、Mybatis-Plus常见用法-entity常用的注解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 15px;">mybatisplus</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/">一、Mybatis-Plus常见用法-entity常用的注解</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">二、css伪类选择器</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">一、css布局</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

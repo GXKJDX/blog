@@ -73,6 +73,300 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mybatis-Plus常见用法-Mapper常用的基础方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2024-07-24T14:32:50.000Z" itemprop="datePublished">2024-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis-Plus常见用法-Mapper常用的基础方法"><a href="#Mybatis-Plus常见用法-Mapper常用的基础方法" class="headerlink" title="Mybatis-Plus常见用法-Mapper常用的基础方法"></a>Mybatis-Plus常见用法-Mapper常用的基础方法</h3><h4 id="3Crud相关操作-Mapper"><a href="#3Crud相关操作-Mapper" class="headerlink" title="3Crud相关操作-Mapper"></a>3Crud相关操作-Mapper</h4><p>在 MyBatis-Plus 中，<code>BaseMapper</code> 是一个通用的 Mapper 接口，它提供了一系列基础的 CRUD 方法，帮助开发者简化对数据库的操作。通过继承 <code>BaseMapper</code>，我们可以直接使用这些方法，而无需编写复杂的 SQL 语句。以下是 <code>BaseMapper</code> 中常用的方法：</p>
+<h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
+<li><p>**insert(T entity)**：插入一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(User user)</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li><p>**deleteById(Serializable id)**：根据 ID 删除一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">deleteById</span><span class="params">(Long id)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**deleteByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">deleteByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**delete(Wrapper<T> wrapper)**：根据条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(LambdaQueryWrapper&lt;User&gt; wrapper)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**deleteBatchIds(Collection&lt;? extends Serializable&gt; idList)**：批量删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">deleteBatchIds</span><span class="params">(List&lt;Long&gt; ids)</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作"></a>更新操作</h4><ul>
+<li><p>**updateById(T entity)**：根据 ID 更新一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">updateById</span><span class="params">(User user)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**update(T entity, Wrapper<T> updateWrapper)**：根据条件更新记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">update</span><span class="params">(User user, LambdaUpdateWrapper&lt;User&gt; updateWrapper)</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><ul>
+<li><p>**selectById(Serializable id)**：根据 ID 查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User <span class="title function_">selectById</span><span class="params">(Long id)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectBatchIds(Collection&lt;? extends Serializable&gt; idList)**：根据 ID 集合批量查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; <span class="title function_">selectBatchIds</span><span class="params">(List&lt;Long&gt; ids)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; <span class="title function_">selectByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectOne(Wrapper<T> queryWrapper)**：根据条件查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User <span class="title function_">selectOne</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectList(Wrapper<T> queryWrapper)**：根据条件查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; <span class="title function_">selectList</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectPage(Page<T> page, Wrapper<T> queryWrapper)**：根据条件分页查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IPage&lt;User&gt; <span class="title function_">selectPage</span><span class="params">(Page&lt;User&gt; page, LambdaQueryWrapper&lt;User&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**selectCount(Wrapper<T> queryWrapper)**：根据条件查询记录数量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">selectCount</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>以下是一个 <code>UserMapper</code> 接口的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>UserMapper</code> 继承了 <code>BaseMapper&lt;User&gt;</code>，因此可以直接使用 <code>BaseMapper</code> 提供的各种 CRUD 方法，而无需在 <code>UserMapper</code> 中显式定义这些方法。</p>
+<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><p>以下是一个 <code>UserService</code> 类，通过 <code>UserMapper</code> 使用 <code>BaseMapper</code> 提供的 CRUD 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.insert(user) &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.deleteById(id) &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.updateById(user) &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.selectById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.selectList(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" data-id="clz2vkaxk0000scu4ej9dgr1a" data-title="三、Mybatis-Plus常见用法-Mapper常用的基础方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mybatis-Plus常见用法-Service_impl常用的基础方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2024-07-24T14:32:50.000Z" itemprop="datePublished">2024-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis-Plus常见用法-Service-impl常用的基础方法"><a href="#Mybatis-Plus常见用法-Service-impl常用的基础方法" class="headerlink" title="Mybatis-Plus常见用法-Service_impl常用的基础方法"></a>Mybatis-Plus常见用法-Service_impl常用的基础方法</h3><h4 id="2Crud相关操作"><a href="#2Crud相关操作" class="headerlink" title="2Crud相关操作"></a>2Crud相关操作</h4><p>在 MyBatis-Plus 中，<code>IService</code> 和 <code>ServiceImpl</code> 提供了一些常用的 CRUD 方法，这些方法大大简化了对数据库的基本操作。下面是 <code>IService</code> 中常用的 CRUD 方法：</p>
+<h3 id="1-插入操作"><a href="#1-插入操作" class="headerlink" title="1. 插入操作"></a>1. 插入操作</h3><ul>
+<li><p>**insert(T entity)**：插入一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.save(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**saveBatch(Collection<T> entityList)**：批量插入记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.saveBatch(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-删除操作"><a href="#2-删除操作" class="headerlink" title="2. 删除操作"></a>2. 删除操作</h3><ul>
+<li><p>**removeById(Serializable id)**：根据 ID 删除一条记录（逻辑删除）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**removeByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeByMap(columnMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**remove(Wrapper<T> wrapper)**：根据条件删除记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; wrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.remove(wrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**removeBatchByIds(Collection&lt;? extends Serializable&gt; idList)**：批量删除记录（逻辑删除）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.removeBatchByIds(ids);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-更新操作"><a href="#3-更新操作" class="headerlink" title="3. 更新操作"></a>3. 更新操作</h3><ul>
+<li><p>**updateById(T entity)**：根据 ID 更新一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.updateById(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**update(T entity, Wrapper<T> updateWrapper)**：根据 whereWrapper 条件更新记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user, LambdaUpdateWrapper&lt;User&gt; updateWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.update(user, updateWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**updateBatchById(Collection<T> entityList)**：批量更新记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.updateBatchById(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-查询操作"><a href="#4-查询操作" class="headerlink" title="4. 查询操作"></a>4. 查询操作</h3><ul>
+<li><p>**getById(Serializable id)**：根据 ID 查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.getById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**listByIds(Collection&lt;? extends Serializable&gt; idList)**：根据 ID 集合批量查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.listByIds(ids);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**listByMap(Map&lt;String, Object&gt; columnMap)**：根据 columnMap 条件查询记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.listByMap(columnMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**getOne(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询一条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> User <span class="title function_">getOneUser</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.getOne(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**list(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.list(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**page(Page<T> page, Wrapper<T> queryWrapper)**：根据 wrapper 条件分页查询多条记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page, LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.page(page, queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**count(Wrapper<T> queryWrapper)**：根据 wrapper 条件查询记录数量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.count(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**list()**：查询所有记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUsers</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.list();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**page(Page<T> page)**：分页查询所有记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.page(page);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>以下是一个完整的 <code>UserService</code> 实现示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;UserMapper, User&gt; <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">saveUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> saveBatch(users);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeByMap(columnMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; wrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> remove(wrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">removeUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> removeBatchByIds(ids);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> updateById(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUser</span><span class="params">(User user, LambdaUpdateWrapper&lt;User&gt; updateWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> update(user, updateWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateUsers</span><span class="params">(List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> updateBatchById(users);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByIds</span><span class="params">(List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> listByIds(ids);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> listByMap(columnMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getOneUser</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getOne(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page, LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> page(page, queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countUsers</span><span class="params">(LambdaQueryWrapper&lt;User&gt; queryWrapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(Page&lt;User&gt; page)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> page(page);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" data-id="clz2vkaxl0001scu43d00c2jl" data-title="二、Mybatis-Plus常见用法-Service_impl常用的基础方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mybatis-Plus常见用法-entity常用的注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2024-07-24T14:32:50.000Z" itemprop="datePublished">2024-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/">一、Mybatis-Plus常见用法-entity常用的注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis-Plus常见用法-entity常用的注解"><a href="#Mybatis-Plus常见用法-entity常用的注解" class="headerlink" title="Mybatis-Plus常见用法-entity常用的注解"></a>Mybatis-Plus常见用法-entity常用的注解</h3><h3 id="1常用注解"><a href="#1常用注解" class="headerlink" title="1常用注解"></a>1常用注解</h3><h3 id="1-TableName"><a href="#1-TableName" class="headerlink" title="1. @TableName"></a>1. @TableName</h3><ul>
+<li><strong>作用</strong>：指定数据库表名。</li>
+<li><strong>用法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableName;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName(&quot;user&quot;)</span>  <span class="comment">// 数据库表名</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-TableId"><a href="#2-TableId" class="headerlink" title="2. @TableId"></a>2. @TableId</h3><ul>
+<li><strong>作用</strong>：指定主键字段，并可以配置主键生成策略。</li>
+<li><strong>用法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableId;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.IdType;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@TableId(value = &quot;id&quot;, type = IdType.AUTO)</span>  <span class="comment">// 主键生成策略</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常见的主键生成策略有：</p>
+<ul>
+<li><code>IdType.AUTO</code>：数据库ID自增。</li>
+<li><code>IdType.NONE</code>：未设置主键。</li>
+<li><code>IdType.INPUT</code>：手动输入ID。</li>
+<li><code>IdType.ID_WORKER</code>：默认的雪花算法。</li>
+<li><code>IdType.UUID</code>：全局唯一ID。</li>
+</ul>
+<ul>
+<li><code>IdType.ASSIGN_ID</code>：基于雪花算法（Snowflake）的 ID 生成器</li>
+</ul>
+<h3 id="3-TableField"><a href="#3-TableField" class="headerlink" title="3. @TableField"></a>3. @TableField</h3><ul>
+<li><strong>作用</strong>：指定数据库表中的字段，以及配置字段的相关属性。</li>
+<li><strong>用法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(&quot;user_name&quot;)</span>  <span class="comment">// 指定数据库字段名，一般命名时要求类中字段和数据库同名，如：user_name -&gt; userName</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(select = false)</span>  <span class="comment">// 查询时不返回该字段，用的比较少，一般返回的是null</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span>  <span class="comment">// 自动填充策略</span></span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@TableField(exist = false)</span> <span class="comment">// 表明字段在表中不存在</span></span><br><span class="line">	<span class="keyword">private</span> List&lt;ActiveBorderRelation&gt; listActiveBorderRelation;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span>  <span class="comment">// 自动填充策略</span></span><br><span class="line">    <span class="keyword">private</span> Integer deleted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常见的自动填充策略有：</p>
+<ul>
+<li><code>FieldFill.DEFAULT</code>：默认不处理。</li>
+<li><code>FieldFill.INSERT</code>：插入时填充字段。</li>
+<li><code>FieldFill.UPDATE</code>：更新时填充字段。</li>
+<li><code>FieldFill.INSERT_UPDATE</code>：插入和更新时填充字段。</li>
+</ul>
+<p>配置自动填充处理器</p>
+<p>在项目中创建一个类，实现 <code>MetaObjectHandler</code> 接口，用于自动填充字段的默认值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.reflection.MetaObject;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyMetaObjectHandler</span> <span class="keyword">implements</span> <span class="title class_">MetaObjectHandler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insertFill</span><span class="params">(MetaObject metaObject)</span> &#123;</span><br><span class="line">        <span class="comment">// 插入时填充逻辑删除字段的默认值为0</span></span><br><span class="line">        <span class="built_in">this</span>.setFieldValByName(<span class="string">&quot;deleted&quot;</span>, <span class="number">0</span>, metaObject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateFill</span><span class="params">(MetaObject metaObject)</span> &#123;</span><br><span class="line">        <span class="comment">// 更新操作时的填充策略，如果有需要可以在这里定义</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Version"><a href="#4-Version" class="headerlink" title="4. @Version"></a>4. @Version</h3><ul>
+<li><strong>作用</strong>：用于乐观锁实现，指定版本号字段。</li>
+<li><strong>用法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.Version;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Version</span></span><br><span class="line">    <span class="keyword">private</span> Integer version;  <span class="comment">// 版本号字段</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="乐观锁工作原理"><a href="#乐观锁工作原理" class="headerlink" title="乐观锁工作原理"></a>乐观锁工作原理</h3><ol>
+<li><strong>查询数据</strong>：首先查询需要更新的数据，同时获取当前的版本号。</li>
+<li><strong>更新数据</strong>：在更新数据时，带上当前版本号。</li>
+<li><strong>版本号匹配</strong>：MyBatis-Plus 在生成的 SQL 语句中，会将 <code>WHERE</code> 条件添加版本号的判断，即 <code>UPDATE user SET name=?, age=?, version=?+1 WHERE id=? AND version=?</code>。</li>
+<li><strong>版本号校验</strong>：如果 <code>WHERE</code> 条件中版本号匹配，则更新成功，同时版本号自动递增；如果版本号不匹配，则更新失败，返回 <code>0</code>，表示数据已经被其他事务修改过</li>
+</ol>
+<h3 id="5-TableLogic"><a href="#5-TableLogic" class="headerlink" title="5. @TableLogic"></a>5. @TableLogic</h3><ul>
+<li><strong>作用</strong>：用于逻辑删除，实现软删除功能。</li>
+<li><strong>用法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableLogic;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableLogic</span></span><br><span class="line">    <span class="keyword">private</span> Integer deleted;  <span class="comment">// 逻辑删除字段</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>application.yml</code> 中配置逻辑删除的值：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">logic-delete-value:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">logic-not-delete-value:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="插入数据和逻辑删除数据"><a href="#插入数据和逻辑删除数据" class="headerlink" title="插入数据和逻辑删除数据"></a>插入数据和逻辑删除数据</h3><p>在插入数据时，<code>deleted</code> 字段会自动填充为 <code>0</code>，无需手动设置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">        user.setAge(<span class="number">30</span>);</span><br><span class="line">        user.setEmail(<span class="string">&quot;alice@example.com&quot;</span>);</span><br><span class="line">        userMapper.insert(user);  <span class="comment">// 插入时，deleted 字段自动填充为 0</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">        userMapper.deleteById(id);  <span class="comment">// 逻辑删除时，deleted 字段自动更新为 1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/" data-id="clz2vkaxn0003scu4djcd25vr" data-title="一、Mybatis-Plus常见用法-entity常用的注解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-css伪类选择器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/" class="article-date">
@@ -87,7 +381,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">css伪类选择器</a>
+      <a class="p-name article-title" href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">二、css伪类选择器</a>
     </h1>
   
 
@@ -122,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/" data-id="clyg04c7j0000wku41bb26vei" data-title="css伪类选择器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/" data-id="clyg04c7j0000wku41bb26vei" data-title="二、css伪类选择器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -150,7 +444,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">css布局</a>
+      <a class="p-name article-title" href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">一、css布局</a>
     </h1>
   
 
@@ -295,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/07/08/css%E5%B8%83%E5%B1%80/" data-id="clyfygjj70000jcu41n8h9ogi" data-title="css布局" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/08/css%E5%B8%83%E5%B1%80/" data-id="clyfygjj70000jcu41n8h9ogi" data-title="一、css布局" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -323,7 +617,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">二、Docker安装minio</a>
     </h1>
   
 
@@ -411,7 +705,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" data-id="clxbmxg700000lotl5k8e5oah" data-title="Docker安装minio" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/" data-id="clxbmxg700000lotl5k8e5oah" data-title="二、Docker安装minio" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -439,7 +733,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">三、Nginx和Certbot安装和minio的域名映射</a>
     </h1>
   
 
@@ -475,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" data-id="clxbmxg740001lotlh18s04yp" data-title="Nginx和Certbot安装和minio的域名映射" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/" data-id="clxbmxg740001lotlh18s04yp" data-title="三、Nginx和Certbot安装和minio的域名映射" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -503,7 +797,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">一、Ubuntu安装docker</a>
     </h1>
   
 
@@ -550,7 +844,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="一、Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -578,7 +872,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">Docker安装Redis</a>
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">四、Docker安装Redis</a>
     </h1>
   
 
@@ -609,7 +903,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="四、Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -637,7 +931,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">三、Docker安装MySQL</a>
     </h1>
   
 
@@ -729,244 +1023,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="三、Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Java 应用（jar 包）打包成 Docker 镜像" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/">Java 应用（jar 包）打包成 Docker 镜像</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Java-应用（jar-包）打包成-Docker-镜像"><a href="#Java-应用（jar-包）打包成-Docker-镜像" class="headerlink" title="Java 应用（jar 包）打包成 Docker 镜像"></a>Java 应用（jar 包）打包成 Docker 镜像</h3><p>​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 <code>Dockerfile</code>，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。</p>
-<p>​	1、使用Xftp，把jar上传到指定的目录下。2、创建Dockerfile文件。</p>
-<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226162321338.png"></p>
-<h4 id="步骤-1-准备-Dockerfile"><a href="#步骤-1-准备-Dockerfile" class="headerlink" title="步骤 1: 准备 Dockerfile"></a>步骤 1: 准备 Dockerfile</h4><ol>
-<li><strong>创建 Dockerfile</strong>: 在你的 Java 项目根目录下创建一个名为 <code>Dockerfile</code> 的文件（无文件扩展名）。</li>
-<li><strong>编辑 Dockerfile</strong>: 使用文本编辑器打开 <code>Dockerfile</code>，并添加以下内容：</li>
-</ol>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方的Java运行环境作为基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add --no-cache fontconfig ttf-dejavu</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置时区（可选）</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">ln</span> -snf /usr/share/zoneinfo/<span class="variable">$TZ</span> /etc/localtime &amp;&amp; <span class="built_in">echo</span> <span class="variable">$TZ</span> &gt; /etc/timezone</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将jar包添加到容器中，注意修改路径以匹配你的jar包位置</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> jinzijing-hotel-2.0.0.jar app.jar</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露容器内部的端口号，与Spring Boot应用的端口一致</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">84</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器启动时运行jar包</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/app.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="步骤-2-构建-Docker-镜像"><a href="#步骤-2-构建-Docker-镜像" class="headerlink" title="步骤 2: 构建 Docker 镜像"></a>步骤 2: 构建 Docker 镜像</h4><p>在包含 <code>Dockerfile</code> 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker 镜像：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t hotel-service .</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-t hotel-service</code> 为新构建的镜像设置了一个名字 <code>hotel-service</code>。</li>
-<li><code>.</code> 指定了 Dockerfile 所在的目录（当前目录）。</li>
-</ul>
-<h4 id="步骤-3-运行-Docker-容器"><a href="#步骤-3-运行-Docker-容器" class="headerlink" title="步骤 3: 运行 Docker 容器"></a>步骤 3: 运行 Docker 容器</h4><p>使用以下命令运行你的应用：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d -p 84:84 myapplication</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-d</code> 表示后台运行容器。</li>
-<li><code>-p 84:84</code> 将容器的 84 端口映射到宿主机的 84 端口，允许外部访问。</li>
-</ul>
-<p>确保你的应用配置为在 84 端口上监听，或者根据需要调整端口映射。</p>
-<h4 id="步骤4：测试SpringBoot服务"><a href="#步骤4：测试SpringBoot服务" class="headerlink" title="步骤4：测试SpringBoot服务"></a>步骤4：测试SpringBoot服务</h4><p>使用以下命令测试你的应用是否能正常运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:84</span><br></pre></td></tr></table></figure>
-
-<p>如果出现<code>WELCOME</code>则说明服务正常运行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" data-id="clx19s52l0002iotlbaoi3yec" data-title="Java 应用（jar 包）打包成 Docker 镜像" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Docker操作命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Docker操作命令练习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Docker操作命令"><a href="#Docker操作命令" class="headerlink" title="Docker操作命令"></a>Docker操作命令</h3><h4 id="一、简单的hello-world示例"><a href="#一、简单的hello-world示例" class="headerlink" title="一、简单的hello-world示例"></a>一、简单的<code>hello-world</code>示例</h4><h4 id="步骤-1-拉取-hello-world-镜像"><a href="#步骤-1-拉取-hello-world-镜像" class="headerlink" title="步骤 1: 拉取 hello-world 镜像"></a>步骤 1: 拉取 <code>hello-world</code> 镜像</h4><p>运行以下命令以拉取最新的 <code>hello-world</code> 镜像：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
-
-<h4 id="步骤-2-运行-hello-world-容器并命名"><a href="#步骤-2-运行-hello-world-容器并命名" class="headerlink" title="步骤 2: 运行 hello-world 容器并命名"></a>步骤 2: 运行 <code>hello-world</code> 容器并命名</h4><p>运行以下命令启动一个 <code>hello-world</code> 容器，并给它命名为 <code>my-hello-world</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-hello-world hello-world</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会启动一个 <code>hello-world</code> 容器，容器运行后会显示一条欢迎消息然后退出。因为 <code>hello-world</code> 容器是为了演示目的而设计，它会立即退出并不会长时间运行。</p>
-<h4 id="二、使用-my-redis-容器作为示例"><a href="#二、使用-my-redis-容器作为示例" class="headerlink" title="二、使用 my-redis 容器作为示例"></a>二、使用 <code>my-redis</code> 容器作为示例</h4><p>因为我已经拉取了<code>redis</code>的镜像，并且已经成功的运行了<code>redis</code>容器，命名为<code>my-redis</code>，以下使用 <code>my-redis</code> 容器作为示例，提供更多的 Docker 命令。</p>
-<h4 id="启动已停止的容器"><a href="#启动已停止的容器" class="headerlink" title="启动已停止的容器"></a>启动已停止的容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看容器的实时日志"><a href="#查看容器的实时日志" class="headerlink" title="查看容器的实时日志"></a>查看容器的实时日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="检查容器的详细信息"><a href="#检查容器的详细信息" class="headerlink" title="检查容器的详细信息"></a>检查容器的详细信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看容器内部的进程"><a href="#查看容器内部的进程" class="headerlink" title="查看容器内部的进程"></a>查看容器内部的进程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看容器的资源使用情况（如-CPU、内存）"><a href="#查看容器的资源使用情况（如-CPU、内存）" class="headerlink" title="查看容器的资源使用情况（如 CPU、内存）"></a>查看容器的资源使用情况（如 CPU、内存）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats my-redis</span><br></pre></td></tr></table></figure>
-
-<h4 id="进入容器内部的命令"><a href="#进入容器内部的命令" class="headerlink" title="进入容器内部的命令"></a>进入容器内部的命令</h4><p>假设你想在 <code>my-redis</code> 容器内部：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/bash (/bin/sh)</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>Redis</code> 命令行界面：终端输入<code>redis-cli</code>，进入命令行界面。</p>
-<h4 id="复制文件到-从容器"><a href="#复制文件到-从容器" class="headerlink" title="复制文件到&#x2F;从容器"></a>复制文件到&#x2F;从容器</h4><p>假设你想从你的主机复制一个名为 <code>dump.rdb</code> 的文件到 <code>my-redis</code> 容器的 <code>/data</code> 目录中：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp dump.rdb my-redis:/data/dump.rdb</span><br></pre></td></tr></table></figure>
-
-<p>反向操作，从容器复制文件到主机：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp my-redis:/data/dump.rdb ./dump.rdb</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、使用hotel-service作为例子。"><a href="#三、使用hotel-service作为例子。" class="headerlink" title="三、使用hotel-service作为例子。"></a>三、使用<code>hotel-service</code>作为例子。</h4><h4 id="查看特定数量的尾部日志行并持续更新"><a href="#查看特定数量的尾部日志行并持续更新" class="headerlink" title="查看特定数量的尾部日志行并持续更新"></a>查看特定数量的尾部日志行并持续更新</h4><p>可以结合使用 <code>-n</code>（或 <code>--tail</code>）选项和 <code>-f</code> 选项。例如，查看最后50行日志并持续更新：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --tail 50 -f hotel-service</span><br></pre></td></tr></table></figure>
-
-<h4 id="进入hotel-service容器"><a href="#进入hotel-service容器" class="headerlink" title="进入hotel-service容器"></a>进入<code>hotel-service</code>容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/sh</span><br></pre></td></tr></table></figure>
-
-<p>查看日志，我的日志目录和系统的目录是同级的，（根据实际情况来定，具体还是得看自己的日志目录配在什么地方）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd app-log/</span><br></pre></td></tr></table></figure>
-
-<p>查看错误日志，</p>
-<p>要在 Linux 中查看文件末尾的 100 行，您可以使用 <code>tail</code> 命令配合 <code>-n</code> 选项，如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 syslog</span><br></pre></td></tr></table></figure>
-
-<p>或者直接输入文件的路径。例如，如果您想查看名为 <code>/var/log/syslog</code> 的文件的末尾 100 行，命令将是：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 /var/log/syslog</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" data-id="clx19s52m0003iotl9q5408l6" data-title="Docker操作命令练习" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-为qinyunjian.cloud安装SSL证书" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/">为qinyunjian.cloud安装SSL证书</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="安装SSL证书。"><a href="#安装SSL证书。" class="headerlink" title="安装SSL证书。"></a>安装SSL证书。</h3><p>​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书，</p>
-<h4 id="步骤-1-安装-Certbot"><a href="#步骤-1-安装-Certbot" class="headerlink" title="步骤 1: 安装 Certbot"></a>步骤 1: 安装 Certbot</h4><p>Certbot 是 Let’s Encrypt 的官方客户端，用于自动化安装和更新 SSL 证书。</p>
-<ol>
-<li><p><strong>启用 EPEL 仓库</strong>：(在安装docker的时候已经安装EPEL 仓库，不必重复安装)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>安装 Certbot</strong>：</p>
-<p>对于Nginx：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install certbot-nginx</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="步骤-2-获取和安装证书"><a href="#步骤-2-获取和安装证书" class="headerlink" title="步骤 2: 获取和安装证书"></a>步骤 2: 获取和安装证书</h4><p>使用 Certbot 为您的域名获取和安装证书：</p>
-<ul>
-<li><p>Nginx</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d qinyunjian.cloud -d www.qinyunjian.cloud</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果 Certbot 成功安装证书，它将自动修改您的 Nginx 配置文件以使用 SSL，如果说运行了这一步，但是<code>nginx.conf</code>文件没有能被正确的更改，则需要手动配置<code>nginx.conf</code>。</p>
-</li>
-</ul>
-<h4 id="步骤-3-自动续订证书"><a href="#步骤-3-自动续订证书" class="headerlink" title="步骤 3: 自动续订证书"></a>步骤 3: 自动续订证书</h4><p>Let’s Encrypt 证书有效期为 90 天，可以通过 Certbot 自动续订：</p>
-<ul>
-<li><p>测试自动续订</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot renew --dry-run</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果测试成功，Certbot 将自动设置定时任务来续订证书。</p>
-</li>
-</ul>
-<h4 id="步骤-4-确认-HTTPS-生效"><a href="#步骤-4-确认-HTTPS-生效" class="headerlink" title="步骤 4: 确认 HTTPS 生效"></a>步骤 4: 确认 HTTPS 生效</h4><p>在完成上述步骤后，您可以通过访问 <code>https://qinyunjian.cloud</code> 来确认 SSL 证书是否成功安装。浏览器应该显示一个锁图标，表示连接是安全的。</p>
-<h4 id="手动配置nginx-conf"><a href="#手动配置nginx-conf" class="headerlink" title="手动配置nginx.conf"></a>手动配置<code>nginx.conf</code></h4><p>​	如果 Certbot 运行失败，没有自动修改 Nginx 的配置文件来启用 HTTPS 和配置 HTTP 到 HTTPS 的重定向，您可以手动编辑 Nginx 的配置文件来实现这些功能。以下是一个基本的示例，展示如何为您的域名 <code>qinyunjian.cloud</code> 配置 SSL 证书和重定向。</p>
-<h4 id="步骤-1-打开您的-Nginx-配置文件"><a href="#步骤-1-打开您的-Nginx-配置文件" class="headerlink" title="步骤 1: 打开您的 Nginx 配置文件"></a>步骤 1: 打开您的 Nginx 配置文件</h4><p>对于大多数 Nginx 安装来说，配置文件通常位于 <code>/etc/nginx/nginx.conf</code> 或者 <code>/etc/nginx/sites-available/</code> 目录下的某个文件。如果您使用的是后者，那么您的配置可能位于一个特定的域名文件中，例如 <code>/etc/nginx/sites-available/qinyunjian.cloud.conf</code>。</p>
-<h4 id="步骤-2-配置-SSL"><a href="#步骤-2-配置-SSL" class="headerlink" title="步骤 2: 配置 SSL"></a>步骤 2: 配置 SSL</h4><p>以下是一个配置 SSL 的示例。请确保您已经通过 Certbot 获取了证书，并知道证书和私钥文件的路径。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 重定向所有 HTTP 请求到 HTTPS</span><br><span class="line">    return 301 https://$server_name$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name qinyunjian.cloud www.qinyunjian.cloud;</span><br><span class="line"></span><br><span class="line">    # 指定 SSL 证书和密钥的路径</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/qinyunjian.cloud/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/qinyunjian.cloud/privkey.pem;</span><br><span class="line"></span><br><span class="line">    # 其他 SSL 设置...</span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers &#x27;ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256&#x27;;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    # 配置网站根目录</span><br><span class="line">    root /var/www/qinyunjian.cloud/html;</span><br><span class="line"></span><br><span class="line">    # 其他配置...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="步骤-3-检查-Nginx-配置并重启服务"><a href="#步骤-3-检查-Nginx-配置并重启服务" class="headerlink" title="步骤 3: 检查 Nginx 配置并重启服务"></a>步骤 3: 检查 Nginx 配置并重启服务</h4><p>在编辑配置文件之后，您应该检查配置是否正确：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
-
-<p>如果显示配置文件语法正确，那么您可以重启 Nginx 以应用更改：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/%E4%B8%BAqinyunjian.cloud%E5%AE%89%E8%A3%85SSL%E8%AF%81%E4%B9%A6/" data-id="clx19s52n0004iotl8bnafz91" data-title="为qinyunjian.cloud安装SSL证书" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li></ul>
 
     </footer>
   </div>
@@ -994,7 +1055,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
     </div>
   </div>
 
@@ -1004,7 +1065,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 15px;">mybatisplus</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
     </div>
   </div>
 
@@ -1026,23 +1087,23 @@
       <ul>
         
           <li>
-            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">css伪类选择器</a>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
           </li>
         
           <li>
-            <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">css布局</a>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/12/ubuntu-Docker%E5%AE%89%E8%A3%85minio/">Docker安装minio</a>
+            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/">一、Mybatis-Plus常见用法-entity常用的注解</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/12/ubuntu-Nginx%E5%92%8CCertbot%E5%AE%89%E8%A3%85%E5%92%8Cminio%E7%9A%84%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84/">Nginx和Certbot安装和minio的域名映射</a>
+            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">二、css伪类选择器</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">Ubuntu安装docker</a>
+            <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">一、css布局</a>
           </li>
         
       </ul>
