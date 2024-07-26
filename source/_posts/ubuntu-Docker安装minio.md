@@ -1,5 +1,5 @@
 ---
-title: Docker安装minio
+title: 二、Docker安装minio
 date: 2024-06-12 17:33:50
 tags: ubuntu
 ---

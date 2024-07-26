@@ -1,9 +1,9 @@
 ---
-title: 为qinyunjian.cloud安装SSL证书
+title: 二、为qinyunjian.cloud安装SSL证书
 date: 2024-06-04 22:32:50
 tags: nginx
 ---
-### 安装SSL证书。
+### 安装SSL证书
 
 ​	前置条件，我现在有一个域名（qinyunjian.cloud），默认使用的是http协议，现在我需要为这个域名安装证书，
 

@@ -1,5 +1,5 @@
 ---
-title: Nginx基础知识
+title: 一、Nginx基础知识
 date: 2024-01-20 22:31:50
 tags: nginx
 ---

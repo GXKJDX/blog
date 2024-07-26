@@ -1,5 +1,5 @@
 ---
-title: 为qinyunjian.cloud配置二级域名
+title: 三、为qinyunjian.cloud配置二级域名
 date: 2024-06-04 22:32:50
 tags: nginx
 ---
