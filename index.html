@@ -73,6 +73,417 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL 常用知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2024-07-31T14:32:50.000Z" itemprop="datePublished">2024-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="一、常用的-MySQL-命令示例"><a href="#一、常用的-MySQL-命令示例" class="headerlink" title="一、常用的 MySQL 命令示例"></a>一、常用的 MySQL 命令示例</h3><ol>
+<li><p><strong>SELECT</strong> 用于查询数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name <span class="keyword">FROM</span> users;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>WHERE</strong> 查询数据时给定条件筛选</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="operator">&gt;=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>DISTINCT</strong> 去掉重复值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> name <span class="keyword">FROM</span> users;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>AND, OR, NOT</strong> 逻辑操作符</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">AND</span> name <span class="operator">=</span> <span class="string">&#x27;Alice&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>IN</strong> 查询多个数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>BETWEEN</strong> 查询某个范围的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>LIKE</strong> 模糊查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;A%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>REGEXP</strong> 通过正则表达式查找记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name REGEXP <span class="string">&#x27;A.*&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>GROUP BY</strong> 结果集分组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> item_name, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> total <span class="keyword">FROM</span> orders <span class="keyword">GROUP</span> <span class="keyword">BY</span> item_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ORDER BY</strong> 排序结果集</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">ORDER</span> <span class="keyword">BY</span> id;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>LIMIT</strong> 限定返回记录条数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>JOIN</strong> 连接查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="二、连表操作示例"><a href="#二、连表操作示例" class="headerlink" title="二、连表操作示例"></a>二、连表操作示例</h3><ol>
+<li><strong>INNER JOIN</strong> 连接用户表和订单表，显示所有用户及其订单。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>LEFT JOIN</strong> 连接用户表和订单表，显示所有用户及其订单（包括没有订单的用户）。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>RIGHT JOIN</strong> 连接用户表和订单表，显示所有订单及其用户（包括没有匹配用户的订单）。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>FULL JOIN</strong>（在 MySQL 中可以使用 UNION ALL 模拟 FULL JOIN）显示所有用户及其订单（包括没有匹配的用户或订单）。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id</span><br><span class="line"><span class="keyword">WHERE</span> users.id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>GROUP BY 和 HAVING</strong> 查询每个用户的订单总金额，并筛选出总金额超过 200 的用户。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, <span class="built_in">SUM</span>(orders.price) <span class="keyword">AS</span> total_spent </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> users.name </span><br><span class="line"><span class="keyword">HAVING</span> total_spent <span class="operator">&gt;</span> <span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>ORDER BY</strong> 按用户姓名和订单价格排序。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> users.name, orders.price <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><strong>LIMIT</strong> 只显示前 5 个订单。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> users.name, orders.item_name, orders.price </span><br><span class="line"><span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> orders.price <span class="keyword">DESC</span> </span><br><span class="line">LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、锁的概念和示例"><a href="#三、锁的概念和示例" class="headerlink" title="三、锁的概念和示例"></a>三、锁的概念和示例</h3><h4 id="1-共享锁（SHARED-LOCK）"><a href="#1-共享锁（SHARED-LOCK）" class="headerlink" title="1.共享锁（SHARED LOCK）"></a>1.共享锁（SHARED LOCK）</h4><p>允许多个事务同时读取数据，但不能进行修改。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WITH</span> (HOLDLOCK);</span><br></pre></td></tr></table></figure>
+
+<p><strong>共享锁示例</strong></p>
+<p>假设有两个事务T1和T2，都想读取同一行数据：</p>
+<ul>
+<li>T1获取共享锁，读取数据。</li>
+<li>T2获取共享锁，读取数据。</li>
+</ul>
+<p>在这种情况下，两个事务可以同时读取数据，但在它们持有共享锁期间，其他事务不能对数据进行修改。</p>
+<h4 id="2-排他锁（EXCLUSIVE-LOCK）"><a href="#2-排他锁（EXCLUSIVE-LOCK）" class="headerlink" title="2.排他锁（EXCLUSIVE LOCK）"></a>2.排他锁（EXCLUSIVE LOCK）</h4><p>允许事务读取和修改数据，当持有独占锁时，其他事务无法读取锁住的数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">99.0</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>排他锁示例</strong></p>
+<ul>
+<li><p>T1获取排他锁，读取并修改数据。</p>
+</li>
+<li><p>T2尝试获取排他锁，但必须等待T1释放锁后才能继续。</p>
+</li>
+</ul>
+<p>在这种情况下，只有一个事务可以同时对数据进行修改，防止并发修改导致的数据不一致问题。</p>
+<h4 id="3-更新锁（UPDATE-LOCK）"><a href="#3-更新锁（UPDATE-LOCK）" class="headerlink" title="3.更新锁（UPDATE LOCK）"></a>3.更新锁（UPDATE LOCK）</h4><p>用于处理事务先读取数据后进行更新操作，防止死锁。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>更新锁示例</strong></p>
+<p>假设有事务T1和T2都要读取并修改同一行数据，流程如下：</p>
+<ol>
+<li><strong>T1获取更新锁</strong>：<ul>
+<li>T1: 获取更新锁，读取数据。</li>
+<li>T2: 尝试获取更新锁，被阻塞；可以获取共享锁，读取数据。</li>
+</ul>
+</li>
+<li><strong>T1准备修改数据</strong>：<ul>
+<li>T1: 将更新锁升级为独占锁，进行数据修改。</li>
+<li>T2: 仍然阻塞，等待T1释放锁。</li>
+</ul>
+</li>
+<li><strong>T1完成修改并释放锁</strong>：<ul>
+<li>T1: 完成修改，释放独占锁。</li>
+<li>T2: 获取更新锁，读取数据，并准备修改。</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-行级锁（Row-Level-Lock）"><a href="#4-行级锁（Row-Level-Lock）" class="headerlink" title="4.行级锁（Row-Level Lock）"></a>4.行级锁（Row-Level Lock）</h4><p>行级锁用于锁定特定行，在执行更新操作时常用。这样可以避免其他事务同时修改同一行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 锁定特定行</span></span><br><span class="line"><span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">99.99</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">AND</span> user_id <span class="operator">=</span> <span class="number">1</span> LOCK <span class="keyword">IN</span> SHARE MODE;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-页级锁（Page-Level-Lock）"><a href="#5-页级锁（Page-Level-Lock）" class="headerlink" title="5.页级锁（Page-Level Lock）"></a>5.页级锁（Page-Level Lock）</h4><p>页级锁用于锁定包含多行数据的页，这种锁在某些情况下可以提高性能，但可能会导致锁争用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- MySQL 不支持直接的页级锁，下面的例子是逻辑上的演示</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span> LOCK <span class="keyword">IN</span> SHARE MODE;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-表级锁（Table-Level-Lock）"><a href="#6-表级锁（Table-Level-Lock）" class="headerlink" title="6.表级锁（Table-Level Lock）"></a>6.表级锁（Table-Level Lock）</h4><p>表级锁用于锁定整个表，当需要对整个表进行操作时使用。例如，进行批量更新时。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 锁定整个表以防止其他事务访问</span></span><br><span class="line">LOCK TABLES orders WRITE;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行批量更新</span></span><br><span class="line"><span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> price <span class="operator">=</span> price <span class="operator">*</span> <span class="number">1.1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 释放表锁</span></span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-意向锁（Intention-Lock）"><a href="#7-意向锁（Intention-Lock）" class="headerlink" title="7.意向锁（Intention Lock）"></a>7.意向锁（Intention Lock）</h4><p>意向锁用于在多级锁定中标记意图，避免锁冲突。常见的意向锁有意向共享锁（IS）和意向排他锁（IX）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- MySQL 自动处理意向锁，无需手动设置</span></span><br><span class="line"><span class="comment">-- 以下为逻辑示例，展示意向锁的工作原理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 事务 1 获取意向排他锁（IX）</span></span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> user_id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 事务 2 获取意向共享锁（IS）</span></span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> user_id <span class="operator">=</span> <span class="number">2</span> LOCK <span class="keyword">IN</span> SHARE MODE;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 事务 1 和事务 2 可以同时执行，因为意向锁不冲突</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-自定义锁（User-Defined-Lock）"><a href="#8-自定义锁（User-Defined-Lock）" class="headerlink" title="8.自定义锁（User-Defined Lock）"></a>8.自定义锁（User-Defined Lock）</h4><p>MySQL 提供 <code>GET_LOCK</code> 和 <code>RELEASE_LOCK</code> 函数，用于实现自定义锁。这对于需要在应用层实现复杂锁定逻辑时很有用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取自定义锁</span></span><br><span class="line"><span class="keyword">SELECT</span> GET_LOCK(<span class="string">&#x27;my_lock&#x27;</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行操作</span></span><br><span class="line"><span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">99.99</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 释放自定义锁</span></span><br><span class="line"><span class="keyword">SELECT</span> RELEASE_LOCK(<span class="string">&#x27;my_lock&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>MySQL的事务机制提供了一种确保数据库操作的可靠性和一致性的方法。事务是一组原子操作，要么全部成功，要么全部失败。MySQL支持事务的存储引擎主要是InnoDB。以下是关于MySQL事务的详细介绍。</p>
+<h3 id="四、事务的四大特性（ACID）"><a href="#四、事务的四大特性（ACID）" class="headerlink" title="四、事务的四大特性（ACID）"></a>四、事务的四大特性（ACID）</h3><ol>
+<li><strong>原子性（Atomicity）</strong>：事务中的所有操作要么全部完成，要么全部不完成。任何一个操作失败都会导致整个事务的失败，已执行的操作会被回滚到初始状态。</li>
+<li><strong>一致性（Consistency）</strong>：事务执行前后，数据库的状态必须保持一致。数据从一种一致状态变为另一种一致状态。</li>
+<li><strong>隔离性（Isolation）</strong>：一个事务的执行不能被其他事务干扰。不同事务之间的操作是相互隔离的。</li>
+<li><strong>持久性（Durability）</strong>：一旦事务提交，其结果就永久保存，即使数据库发生故障。</li>
+</ol>
+<h4 id="事务的基本操作"><a href="#事务的基本操作" class="headerlink" title="事务的基本操作"></a>事务的基本操作</h4><p>在MySQL中，可以通过以下SQL命令来管理事务：</p>
+<ul>
+<li><code>START TRANSACTION</code>：开始一个新的事务。</li>
+<li><code>COMMIT</code>：提交事务，保存所有更改。</li>
+<li><code>ROLLBACK</code>：回滚事务，撤销所有更改。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>以下是一个简单的事务操作示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行一些数据库操作</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> accounts (account_id, balance) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span> balance <span class="operator">-</span> <span class="number">100</span> <span class="keyword">WHERE</span> account_id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 提交事务</span></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果在执行过程中发生错误，可以使用 <code>ROLLBACK</code> 撤销更改：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行一些数据库操作</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> accounts (account_id, balance) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span> balance <span class="operator">-</span> <span class="number">100</span> <span class="keyword">WHERE</span> account_id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 如果发生错误，回滚事务</span></span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、索引"><a href="#五、索引" class="headerlink" title="五、索引"></a>五、索引</h3><p>MySQL中的索引是用于提高查询速度的数据结构。索引类似于书籍的目录，通过索引可以快速定位数据，而不需要扫描整个表。下面是关于MySQL中索引的详细介绍：</p>
+<h4 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h4><ol>
+<li><p><strong>主键索引（Primary Key Index）</strong>：</p>
+<ul>
+<li>每个表只能有一个主键索引。</li>
+<li>主键索引是一种唯一索引，不允许重复和NULL值。</li>
+<li>创建主键时，数据库会自动创建主键索引。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> users (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>唯一索引（Unique Index）</strong>：</p>
+<ul>
+<li>唯一索引不允许两行具有相同的索引值。</li>
+<li>一个表可以有多个唯一索引。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX idx_email <span class="keyword">ON</span> users (email);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>普通索引（Index）</strong>：</p>
+<ul>
+<li>普通索引允许重复和NULL值。</li>
+<li>用于加速数据查询，但不会强制唯一性。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_name <span class="keyword">ON</span> users (name);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>全文索引（Fulltext Index）</strong>：</p>
+<ul>
+<li>用于全文搜索，适用于较大的文本字段。</li>
+<li>主要用于<code>CHAR</code>、<code>VARCHAR</code>和<code>TEXT</code>类型的列。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> FULLTEXT INDEX idx_content <span class="keyword">ON</span> articles (content);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>组合索引（Composite Index）</strong>：</p>
+<ul>
+<li>由多个列组合而成的索引，用于多列的查询优化。</li>
+<li>可以部分匹配列，提高查询效率。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_name_email <span class="keyword">ON</span> users (name, email);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="索引的创建与删除"><a href="#索引的创建与删除" class="headerlink" title="索引的创建与删除"></a>索引的创建与删除</h4><p><strong>创建索引</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建普通索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_name <span class="keyword">ON</span> users (name);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建唯一索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX idx_email <span class="keyword">ON</span> users (email);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建全文索引</span></span><br><span class="line"><span class="keyword">CREATE</span> FULLTEXT INDEX idx_content <span class="keyword">ON</span> articles (content);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建组合索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_name_email <span class="keyword">ON</span> users (name, email);</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除索引</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除索引</span></span><br><span class="line"><span class="keyword">DROP</span> INDEX idx_name <span class="keyword">ON</span> users;</span><br></pre></td></tr></table></figure>
+
+<p><strong>在创建表时定义索引</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> users (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    content TEXT,</span><br><span class="line">    FULLTEXT (content),</span><br><span class="line">    <span class="keyword">UNIQUE</span> (email),</span><br><span class="line">    INDEX idx_name_email (name, email)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clz9yzmno0001pwu4441m9cwe" data-title="一、常用的 MySQL 命令示例" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mabatis-Plus常见用法-Mapper层自定义SQL和分页器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/29/Mabatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89SQL%E5%92%8C%E5%88%86%E9%A1%B5%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2024-07-29T15:51:22.738Z" itemprop="datePublished">2024-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mapper层自定义SQL"><a href="#Mapper层自定义SQL" class="headerlink" title="Mapper层自定义SQL"></a>Mapper层自定义SQL</h3><p>在 MyBatis-Plus 中，可以通过注解和 XML 配置文件两种方式编写自定义 SQL。以下是两种方式的详细说明和示例。</p>
+<h4 id="使用注解编写自定义-SQL"><a href="#使用注解编写自定义-SQL" class="headerlink" title="使用注解编写自定义 SQL"></a>使用注解编写自定义 SQL</h4><p>通过注解在 Mapper 接口中直接编写 SQL 语句。</p>
+<h5 id="使用-Select-注解"><a href="#使用-Select-注解" class="headerlink" title="使用 @Select 注解"></a>使用 <code>@Select</code> 注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="meta">@Select(&quot;SELECT * FROM user WHERE status = #&#123;status&#125;&quot;)</span></span><br><span class="line">    List&lt;User&gt; <span class="title function_">selectUsersByStatus</span><span class="params">(<span class="meta">@Param(&quot;status&quot;)</span> <span class="type">int</span> status)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-Insert-注解"><a href="#使用-Insert-注解" class="headerlink" title="使用 @Insert 注解"></a>使用 <code>@Insert</code> 注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="meta">@Insert(&quot;INSERT INTO user(name, age, email) VALUES(#&#123;name&#125;, #&#123;age&#125;, #&#123;email&#125;)&quot;)</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">insertUser</span><span class="params">(<span class="meta">@Param(&quot;name&quot;)</span> String name, <span class="meta">@Param(&quot;age&quot;)</span> <span class="type">int</span> age, <span class="meta">@Param(&quot;email&quot;)</span> String email)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-Update-注解"><a href="#使用-Update-注解" class="headerlink" title="使用 @Update 注解"></a>使用 <code>@Update</code> 注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="meta">@Update(&quot;UPDATE user SET name = #&#123;name&#125; WHERE id = #&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUserName</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id, <span class="meta">@Param(&quot;name&quot;)</span> String name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-Delete-注解"><a href="#使用-Delete-注解" class="headerlink" title="使用 @Delete 注解"></a>使用 <code>@Delete</code> 注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="meta">@Delete(&quot;DELETE FROM user WHERE id = #&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUserById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-XML-配置文件编写自定义-SQL"><a href="#使用-XML-配置文件编写自定义-SQL" class="headerlink" title="使用 XML 配置文件编写自定义 SQL"></a>使用 XML 配置文件编写自定义 SQL</h4><p>在 <code>resources/mapper</code> 目录下创建一个 <code>UserMapper.xml</code> 文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.example.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsersByStatus&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.example.entity.User&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user WHERE status = #&#123;status&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertUser&quot;</span>&gt;</span></span><br><span class="line">        INSERT INTO user(name, age, email) VALUES(#&#123;name&#125;, #&#123;age&#125;, #&#123;email&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUserName&quot;</span>&gt;</span></span><br><span class="line">        UPDATE user SET name = #&#123;name&#125; WHERE id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUserById&quot;</span>&gt;</span></span><br><span class="line">        DELETE FROM user WHERE id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Mapper 接口中引用这些方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">selectUsersByStatus</span><span class="params">(<span class="meta">@Param(&quot;status&quot;)</span> <span class="type">int</span> status)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">insertUser</span><span class="params">(<span class="meta">@Param(&quot;name&quot;)</span> String name, <span class="meta">@Param(&quot;age&quot;)</span> <span class="type">int</span> age, <span class="meta">@Param(&quot;email&quot;)</span> String email)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUserName</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id, <span class="meta">@Param(&quot;name&quot;)</span> String name)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUserById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分页器"><a href="#分页器" class="headerlink" title="分页器"></a>分页器</h3><h4 id="配置分页插件"><a href="#配置分页插件" class="headerlink" title="配置分页插件"></a>配置分页插件</h4><p>创建一个配置类来配置分页插件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisPlusConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> PaginationInterceptor <span class="title function_">paginationInterceptor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">PaginationInterceptor</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页查询示例"><a href="#分页查询示例" class="headerlink" title="分页查询示例"></a>分页查询示例</h3><p>假设我们有一个用户表 <code>user</code>，我们需要对用户数据进行分页查询。以下是具体实现步骤。</p>
+<h4 id="定义实体类"><a href="#定义实体类" class="headerlink" title="定义实体类"></a>定义实体类</h4><p>定义一个用户实体类 <code>User</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName(&quot;user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义-Mapper-接口"><a href="#定义-Mapper-接口" class="headerlink" title="定义 Mapper 接口"></a>定义 Mapper 接口</h4><p>在 Mapper 接口中继承 <code>BaseMapper</code>，MyBatis-Plus 会自动生成常用的 CRUD 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Service-层实现分页查询"><a href="#Service-层实现分页查询" class="headerlink" title="Service 层实现分页查询"></a>Service 层实现分页查询</h4><p>在 Service 层中实现分页查询逻辑：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(<span class="type">int</span> currentPage, <span class="type">int</span> pageSize)</span> &#123;</span><br><span class="line">        Page&lt;User&gt; page = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(currentPage, pageSize);</span><br><span class="line">        <span class="keyword">return</span> userMapper.selectPage(page, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Controller-层调用分页查询"><a href="#Controller-层调用分页查询" class="headerlink" title="Controller 层调用分页查询"></a>Controller 层调用分页查询</h4><p>在 Controller 层中调用分页查询：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> IPage&lt;User&gt; <span class="title function_">getUsersPage</span><span class="params">(<span class="meta">@RequestParam</span> <span class="type">int</span> currentPage, <span class="meta">@RequestParam</span> <span class="type">int</span> pageSize)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userService.getUsersPage(currentPage, pageSize);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页查询示例说明"><a href="#分页查询示例说明" class="headerlink" title="分页查询示例说明"></a>分页查询示例说明</h3><ol>
+<li><strong>配置分页插件</strong>： 在 <code>MybatisPlusConfig</code> 类中，通过 <code>PaginationInterceptor</code> 配置分页插件，使其在项目中生效。</li>
+<li><strong>定义实体类</strong>： 在 <code>User</code> 类中使用 <code>@TableName</code> 注解指定数据库表名，使用 <code>@TableId</code> 注解指定主键。</li>
+<li><strong>定义 Mapper 接口</strong>： 在 <code>UserMapper</code> 接口中继承 <code>BaseMapper&lt;User&gt;</code>，使 MyBatis-Plus 提供的 CRUD 方法可用。</li>
+<li><strong>Service 层实现分页查询</strong>： 在 <code>UserService</code> 类中，使用 <code>Page&lt;User&gt;</code> 对象封装分页参数，通过 <code>userMapper.selectPage(page, null)</code> 方法执行分页查询。</li>
+<li><strong>Controller 层调用分页查询</strong>： 在 <code>UserController</code> 类中，通过 <code>UserService</code> 调用分页查询方法，并通过 RESTful API 返回分页结果。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/29/Mabatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89SQL%E5%92%8C%E5%88%86%E9%A1%B5%E5%99%A8/" data-id="clz9yzmnl0000pwu40g2296gs" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mybatis-Plus常见用法-条件构造器方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2024-07-28T14:32:50.000Z" itemprop="datePublished">2024-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/">四、Mybatis-Plus常见用法-entity常用的注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>MyBatis-Plus 提供了丰富的条件构造器方法，用于构建复杂的 SQL 查询条件。以下是常用条件构造器方法的详细说明和示例：</p>
+<h3 id="常用条件构造器方法"><a href="#常用条件构造器方法" class="headerlink" title="常用条件构造器方法"></a>常用条件构造器方法</h3><h4 id="1-eq-String-column-Object-val"><a href="#1-eq-String-column-Object-val" class="headerlink" title="1. eq(String column, Object val)"></a>1. eq(String column, Object val)</h4><p>等于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.eq(<span class="string">&quot;status&quot;</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-ne-String-column-Object-val"><a href="#2-ne-String-column-Object-val" class="headerlink" title="2. ne(String column, Object val)"></a>2. ne(String column, Object val)</h4><p>不等于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.ne(<span class="string">&quot;status&quot;</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-gt-String-column-Object-val"><a href="#3-gt-String-column-Object-val" class="headerlink" title="3. gt(String column, Object val)"></a>3. gt(String column, Object val)</h4><p>大于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.gt(<span class="string">&quot;age&quot;</span>, <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-ge-String-column-Object-val"><a href="#4-ge-String-column-Object-val" class="headerlink" title="4. ge(String column, Object val)"></a>4. ge(String column, Object val)</h4><p>大于等于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.ge(<span class="string">&quot;age&quot;</span>, <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-lt-String-column-Object-val"><a href="#5-lt-String-column-Object-val" class="headerlink" title="5. lt(String column, Object val)"></a>5. lt(String column, Object val)</h4><p>小于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.lt(<span class="string">&quot;age&quot;</span>, <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-le-String-column-Object-val"><a href="#6-le-String-column-Object-val" class="headerlink" title="6. le(String column, Object val)"></a>6. le(String column, Object val)</h4><p>小于等于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.le(<span class="string">&quot;age&quot;</span>, <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-between-String-column-Object-val1-Object-val2"><a href="#7-between-String-column-Object-val1-Object-val2" class="headerlink" title="7. between(String column, Object val1, Object val2)"></a>7. between(String column, Object val1, Object val2)</h4><p>介于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.between(<span class="string">&quot;age&quot;</span>, <span class="number">18</span>, <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-like-String-column-Object-val"><a href="#8-like-String-column-Object-val" class="headerlink" title="8. like(String column, Object val)"></a>8. like(String column, Object val)</h4><p>模糊查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.like(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-notLike-String-column-Object-val"><a href="#9-notLike-String-column-Object-val" class="headerlink" title="9. notLike(String column, Object val)"></a>9. notLike(String column, Object val)</h4><p>非模糊查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.notLike(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-likeLeft-String-column-Object-val"><a href="#10-likeLeft-String-column-Object-val" class="headerlink" title="10. likeLeft(String column, Object val)"></a>10. likeLeft(String column, Object val)</h4><p>左模糊查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.likeLeft(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;ohn&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-likeRight-String-column-Object-val"><a href="#11-likeRight-String-column-Object-val" class="headerlink" title="11. likeRight(String column, Object val)"></a>11. likeRight(String column, Object val)</h4><p>右模糊查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.likeRight(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Joh&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-isNull-String-column"><a href="#12-isNull-String-column" class="headerlink" title="12. isNull(String column)"></a>12. isNull(String column)</h4><p>字段为 NULL</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.isNull(<span class="string">&quot;email&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="13-isNotNull-String-column"><a href="#13-isNotNull-String-column" class="headerlink" title="13. isNotNull(String column)"></a>13. isNotNull(String column)</h4><p>字段不为 NULL</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.isNotNull(<span class="string">&quot;email&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="14-in-String-column-Collection-value"><a href="#14-in-String-column-Collection-value" class="headerlink" title="14. in(String column, Collection&lt;?&gt; value)"></a>14. in(String column, Collection&lt;?&gt; value)</h4><p>IN 查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.in(<span class="string">&quot;id&quot;</span>, Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-notIn-String-column-Collection-value"><a href="#15-notIn-String-column-Collection-value" class="headerlink" title="15. notIn(String column, Collection&lt;?&gt; value)"></a>15. notIn(String column, Collection&lt;?&gt; value)</h4><p>NOT IN 查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.notIn(<span class="string">&quot;id&quot;</span>, Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-or"><a href="#16-or" class="headerlink" title="16. or()"></a>16. or()</h4><p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.eq(<span class="string">&quot;status&quot;</span>, <span class="number">1</span>).or().eq(<span class="string">&quot;status&quot;</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="17-and-Consumer-consumer"><a href="#17-and-Consumer-consumer" class="headerlink" title="17. and(Consumer&lt;Wrapper&gt; consumer)"></a>17. and(Consumer&lt;Wrapper<T>&gt; consumer)</h4><p>并且</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.and(wrapper -&gt; wrapper.eq(<span class="string">&quot;status&quot;</span>, <span class="number">1</span>).like(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;John&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-orderByAsc-String…-columns"><a href="#18-orderByAsc-String…-columns" class="headerlink" title="18. orderByAsc(String… columns)"></a>18. orderByAsc(String… columns)</h4><p>升序排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.orderByAsc(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;name&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="19-orderByDesc-String…-columns"><a href="#19-orderByDesc-String…-columns" class="headerlink" title="19. orderByDesc(String… columns)"></a>19. orderByDesc(String… columns)</h4><p>降序排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.orderByDesc(<span class="string">&quot;create_time&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="20-groupBy-String…-columns"><a href="#20-groupBy-String…-columns" class="headerlink" title="20. groupBy(String… columns)"></a>20. groupBy(String… columns)</h4><p>分组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.groupBy(<span class="string">&quot;department_id&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="21-having-String-sqlHaving-Object…-params"><a href="#21-having-String-sqlHaving-Object…-params" class="headerlink" title="21. having(String sqlHaving, Object… params)"></a>21. having(String sqlHaving, Object… params)</h4><p>分组后过滤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.groupBy(<span class="string">&quot;department_id&quot;</span>).having(<span class="string">&quot;count(id) &gt; ?&quot;</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="22-set-boolean-condition-String-column-Object-val"><a href="#22-set-boolean-condition-String-column-Object-val" class="headerlink" title="22. set(boolean condition, String column, Object val)"></a>22. set(boolean condition, String column, Object val)</h4><p>设置字段值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UpdateWrapper&lt;User&gt; updateWrapper = <span class="keyword">new</span> <span class="title class_">UpdateWrapper</span>&lt;&gt;();</span><br><span class="line">updateWrapper.set(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;John&quot;</span>).set(<span class="string">&quot;age&quot;</span>, <span class="number">25</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-setSql-String-sql"><a href="#23-setSql-String-sql" class="headerlink" title="23. setSql(String sql)"></a>23. setSql(String sql)</h4><p>拼接 SET SQL</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updateWrapper.setSql(<span class="string">&quot;name = &#x27;John&#x27;, age = 25&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以下是一个完整的示例，展示如何使用上述条件构造器方法构建复杂查询条件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUsersByConditions</span><span class="params">()</span> &#123;</span><br><span class="line">    QueryWrapper&lt;User&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>&lt;&gt;();</span><br><span class="line">    queryWrapper.eq(<span class="string">&quot;status&quot;</span>, <span class="number">1</span>)</span><br><span class="line">                .ne(<span class="string">&quot;type&quot;</span>, <span class="number">0</span>)</span><br><span class="line">                .gt(<span class="string">&quot;age&quot;</span>, <span class="number">18</span>)</span><br><span class="line">                .ge(<span class="string">&quot;score&quot;</span>, <span class="number">60</span>)</span><br><span class="line">                .lt(<span class="string">&quot;height&quot;</span>, <span class="number">200</span>)</span><br><span class="line">                .le(<span class="string">&quot;weight&quot;</span>, <span class="number">100</span>)</span><br><span class="line">                .between(<span class="string">&quot;age&quot;</span>, <span class="number">20</span>, <span class="number">30</span>)</span><br><span class="line">                .like(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;John&quot;</span>)</span><br><span class="line">                .notLike(<span class="string">&quot;address&quot;</span>, <span class="string">&quot;New York&quot;</span>)</span><br><span class="line">                .likeLeft(<span class="string">&quot;email&quot;</span>, <span class="string">&quot;example.com&quot;</span>)</span><br><span class="line">                .likeRight(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;user&quot;</span>)</span><br><span class="line">                .isNull(<span class="string">&quot;phone&quot;</span>)</span><br><span class="line">                .isNotNull(<span class="string">&quot;email&quot;</span>)</span><br><span class="line">                .in(<span class="string">&quot;id&quot;</span>, Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">                .notIn(<span class="string">&quot;role&quot;</span>, Arrays.asList(<span class="string">&quot;admin&quot;</span>, <span class="string">&quot;guest&quot;</span>))</span><br><span class="line">                .or()</span><br><span class="line">                .eq(<span class="string">&quot;gender&quot;</span>, <span class="string">&quot;male&quot;</span>)</span><br><span class="line">                .and(wrapper -&gt; wrapper.eq(<span class="string">&quot;active&quot;</span>, <span class="number">1</span>).like(<span class="string">&quot;nickname&quot;</span>, <span class="string">&quot;johnny&quot;</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> userMapper.selectList(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/" data-id="clz9yzmnp0002pwu47dn8e3um" data-title="四、Mybatis-Plus常见用法-entity常用的注解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Mybatis-Plus常见用法-Mapper常用的基础方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/" class="article-date">
@@ -783,265 +1194,11 @@
 
 
   
-    <article id="post-ubuntu-安装docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" class="article-date">
-  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">一、Ubuntu安装docker</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源：</p>
-<h3 id="1-更新软件包索引"><a href="#1-更新软件包索引" class="headerlink" title="1. 更新软件包索引"></a>1. 更新软件包索引</h3><p>打开你的终端，并执行以下命令以更新你的软件包索引：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装-HTTPS-支持和证书"><a href="#2-安装-HTTPS-支持和证书" class="headerlink" title="2. 安装 HTTPS 支持和证书"></a>2. 安装 HTTPS 支持和证书</h3><p>首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-添加-Docker-的官方-GPG-密钥"><a href="#3-添加-Docker-的官方-GPG-密钥" class="headerlink" title="3. 添加 Docker 的官方 GPG 密钥"></a>3. 添加 Docker 的官方 GPG 密钥</h3><p>为了确保下载的 Docker 软件包的真实性，需要导入 Docker 的官方 GPG 密钥。使用阿里云的镜像服务器来替代 Docker 的官方密钥服务器，可以加快这一过程：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-设置-Docker-稳定版仓库"><a href="#4-设置-Docker-稳定版仓库" class="headerlink" title="4. 设置 Docker 稳定版仓库"></a>4. 设置 Docker 稳定版仓库</h3><p>要使用阿里云的 Docker 仓库地址设置 APT 源，执行以下命令来添加阿里云的 Docker 稳定版仓库：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-安装-Docker-Engine"><a href="#5-安装-Docker-Engine" class="headerlink" title="5. 安装 Docker Engine"></a>5. 安装 Docker Engine</h3><p>现在，更新 apt 索引，并安装 Docker Engine 和 containerd：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-验证-Docker-是否安装成功"><a href="#6-验证-Docker-是否安装成功" class="headerlink" title="6. 验证 Docker 是否安装成功"></a>6. 验证 Docker 是否安装成功</h3><p>安装完成后，启动 Docker 并运行 <code>hello-world</code> 镜像来验证是否正确安装：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
-
-<p>如果看到返回消息，说明 Docker 已经正确安装并运行。</p>
-<h3 id="7-配置-Docker-Hub"><a href="#7-配置-Docker-Hub" class="headerlink" title="7. 配置 Docker Hub"></a>7. 配置 Docker Hub</h3><p>为了进一步提高镜像拉取速度，可以配置 Docker 使用阿里云的镜像加速器：</p>
-<ol>
-<li><p>创建或编辑 <code>/etc/docker/daemon.json</code>：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /inc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加以下内容（替换 <code>&lt;你的阿里云加速器地址&gt;</code> 为你实际的加速器地址）：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://docker.nju.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://mirror.baidubce.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://2e63y970.mirror.aliyuncs.com&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>保存并关闭文件，然后重启 Docker 服务：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>默认情况下，只有 root 或者 有 sudo 权限的用户可以执行 Docker 命令。想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $USER</span><br></pre></td></tr></table></figure>
-
-<p><code>$USER</code>是一个环境变量，代表当前用户名。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="一、Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Docker安装Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">四、Docker安装Redis</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="docker安装Redis"><a href="#docker安装Redis" class="headerlink" title="docker安装Redis"></a>docker安装Redis</h2><h3 id="安装-Redis-使用-Docker-的步骤"><a href="#安装-Redis-使用-Docker-的步骤" class="headerlink" title="安装 Redis 使用 Docker 的步骤"></a>安装 Redis 使用 Docker 的步骤</h3><h4 id="步骤-1-拉取-Redis-镜像"><a href="#步骤-1-拉取-Redis-镜像" class="headerlink" title="步骤 1: 拉取 Redis 镜像"></a>步骤 1: 拉取 Redis 镜像</h4><p>首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
-
-<p>这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 <code>redis:6.0</code>。</p>
-<h4 id="步骤-2-运行-Redis-容器（含数据持久化）"><a href="#步骤-2-运行-Redis-容器（含数据持久化）" class="headerlink" title="步骤 2: 运行 Redis 容器（含数据持久化）"></a>步骤 2: 运行 Redis 容器（含数据持久化）</h4><p>使用以下命令启动一个包含数据持久化的 Redis 容器实例：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-redis -p 6379:6379 -d -v redis-data:/data redis</span><br></pre></td></tr></table></figure>
-
-<p>这里的命令参数解释如下：</p>
-<ul>
-<li><code>--name my-redis</code>：为容器指定一个名称，这里使用 <code>my-redis</code>。</li>
-<li><code>-p 6379:6379</code>：将容器的 6379 端口（Redis 的默认端口）映射到宿主机的同一端口。</li>
-<li><code>-d</code>：以“分离模式”运行容器，即容器在后台运行。</li>
-<li><code>-v redis-data:/data</code>：创建并挂载一个名为 <code>redis-data</code> 的 Docker 卷到容器的 <code>/data</code> 目录。Redis 会将其数据存储在 <code>/data</code> 目录中，从而实现数据的持久化。</li>
-<li><code>redis</code>：指定使用 Redis 的官方 Docker 镜像。</li>
-</ul>
-<h4 id="步骤-3-验证-Redis-容器"><a href="#步骤-3-验证-Redis-容器" class="headerlink" title="步骤 3: 验证 Redis 容器"></a>步骤 3: 验证 Redis 容器</h4><p>要确认 Redis 容器已经成功启动并运行，可以运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
-<p>这将列出所有正在运行的容器。您应该能在列表中看到名为 <code>my-redis</code> 的容器。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="四、Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Docker安装MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" class="article-date">
-  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">三、Docker安装MySQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Docker安装MySQL"><a href="#Docker安装MySQL" class="headerlink" title="Docker安装MySQL"></a>Docker安装MySQL</h2><h3 id="安装-MySQL-5-7-到-Docker-的详细步骤"><a href="#安装-MySQL-5-7-到-Docker-的详细步骤" class="headerlink" title="安装 MySQL 5.7 到 Docker 的详细步骤"></a>安装 MySQL 5.7 到 Docker 的详细步骤</h3><h4 id="步骤-1-拉取-MySQL-5-7-镜像"><a href="#步骤-1-拉取-MySQL-5-7-镜像" class="headerlink" title="步骤 1: 拉取 MySQL 5.7 镜像"></a>步骤 1: 拉取 MySQL 5.7 镜像</h4><p><strong>操作</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
-
-<p><strong>解释</strong>：</p>
-<ul>
-<li>这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。</li>
-<li><code>docker pull</code> 是 Docker 获取镜像的命令。</li>
-<li><code>mysql:5.7</code> 指定了您想要拉取的镜像及其版本。这里是 MySQL 版本 5.7。</li>
-</ul>
-<h4 id="注：可以先使用docker-volume-create-name-mysql-data"><a href="#注：可以先使用docker-volume-create-name-mysql-data" class="headerlink" title="注：可以先使用docker volume create --name mysql-data"></a>注：可以先使用<code>docker volume create --name mysql-data</code></h4><h4 id="步骤-2-创建并运行-MySQL-容器"><a href="#步骤-2-创建并运行-MySQL-容器" class="headerlink" title="步骤 2: 创建并运行 MySQL 容器"></a>步骤 2: 创建并运行 MySQL 容器</h4><p><strong>操作</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-5.7 -e MYSQL_ROOT_PASSWORD=123456 -v mysql-data:/var/lib/mysql -p 3306:3306 -d mysql:5.7</span><br></pre></td></tr></table></figure>
-
-<p><strong>解释</strong>：</p>
-<ul>
-<li><strong>docker run</strong>：<ul>
-<li>这是 Docker 用于启动新容器的基本命令。</li>
-</ul>
-</li>
-<li><strong>–name mysql-5.7</strong>：<ul>
-<li><code>--name</code> 选项用于为容器指定一个名字，这里命名为 <code>mysql-5.7</code>。这个名字用于识别和引用容器。</li>
-</ul>
-</li>
-<li><strong>-e MYSQL_ROOT_PASSWORD&#x3D;123456</strong>：<ul>
-<li><code>-e</code> 选项用于设置环境变量。在这个例子中，它设置了 MySQL 的 root 用户的密码为 <code>123456</code>。这是 MySQL 容器启动所必需的。</li>
-</ul>
-</li>
-<li><strong>-v mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql</strong>：<ul>
-<li><code>-v</code> 选项用于挂载卷（volume）。这里，它将名为 <code>mysql-data</code> 的 Docker 卷挂载到容器内的 <code>/var/lib/mysql</code> 目录。</li>
-<li>这个操作的目的是数据持久化。即使容器被停止或删除，存储在 <code>/var/lib/mysql</code> 目录中的数据（即 MySQL 数据库文件）仍然会保留在 <code>mysql-data</code> 卷中。</li>
-</ul>
-</li>
-<li><strong>-p 3306:3306</strong>：<ul>
-<li><code>-p</code> 选项用于端口映射。这里，它将容器内的 3306 端口（MySQL 默认端口）映射到宿主机的同一端口。</li>
-<li>这样可以通过宿主机的 3306 端口访问 MySQL 容器。</li>
-</ul>
-</li>
-<li><strong>-d</strong>：<ul>
-<li><code>-d</code> 选项告诉 Docker 以“分离模式”运行容器，即在后台运行。</li>
-</ul>
-</li>
-<li><strong>mysql:5.7</strong>：<ul>
-<li>指定使用的 Docker 镜像和标签。在这个例子中，它使用的是 MySQL 5.7 版本的官方 Docker 镜像</li>
-</ul>
-</li>
-</ul>
-<h4 id="步骤-3-检查容器运行状态"><a href="#步骤-3-检查容器运行状态" class="headerlink" title="步骤 3: 检查容器运行状态"></a>步骤 3: 检查容器运行状态</h4><p><strong>操作</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
-<p><strong>解释</strong>：</p>
-<ul>
-<li>使用 <code>docker ps</code> 可以查看当前正在运行的 Docker 容器的列表。</li>
-<li>如果 MySQL 容器已经启动并运行，它应该会出现在这个列表中。</li>
-</ul>
-<h4 id="步骤4：重新安装MySQL"><a href="#步骤4：重新安装MySQL" class="headerlink" title="步骤4：重新安装MySQL"></a>步骤4：重新安装MySQL</h4><p>停止原先<code>mysql-5.7</code>容器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop mysql-5.7</span><br></pre></td></tr></table></figure>
-
-<p>删除原先<code>mysql-5.7</code>容器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm mysql-5.7</span><br></pre></td></tr></table></figure>
-
-<p>因为我删除了原先的数据库，但是保留了宿主机上的配置，我希望把保留的配置和数据卷重新映射到容器，以下是我重新安装mysql-5.7的命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name mysql-5.7 \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
-
-<p>这条命令通过Docker在后台启动了一个MySQL 5.7版本的容器，并配置了一系列的参数来满足特定的需求：</p>
-<ul>
-<li><p><strong><code>-d</code></strong>: 表示容器在后台运行，让终端不会被当前容器的运行过程占用。</p>
-</li>
-<li><p><strong><code>--name mysql-5.7</code></strong>: 为运行的容器指定一个名字<code>mysql-5.7</code>，这样可以更方便地对容器进行管理。</p>
-</li>
-<li><p><strong><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code></strong>: 设置环境变量<code>MYSQL_ROOT_PASSWORD</code>为<code>my-secret-pw</code>，这是为MySQL的root用户设置的密码，是MySQL容器启动时必需的配置项。</p>
-</li>
-<li><p><strong><code>-p 3306:3306</code></strong>: 将容器内部使用的3306端口映射到宿主机的3306端口上，这样可以通过宿主机的端口来访问容器中的MySQL服务。</p>
-</li>
-<li><p><strong><code>-v mysql-data:/var/lib/mysql</code></strong>: 将名为<code>mysql-data</code>的数据卷挂载到容器内的<code>/var/lib/mysql</code>目录。这是MySQL存储数据的默认位置，使用数据卷可以实现数据的持久化保存，确保数据不会因为容器的删除而丢失，并且可以在不同的容器间共享这部分数据。</p>
-</li>
-<li><p><strong><code>-v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf</code></strong>: 将宿主机上的<code>/etc/my.cnf.d/mysql-clients.cnf</code>配置文件挂载到容器内的<code>/etc/mysql/conf.d/mysql-clients.cnf</code>位置。这样做是为了自定义MySQL服务器的配置，可以根据需要调整MySQL的行为和性能。</p>
-</li>
-<li><p><strong><code>mysql:5.7</code></strong>: 指定使用<code>mysql:5.7</code>镜像创建容器，这个镜像是MySQL官方发布的，版本号为5.7，保证了MySQL服务的标准化和一致性。</p>
-</li>
-</ul>
-<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="三、Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1055,7 +1212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
     </div>
   </div>
 
@@ -1065,7 +1222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 15px;">mybatisplus</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+      <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 17.5px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
     </div>
   </div>
 
@@ -1087,23 +1244,23 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/29/Mabatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89SQL%E5%92%8C%E5%88%86%E9%A1%B5%E5%99%A8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/">四、Mybatis-Plus常见用法-entity常用的注解</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
           </li>
         
           <li>
             <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/">一、Mybatis-Plus常见用法-entity常用的注解</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">二、css伪类选择器</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">一、css布局</a>
           </li>
         
       </ul>

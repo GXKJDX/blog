@@ -73,6 +73,260 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ubuntu-安装docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" class="article-date">
+  <time class="dt-published" datetime="2024-06-12T09:33:50.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/">一、Ubuntu安装docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>安装 Docker 时使用阿里云的镜像源可以加快下载速度。以下是在 Ubuntu 系统上安装 Docker 的步骤，使用阿里云提供的公共镜像源：</p>
+<h3 id="1-更新软件包索引"><a href="#1-更新软件包索引" class="headerlink" title="1. 更新软件包索引"></a>1. 更新软件包索引</h3><p>打开你的终端，并执行以下命令以更新你的软件包索引：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装-HTTPS-支持和证书"><a href="#2-安装-HTTPS-支持和证书" class="headerlink" title="2. 安装 HTTPS 支持和证书"></a>2. 安装 HTTPS 支持和证书</h3><p>首先需要安装软件包，以确保可以通过 HTTPS 安全地下载软件包。可以使用以下命令来安装必要的依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加-Docker-的官方-GPG-密钥"><a href="#3-添加-Docker-的官方-GPG-密钥" class="headerlink" title="3. 添加 Docker 的官方 GPG 密钥"></a>3. 添加 Docker 的官方 GPG 密钥</h3><p>为了确保下载的 Docker 软件包的真实性，需要导入 Docker 的官方 GPG 密钥。使用阿里云的镜像服务器来替代 Docker 的官方密钥服务器，可以加快这一过程：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-设置-Docker-稳定版仓库"><a href="#4-设置-Docker-稳定版仓库" class="headerlink" title="4. 设置 Docker 稳定版仓库"></a>4. 设置 Docker 稳定版仓库</h3><p>要使用阿里云的 Docker 仓库地址设置 APT 源，执行以下命令来添加阿里云的 Docker 稳定版仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-安装-Docker-Engine"><a href="#5-安装-Docker-Engine" class="headerlink" title="5. 安装 Docker Engine"></a>5. 安装 Docker Engine</h3><p>现在，更新 apt 索引，并安装 Docker Engine 和 containerd：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-验证-Docker-是否安装成功"><a href="#6-验证-Docker-是否安装成功" class="headerlink" title="6. 验证 Docker 是否安装成功"></a>6. 验证 Docker 是否安装成功</h3><p>安装完成后，启动 Docker 并运行 <code>hello-world</code> 镜像来验证是否正确安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p>如果看到返回消息，说明 Docker 已经正确安装并运行。</p>
+<h3 id="7-配置-Docker-Hub"><a href="#7-配置-Docker-Hub" class="headerlink" title="7. 配置 Docker Hub"></a>7. 配置 Docker Hub</h3><p>为了进一步提高镜像拉取速度，可以配置 Docker 使用阿里云的镜像加速器：</p>
+<ol>
+<li><p>创建或编辑 <code>/etc/docker/daemon.json</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /inc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下内容（替换 <code>&lt;你的阿里云加速器地址&gt;</code> 为你实际的加速器地址）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://docker.nju.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://mirror.baidubce.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://2e63y970.mirror.aliyuncs.com&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存并关闭文件，然后重启 Docker 服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>默认情况下，只有 root 或者 有 sudo 权限的用户可以执行 Docker 命令。想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $USER</span><br></pre></td></tr></table></figure>
+
+<p><code>$USER</code>是一个环境变量，代表当前用户名。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/12/ubuntu-%E5%AE%89%E8%A3%85docker/" data-id="clxbmxg770002lotl81dffcfq" data-title="一、Ubuntu安装docker" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker安装Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/">四、Docker安装Redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="docker安装Redis"><a href="#docker安装Redis" class="headerlink" title="docker安装Redis"></a>docker安装Redis</h2><h3 id="安装-Redis-使用-Docker-的步骤"><a href="#安装-Redis-使用-Docker-的步骤" class="headerlink" title="安装 Redis 使用 Docker 的步骤"></a>安装 Redis 使用 Docker 的步骤</h3><h4 id="步骤-1-拉取-Redis-镜像"><a href="#步骤-1-拉取-Redis-镜像" class="headerlink" title="步骤 1: 拉取 Redis 镜像"></a>步骤 1: 拉取 Redis 镜像</h4><p>首先，您需要从 Docker Hub 获取 Redis 的官方镜像。在您的终端或命令行界面中，运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+<p>这会下载 Redis 的最新官方镜像。如果您需要特定版本的 Redis，可以指定版本号，如 <code>redis:6.0</code>。</p>
+<h4 id="步骤-2-运行-Redis-容器（含数据持久化）"><a href="#步骤-2-运行-Redis-容器（含数据持久化）" class="headerlink" title="步骤 2: 运行 Redis 容器（含数据持久化）"></a>步骤 2: 运行 Redis 容器（含数据持久化）</h4><p>使用以下命令启动一个包含数据持久化的 Redis 容器实例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-redis -p 6379:6379 -d -v redis-data:/data redis</span><br></pre></td></tr></table></figure>
+
+<p>这里的命令参数解释如下：</p>
+<ul>
+<li><code>--name my-redis</code>：为容器指定一个名称，这里使用 <code>my-redis</code>。</li>
+<li><code>-p 6379:6379</code>：将容器的 6379 端口（Redis 的默认端口）映射到宿主机的同一端口。</li>
+<li><code>-d</code>：以“分离模式”运行容器，即容器在后台运行。</li>
+<li><code>-v redis-data:/data</code>：创建并挂载一个名为 <code>redis-data</code> 的 Docker 卷到容器的 <code>/data</code> 目录。Redis 会将其数据存储在 <code>/data</code> 目录中，从而实现数据的持久化。</li>
+<li><code>redis</code>：指定使用 Redis 的官方 Docker 镜像。</li>
+</ul>
+<h4 id="步骤-3-验证-Redis-容器"><a href="#步骤-3-验证-Redis-容器" class="headerlink" title="步骤 3: 验证 Redis 容器"></a>步骤 3: 验证 Redis 容器</h4><p>要确认 Redis 容器已经成功启动并运行，可以运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>这将列出所有正在运行的容器。您应该能在列表中看到名为 <code>my-redis</code> 的容器。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85Redis/" data-id="clx19s5280000iotlazeca229" data-title="四、Docker安装Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker安装MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T14:32:50.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/">三、Docker安装MySQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Docker安装MySQL"><a href="#Docker安装MySQL" class="headerlink" title="Docker安装MySQL"></a>Docker安装MySQL</h2><h3 id="安装-MySQL-5-7-到-Docker-的详细步骤"><a href="#安装-MySQL-5-7-到-Docker-的详细步骤" class="headerlink" title="安装 MySQL 5.7 到 Docker 的详细步骤"></a>安装 MySQL 5.7 到 Docker 的详细步骤</h3><h4 id="步骤-1-拉取-MySQL-5-7-镜像"><a href="#步骤-1-拉取-MySQL-5-7-镜像" class="headerlink" title="步骤 1: 拉取 MySQL 5.7 镜像"></a>步骤 1: 拉取 MySQL 5.7 镜像</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>这个命令会从 Docker Hub（Docker 的官方镜像仓库）拉取 MySQL 5.7 的镜像。</li>
+<li><code>docker pull</code> 是 Docker 获取镜像的命令。</li>
+<li><code>mysql:5.7</code> 指定了您想要拉取的镜像及其版本。这里是 MySQL 版本 5.7。</li>
+</ul>
+<h4 id="注：可以先使用docker-volume-create-name-mysql-data"><a href="#注：可以先使用docker-volume-create-name-mysql-data" class="headerlink" title="注：可以先使用docker volume create --name mysql-data"></a>注：可以先使用<code>docker volume create --name mysql-data</code></h4><h4 id="步骤-2-创建并运行-MySQL-容器"><a href="#步骤-2-创建并运行-MySQL-容器" class="headerlink" title="步骤 2: 创建并运行 MySQL 容器"></a>步骤 2: 创建并运行 MySQL 容器</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-5.7 -e MYSQL_ROOT_PASSWORD=123456 -v mysql-data:/var/lib/mysql -p 3306:3306 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>docker run</strong>：<ul>
+<li>这是 Docker 用于启动新容器的基本命令。</li>
+</ul>
+</li>
+<li><strong>–name mysql-5.7</strong>：<ul>
+<li><code>--name</code> 选项用于为容器指定一个名字，这里命名为 <code>mysql-5.7</code>。这个名字用于识别和引用容器。</li>
+</ul>
+</li>
+<li><strong>-e MYSQL_ROOT_PASSWORD&#x3D;123456</strong>：<ul>
+<li><code>-e</code> 选项用于设置环境变量。在这个例子中，它设置了 MySQL 的 root 用户的密码为 <code>123456</code>。这是 MySQL 容器启动所必需的。</li>
+</ul>
+</li>
+<li><strong>-v mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql</strong>：<ul>
+<li><code>-v</code> 选项用于挂载卷（volume）。这里，它将名为 <code>mysql-data</code> 的 Docker 卷挂载到容器内的 <code>/var/lib/mysql</code> 目录。</li>
+<li>这个操作的目的是数据持久化。即使容器被停止或删除，存储在 <code>/var/lib/mysql</code> 目录中的数据（即 MySQL 数据库文件）仍然会保留在 <code>mysql-data</code> 卷中。</li>
+</ul>
+</li>
+<li><strong>-p 3306:3306</strong>：<ul>
+<li><code>-p</code> 选项用于端口映射。这里，它将容器内的 3306 端口（MySQL 默认端口）映射到宿主机的同一端口。</li>
+<li>这样可以通过宿主机的 3306 端口访问 MySQL 容器。</li>
+</ul>
+</li>
+<li><strong>-d</strong>：<ul>
+<li><code>-d</code> 选项告诉 Docker 以“分离模式”运行容器，即在后台运行。</li>
+</ul>
+</li>
+<li><strong>mysql:5.7</strong>：<ul>
+<li>指定使用的 Docker 镜像和标签。在这个例子中，它使用的是 MySQL 5.7 版本的官方 Docker 镜像</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤-3-检查容器运行状态"><a href="#步骤-3-检查容器运行状态" class="headerlink" title="步骤 3: 检查容器运行状态"></a>步骤 3: 检查容器运行状态</h4><p><strong>操作</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：</p>
+<ul>
+<li>使用 <code>docker ps</code> 可以查看当前正在运行的 Docker 容器的列表。</li>
+<li>如果 MySQL 容器已经启动并运行，它应该会出现在这个列表中。</li>
+</ul>
+<h4 id="步骤4：重新安装MySQL"><a href="#步骤4：重新安装MySQL" class="headerlink" title="步骤4：重新安装MySQL"></a>步骤4：重新安装MySQL</h4><p>停止原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>删除原先<code>mysql-5.7</code>容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm mysql-5.7</span><br></pre></td></tr></table></figure>
+
+<p>因为我删除了原先的数据库，但是保留了宿主机上的配置，我希望把保留的配置和数据卷重新映射到容器，以下是我重新安装mysql-5.7的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name mysql-5.7 \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>这条命令通过Docker在后台启动了一个MySQL 5.7版本的容器，并配置了一系列的参数来满足特定的需求：</p>
+<ul>
+<li><p><strong><code>-d</code></strong>: 表示容器在后台运行，让终端不会被当前容器的运行过程占用。</p>
+</li>
+<li><p><strong><code>--name mysql-5.7</code></strong>: 为运行的容器指定一个名字<code>mysql-5.7</code>，这样可以更方便地对容器进行管理。</p>
+</li>
+<li><p><strong><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code></strong>: 设置环境变量<code>MYSQL_ROOT_PASSWORD</code>为<code>my-secret-pw</code>，这是为MySQL的root用户设置的密码，是MySQL容器启动时必需的配置项。</p>
+</li>
+<li><p><strong><code>-p 3306:3306</code></strong>: 将容器内部使用的3306端口映射到宿主机的3306端口上，这样可以通过宿主机的端口来访问容器中的MySQL服务。</p>
+</li>
+<li><p><strong><code>-v mysql-data:/var/lib/mysql</code></strong>: 将名为<code>mysql-data</code>的数据卷挂载到容器内的<code>/var/lib/mysql</code>目录。这是MySQL存储数据的默认位置，使用数据卷可以实现数据的持久化保存，确保数据不会因为容器的删除而丢失，并且可以在不同的容器间共享这部分数据。</p>
+</li>
+<li><p><strong><code>-v /etc/my.cnf.d/mysql-clients.cnf:/etc/mysql/conf.d/mysql-clients.cnf</code></strong>: 将宿主机上的<code>/etc/my.cnf.d/mysql-clients.cnf</code>配置文件挂载到容器内的<code>/etc/mysql/conf.d/mysql-clients.cnf</code>位置。这样做是为了自定义MySQL服务器的配置，可以根据需要调整MySQL的行为和性能。</p>
+</li>
+<li><p><strong><code>mysql:5.7</code></strong>: 指定使用<code>mysql:5.7</code>镜像创建容器，这个镜像是MySQL官方发布的，版本号为5.7，保证了MySQL服务的标准化和一致性。</p>
+</li>
+</ul>
+<p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/about.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/04/Docker%E5%AE%89%E8%A3%85MySQL/" data-id="clx19s52i0001iotlgejk5hwk" data-title="三、Docker安装MySQL" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Java 应用（jar 包）打包成 Docker 镜像" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/06/04/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/" class="article-date">
@@ -614,54 +868,11 @@
 
 
   
-    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/01/11/test/" class="article-date">
-  <time class="dt-published" datetime="2024-01-11T14:37:50.000Z" itemprop="datePublished">2024-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/11/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="页面信息初始化"><a href="#页面信息初始化" class="headerlink" title="页面信息初始化"></a>页面信息初始化</h3><p>hexo学习记录</p>
-<p>hexo new “test” 生成新的文档</p>
-<p>hexo g 重新编译代码</p>
-<p>hexo s 运行项目</p>
-<p>hexo d 部署到git仓库</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/GXKJDX/blog/2024/01/11/test/" data-id="clr9ftd2z00013ctl6xdt5wfh" data-title="test" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -675,7 +886,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
     </div>
   </div>
 
@@ -685,7 +896,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 15px;">mybatisplus</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+      <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 17.5px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
     </div>
   </div>
 
@@ -707,23 +918,23 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/29/Mabatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89SQL%E5%92%8C%E5%88%86%E9%A1%B5%E5%99%A8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/">四、Mybatis-Plus常见用法-entity常用的注解</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
           </li>
         
           <li>
             <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-entity%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3/">一、Mybatis-Plus常见用法-entity常用的注解</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/08/css%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/">二、css伪类选择器</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/08/css%E5%B8%83%E5%B1%80/">一、css布局</a>
           </li>
         
       </ul>
