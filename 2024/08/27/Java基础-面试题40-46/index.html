@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>四、Java基础-面试题40-46 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言：Java 中修饰符（访问控制符）    修饰符 当前类 同包类 子类 其他包    public ✅ ✅ ✅ ✅   protected ✅ ✅ ✅ ❌   无修饰符 (默认) ✅ ✅ ❌ ❌   private ✅ ❌ ❌ ❌   40 为什么JDK 9中把String的char[]改成了byte[]？40.1 内存占用减少：char[] 数组中每个字符占用两个字节（16位），这是因为 c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四、Java基础-面试题40-46">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言：Java 中修饰符（访问控制符）    修饰符 当前类 同包类 子类 其他包    public ✅ ✅ ✅ ✅   protected ✅ ✅ ✅ ❌   无修饰符 (默认) ✅ ✅ ❌ ❌   private ✅ ❌ ❌ ❌   40 为什么JDK 9中把String的char[]改成了byte[]？40.1 内存占用减少：char[] 数组中每个字符占用两个字节（16位），这是因为 c">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-08-27T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-08-26T12:51:59.216Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java基础-面试题40-46" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" class="article-date">
+  <time class="dt-published" datetime="2024-08-27T14:32:50.000Z" itemprop="datePublished">2024-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      四、Java基础-面试题40-46
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>前言</strong>：Java 中修饰符（访问控制符）</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>当前类</th>
+<th>同包类</th>
+<th>子类</th>
+<th>其他包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>无修饰符 (默认)</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<h5 id="40-为什么JDK-9中把String的char-改成了byte-？"><a href="#40-为什么JDK-9中把String的char-改成了byte-？" class="headerlink" title="40 为什么JDK 9中把String的char[]改成了byte[]？"></a>40 为什么JDK 9中把String的char[]改成了byte[]？</h5><p>40.1 <strong>内存占用减少</strong>：<code>char[]</code> 数组中每个字符占用两个字节（16位），这是因为 <code>char</code> 类型在 Java 中是基于 UTF-16 编码的。而大多数字符串其实只需要一个字节（8位）就能表示一个字符（特别是英文、数字等）。通过将底层存储从 <code>char[]</code> 改为 <code>byte[]</code>，可以减少内存消耗。</p>
+<p>40.2 <strong>提高性能</strong>：通过减少内存占用，可以在一定程度上提高 CPU 缓存的利用率，从而提高字符串操作的性能。</p>
+<h5 id="41-Arrays-sort是使用什么排序算法实现的？"><a href="#41-Arrays-sort是使用什么排序算法实现的？" class="headerlink" title="41 Arrays.sort是使用什么排序算法实现的？"></a>41 Arrays.sort是使用什么排序算法实现的？</h5><p>快速排序</p>
+<h5 id="42-字符串常量是什么时候进入到字符串常量池的？"><a href="#42-字符串常量是什么时候进入到字符串常量池的？" class="headerlink" title="42 字符串常量是什么时候进入到字符串常量池的？"></a>42 字符串常量是什么时候进入到字符串常量池的？</h5><p><strong>前言</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------------------+</span><br><span class="line">|              JVM                     |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">|  |       Method Area              |  |</span><br><span class="line">|  |  +--------------------------+  |  |</span><br><span class="line">|  |  |   Constant Pool          |  |  |</span><br><span class="line">|  |  +--------------------------+  |  |</span><br><span class="line">|  |                                |  |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">|                                      |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">|  |            Heap                |  |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">|                                      |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">|  |      Stack (per thread)        |  |</span><br><span class="line">|  |  +--------------------------+  |  |</span><br><span class="line">|  |  |     Stack Frames         |  |  |</span><br><span class="line">|  |  +--------------------------+  |  |</span><br><span class="line">|  +--------------------------------+  |</span><br><span class="line">+--------------------------------------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：</p>
+<ul>
+<li><strong>JVM (Java Virtual Machine)</strong>: 整体虚拟机结构，包含以下各个区域。</li>
+<li><strong>Method Area</strong>: 存储已加载的类信息、常量、静态变量和JIT编译后的代码。</li>
+<li><strong>Constant Pool (常量池)</strong>: 是Method Area的一部分，存储编译期生成的各种字面量和符号引用。</li>
+<li><strong>Heap (堆)</strong>: 存储所有对象实例和数组，是被所有线程共享的一块内存区域。</li>
+<li><strong>Stack (栈)</strong>: 每个线程都有自己的栈，栈中包含多个栈帧（Stack Frames），每个栈帧对应一个方法的调用，保存方法的局部变量、操作数栈、方法返回地址等。</li>
+</ul>
+<p><strong>编译时示例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>&quot;hello&quot;</code> 字符串在<strong>编译时</strong>已经放入字符串常量池，<code>s1</code> 和 <code>s2</code> 变量都指向这个池中的同一个字符串对象。</p>
+<p><strong>运行时示例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> s1.intern();</span><br><span class="line"><span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, 因为 s1 指向堆中的对象，而 s2 指向字符串池中的对象</span></span><br><span class="line">System.out.println(s2 == s3); <span class="comment">// true, 因为 s2 和 s3 都指向字符串池中的 &quot;hello&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>intern()</code> 方法的作用是：检查字符串常量池中是否已经包含了一个等于当前字符串的对象。在这个例子中，<code>s1</code> 是一个在堆中创建的字符串对象，<code>s2</code> 则是 <code>s1.intern()</code> 返回的引用，这个引用指向字符串常量池中的 <code>&quot;hello&quot;</code>。</p>
+<p><strong>总结</strong>：</p>
+<ul>
+<li><strong>编译时</strong>：字符串字面量直接进入字符串常量池。</li>
+<li><strong>运行时</strong>：如果字符串池中已经存在一个等于该字符串的对象， <code>intern()</code> 方法会返回这个已存在的对象的引用，通过 <code>intern()</code> 方法可以将字符串加入字符串常量池（如果该字符串不在常量池中）。</li>
+</ul>
+<h5 id="43-Java中Timer实现定时调度的原理是什么？"><a href="#43-Java中Timer实现定时调度的原理是什么？" class="headerlink" title="43 Java中Timer实现定时调度的原理是什么？"></a>43 Java中Timer实现定时调度的原理是什么？</h5><ul>
+<li><p><code>Timer</code> 的任务队列是优先队列，按照任务的执行时间优先级进行排序。</p>
+</li>
+<li><p>后台线程会根据优先队列中任务的执行时间来决定何时执行任务，并在合适的时间点触发任务的执行。</p>
+</li>
+</ul>
+<p>总结：<code>Timer</code> 的定时调度通过后台线程不断检查任务队列，并根据任务的执行时间安排任务的执行。可以使用 <code>Timer</code> 类来实现简单的定时调度任务，但要注意它的局限性（如单线程执行、异常处理等）。</p>
+<h5 id="44-final、finally、finalize有什么区别？"><a href="#44-final、finally、finalize有什么区别？" class="headerlink" title="44 final、finally、finalize有什么区别？"></a>44 final、finally、finalize有什么区别？</h5><p><strong><code>final</code> 关键字</strong></p>
+<ul>
+<li><p><strong>修饰类</strong>：当一个类被声明为 <code>final</code>，它不能被继承。例如，<code>String</code> 类就是一个 <code>final</code> 类。</p>
+</li>
+<li><p><strong>修饰方法</strong>：当一个方法被声明为 <code>final</code>，它不能被子类覆盖（override）。</p>
+</li>
+<li><p><strong>修饰变量</strong>：当一个变量被声明为 <code>final</code>，它的值在初始化之后不能再被修改。对于基本数据类型，<code>final</code> 变量不可变；对于引用类型，<code>final</code> 使引用不可改变，但引用指向的对象内容是可以改变的。</p>
+</li>
+</ul>
+<p><strong><code>finally</code> 代码块</strong></p>
+<p><code>finally</code> 是一个代码块，用于异常处理机制中。无论是否发生异常，<code>finally</code> 块中的代码都会被执行。它通常用于清理资源，如关闭文件、释放数据库连接等。</p>
+<p><strong><code>finalize()</code> 方法</strong></p>
+<p><code>finalize()</code>是一个方法，用于垃圾收集之前的清理操作，不推荐使用，并在Java 9 已被弃用。</p>
+<h5 id="44-为什么建议自定义一个无参构造函数？"><a href="#44-为什么建议自定义一个无参构造函数？" class="headerlink" title="44 为什么建议自定义一个无参构造函数？"></a>44 为什么建议自定义一个无参构造函数？</h5><p>44.1 如果你定义了一个有参构造函数，那么Java编译器将不会自动创建无参构造函数，当你直接实例化该类，会造成编译错误，示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 带参数的构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyClass</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有显式定义无参构造函数</span></span><br><span class="line">    <span class="comment">// MyClass obj = new MyClass(); // 这行代码会导致编译错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>44.2 支持框架和库的使用(通常是用于反射或序列化)</p>
+<p>许多框架和库（例如 Hibernate、Spring）在反射或序列化过程中，需要通过无参构造函数来创建对象实例。如果类中没有无参构造函数，可能会导致这些框架或库的功能失效或抛出异常。</p>
+<p><strong>Hibernate</strong>：通常需要无参构造函数来实例化实体类，因为它使用反射机制来创建对象。</p>
+<p><strong>Spring</strong>：在使用依赖注入时，如果需要自动装配的类没有无参构造函数，可能会导致 Spring 无法实例化该类。</p>
+<h5 id="45-为什么不建议使用异常控制业务流程？"><a href="#45-为什么不建议使用异常控制业务流程？" class="headerlink" title="45 为什么不建议使用异常控制业务流程？"></a>45 为什么不建议使用异常控制业务流程？</h5><p>1.<strong>异常的语义</strong> 2.<strong>性能开销</strong> 3.<strong>代码可读性和维护性</strong> 4. <strong>业务逻辑的复杂性</strong></p>
+<h5 id="46-有了equals为啥需要hashCode方法？"><a href="#46-有了equals为啥需要hashCode方法？" class="headerlink" title="46 有了equals为啥需要hashCode方法？"></a>46 有了equals为啥需要hashCode方法？</h5><p>46.1 <code>equals()</code> 方法</p>
+<p><code>equals()</code> 方法用于比较两个对象的内容是否相同。</p>
+<p>46.2 <code>hashCode()</code> 方法</p>
+<p><code>hashCode()</code> 方法返回一个整数，称为对象的哈希码。</p>
+<p>46.3 <code>equals()</code> 和 <code>hashCode()</code> 的合同（约定）</p>
+<p>Java 中有一个非常重要的约定：<strong>如果两个对象根据 <code>equals()</code> 方法比较是相等的，那么它们的 <code>hashCode()</code> 值必须相等</strong>。但是，反过来不一定成立：如果两个对象的 <code>hashCode()</code> 值相等，它们并不一定根据 <code>equals()</code> 方法相等。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashCode</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        HashSet&lt;HashPerson&gt; people = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        people.add(<span class="keyword">new</span> <span class="title class_">HashPerson</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">30</span>));</span><br><span class="line">        people.add(<span class="keyword">new</span> <span class="title class_">HashPerson</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">30</span>)); <span class="comment">// 应该与第一个对象相等</span></span><br><span class="line"></span><br><span class="line">        System.out.println(people.size()); <span class="comment">// 如果没有重写 hashCode，可能会输出 2 而不是 1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HashPerson</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HashPerson</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == o) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 检查首先判断当前对象 this 和参数对象 o 是否是同一个对象（即引用相同）</span></span><br><span class="line">        <span class="keyword">if</span> (o == <span class="literal">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 o 为 null，或者 o 的类型与当前对象的类型不同（即它们不是同一个类的实例），则返回 false，表示它们不相等。</span></span><br><span class="line">        <span class="type">HashPerson</span> <span class="variable">person</span> <span class="operator">=</span> (HashPerson) o; <span class="comment">// 这里将对象 o 强制转换为 HashPerson 类型。因为前面的类型检查已经确保了 o 是 HashPerson 的实例，这种转换是安全的。</span></span><br><span class="line">        <span class="keyword">return</span> age == person.age &amp;&amp; Objects.equals(name, person.name);</span><br><span class="line">        <span class="comment">// age == person.age 直接比较两个对象的 age 是否相等（基本类型 int 的比较）。</span></span><br><span class="line">        <span class="comment">// Objects.equals(name, person.name) 比较两个 String 对象 name 是否相等，Objects.equals() 方法避免了 null 指针异常，如果 name 是 null，它会安全地返回 false。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age); <span class="comment">// Objects.hash() 是一个便捷方法，它接受可变数量的参数（这里是 name 和 age），并基于这些参数生成一个哈希码。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" data-id="cm0azws7w0004z8u45mekdsh7" data-title="四、Java基础-面试题40-46" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">三、Java基础-面试题27-39</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/">三、Java基础-面试题27-39</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/25/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9814-26/">二、Java基础-面试题14-26</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/24/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%981-13/">一、Java基础-面试题1-13</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

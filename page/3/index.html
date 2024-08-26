@@ -73,6 +73,313 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Docker操作命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/02/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2024-06-02T14:32:50.000Z" itemprop="datePublished">2024-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/02/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">二、Docker操作命令练习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Docker操作命令"><a href="#Docker操作命令" class="headerlink" title="Docker操作命令"></a>Docker操作命令</h3><h4 id="一、简单的hello-world示例"><a href="#一、简单的hello-world示例" class="headerlink" title="一、简单的hello-world示例"></a>一、简单的<code>hello-world</code>示例</h4><h4 id="步骤-1-拉取-hello-world-镜像"><a href="#步骤-1-拉取-hello-world-镜像" class="headerlink" title="步骤 1: 拉取 hello-world 镜像"></a>步骤 1: 拉取 <code>hello-world</code> 镜像</h4><p>运行以下命令以拉取最新的 <code>hello-world</code> 镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2-运行-hello-world-容器并命名"><a href="#步骤-2-运行-hello-world-容器并命名" class="headerlink" title="步骤 2: 运行 hello-world 容器并命名"></a>步骤 2: 运行 <code>hello-world</code> 容器并命名</h4><p>运行以下命令启动一个 <code>hello-world</code> 容器，并给它命名为 <code>my-hello-world</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name my-hello-world hello-world</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会启动一个 <code>hello-world</code> 容器，容器运行后会显示一条欢迎消息然后退出。因为 <code>hello-world</code> 容器是为了演示目的而设计，它会立即退出并不会长时间运行。</p>
+<h4 id="二、使用-my-redis-容器作为示例"><a href="#二、使用-my-redis-容器作为示例" class="headerlink" title="二、使用 my-redis 容器作为示例"></a>二、使用 <code>my-redis</code> 容器作为示例</h4><p>因为我已经拉取了<code>redis</code>的镜像，并且已经成功的运行了<code>redis</code>容器，命名为<code>my-redis</code>，以下使用 <code>my-redis</code> 容器作为示例，提供更多的 Docker 命令。</p>
+<h4 id="启动已停止的容器"><a href="#启动已停止的容器" class="headerlink" title="启动已停止的容器"></a>启动已停止的容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的实时日志"><a href="#查看容器的实时日志" class="headerlink" title="查看容器的实时日志"></a>查看容器的实时日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="检查容器的详细信息"><a href="#检查容器的详细信息" class="headerlink" title="检查容器的详细信息"></a>检查容器的详细信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器内部的进程"><a href="#查看容器内部的进程" class="headerlink" title="查看容器内部的进程"></a>查看容器内部的进程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器的资源使用情况（如-CPU、内存）"><a href="#查看容器的资源使用情况（如-CPU、内存）" class="headerlink" title="查看容器的资源使用情况（如 CPU、内存）"></a>查看容器的资源使用情况（如 CPU、内存）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats my-redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入容器内部的命令"><a href="#进入容器内部的命令" class="headerlink" title="进入容器内部的命令"></a>进入容器内部的命令</h4><p>假设你想在 <code>my-redis</code> 容器内部：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/bash (/bin/sh)</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>Redis</code> 命令行界面：终端输入<code>redis-cli</code>，进入命令行界面。</p>
+<h4 id="复制文件到-从容器"><a href="#复制文件到-从容器" class="headerlink" title="复制文件到&#x2F;从容器"></a>复制文件到&#x2F;从容器</h4><p>假设你想从你的主机复制一个名为 <code>dump.rdb</code> 的文件到 <code>my-redis</code> 容器的 <code>/data</code> 目录中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp dump.rdb my-redis:/data/dump.rdb</span><br></pre></td></tr></table></figure>
+
+<p>反向操作，从容器复制文件到主机：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp my-redis:/data/dump.rdb ./dump.rdb</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、使用hotel-service作为例子。"><a href="#三、使用hotel-service作为例子。" class="headerlink" title="三、使用hotel-service作为例子。"></a>三、使用<code>hotel-service</code>作为例子。</h4><h4 id="查看特定数量的尾部日志行并持续更新"><a href="#查看特定数量的尾部日志行并持续更新" class="headerlink" title="查看特定数量的尾部日志行并持续更新"></a>查看特定数量的尾部日志行并持续更新</h4><p>可以结合使用 <code>-n</code>（或 <code>--tail</code>）选项和 <code>-f</code> 选项。例如，查看最后50行日志并持续更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --tail 50 -f hotel-service</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入hotel-service容器"><a href="#进入hotel-service容器" class="headerlink" title="进入hotel-service容器"></a>进入<code>hotel-service</code>容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-redis /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>查看日志，我的日志目录和系统的目录是同级的，（根据实际情况来定，具体还是得看自己的日志目录配在什么地方）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd app-log/</span><br></pre></td></tr></table></figure>
+
+<p>查看错误日志，</p>
+<p>要在 Linux 中查看文件末尾的 100 行，您可以使用 <code>tail</code> 命令配合 <code>-n</code> 选项，如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 syslog</span><br></pre></td></tr></table></figure>
+
+<p>或者直接输入文件的路径。例如，如果您想查看名为 <code>/var/log/syslog</code> 的文件的末尾 100 行，命令将是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 100 /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/06/02/Docker%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" data-id="clx19s52m0003iotl9q5408l6" data-title="二、Docker操作命令练习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/01/20/Docker/" class="article-date">
+  <time class="dt-published" datetime="2024-01-20T14:32:50.000Z" itemprop="datePublished">2024-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/01/20/Docker/">一、Docker安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、Docker学习记录"><a href="#一、Docker学习记录" class="headerlink" title="一、Docker学习记录"></a>一、Docker学习记录</h2><p>对于刚开始学习 Docker 的初学者来说，以下是一系列推荐的步骤和概念，可以帮助您建立对 Docker 的基本理解并开始实践：</p>
+<h3 id="1-理解-Docker-的基本概念"><a href="#1-理解-Docker-的基本概念" class="headerlink" title="1. 理解 Docker 的基本概念"></a>1. 理解 Docker 的基本概念</h3><ul>
+<li><strong>容器（Containers）</strong>：轻量级、可执行的独立软件包，包含运行应用所需的一切：代码、运行时、库、环境变量和配置文件。</li>
+<li><strong>镜像（Images）</strong>：容器的蓝图，包含创建容器所需的指令。</li>
+<li><strong>Dockerfile</strong>：一种脚本，包含了一系列指令和步骤，用于创建 Docker 镜像。</li>
+</ul>
+<h3 id="2-运行您的第一个容器"><a href="#2-运行您的第一个容器" class="headerlink" title="2. 运行您的第一个容器"></a>2. 运行您的第一个容器</h3><ul>
+<li><p>通过运行一个简单的容器来开始，例如 hello-world镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会下载一个测试镜像并在容器中运行它。</p>
+</li>
+</ul>
+<h3 id="3-学习-Docker-基本命令"><a href="#3-学习-Docker-基本命令" class="headerlink" title="3. 学习 Docker 基本命令"></a>3. 学习 Docker 基本命令</h3><ul>
+<li>熟悉常用的 Docker 命令：<ul>
+<li><code>docker run</code>：运行一个容器。</li>
+<li><code>docker ps</code>：列出运行中的容器。</li>
+<li><code>docker images</code>：列出本地存储的镜像。</li>
+<li><code>docker pull</code>：从 Docker Hub 下载一个镜像。</li>
+<li><code>docker build</code>：根据 Dockerfile 构建一个新镜像。</li>
+<li><code>docker rm</code>：删除一个或多个容器。</li>
+<li><code>docker rmi</code>：删除一个或多个镜像。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-实践构建自己的-Docker-镜像"><a href="#4-实践构建自己的-Docker-镜像" class="headerlink" title="4. 实践构建自己的 Docker 镜像"></a>4. 实践构建自己的 Docker 镜像</h3><ul>
+<li>学习编写 Dockerfile 并构建自己的镜像：<ul>
+<li>创建一个简单的 Dockerfile，例如，设置基础镜像，复制文件，设置工作目录和启动命令。</li>
+<li>使用 <code>docker build</code> 命令构建镜像。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-学习容器的网络和存储"><a href="#5-学习容器的网络和存储" class="headerlink" title="5. 学习容器的网络和存储"></a>5. 学习容器的网络和存储</h3><ul>
+<li>了解如何使用 Docker 网络来连接容器。</li>
+<li>学习如何使用卷（Volumes）持久化容器数据。</li>
+</ul>
+<h3 id="6-使用-Docker-Compose"><a href="#6-使用-Docker-Compose" class="headerlink" title="6. 使用 Docker Compose"></a>6. 使用 Docker Compose</h3><ul>
+<li>Docker Compose 允许您使用 YAML 文件定义多容器应用。</li>
+<li>学习编写 <code>docker-compose.yml</code> 文件并使用 <code>docker-compose up</code> 和 <code>docker-compose down</code> 来管理应用。</li>
+</ul>
+<h2 id="二、安装docker"><a href="#二、安装docker" class="headerlink" title="二、安装docker"></a>二、安装docker</h2><p>在 CentOS 7.8 上使用阿里云的 Docker 仓库来安装 Docker，您可以按照以下步骤进行：</p>
+<h3 id="1：安装必要的依赖包"><a href="#1：安装必要的依赖包" class="headerlink" title="1：安装必要的依赖包"></a>1：安装必要的依赖包</h3><p>首先，安装一些必要的软件包，这些软件包允许您通过 HTTPS 使用仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+
+<h3 id="2：设置阿里云-Docker-仓库"><a href="#2：设置阿里云-Docker-仓库" class="headerlink" title="2：设置阿里云 Docker 仓库"></a>2：设置阿里云 Docker 仓库</h3><p>要使用阿里云的 Docker 仓库，您需要添加阿里云的 Docker 仓库地址。通常，您可以在阿里云的容器服务页面获取专属于您账户的 Docker 仓库地址。以下是一个示例命令，但请使用您的实际阿里云 Docker 仓库地址：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="3：安装-Docker-Engine"><a href="#3：安装-Docker-Engine" class="headerlink" title="3：安装 Docker Engine"></a>3：安装 Docker Engine</h3><p>现在，从阿里云仓库安装 Docker：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<h3 id="4：启动-Docker"><a href="#4：启动-Docker" class="headerlink" title="4：启动 Docker"></a>4：启动 Docker</h3><p>安装完成后，启动 Docker 服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="5：验证安装"><a href="#5：验证安装" class="headerlink" title="5：验证安装"></a>5：验证安装</h3><p>运行 hello-world 镜像来验证 Docker 是否正确安装，通常在这里是不会有信息响应，因为还需要拉取镜像：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到欢迎信息，说明 Docker 已经正确安装和运行。</p>
+<h3 id="6：使-Docker-开机自启"><a href="#6：使-Docker-开机自启" class="headerlink" title="6：使 Docker 开机自启"></a>6：使 Docker 开机自启</h3><p>为了确保 Docker 在启动时自动启动，请使用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="7：（可选）添加非-root-用户到-Docker-组"><a href="#7：（可选）添加非-root-用户到-Docker-组" class="headerlink" title="7：（可选）添加非 root 用户到 Docker 组"></a>7：（可选）添加非 root 用户到 Docker 组</h3><p>为了避免每次运行 Docker 命令时都使用 <code>sudo</code>，您可以将您的用户添加到 <code>docker</code> 组：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>-aG</code> 选项意味着将用户添加到 <code>docker</code> 组并保留其在其他组的成员资格。注销并重新登录后，您可以以非 root 用户身份运行 Docker 命令。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/01/20/Docker/" data-id="clrm844iy000010tl9xu0c4a6" data-title="一、Docker安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/01/20/Nginx/" class="article-date">
+  <time class="dt-published" datetime="2024-01-20T14:31:50.000Z" itemprop="datePublished">2024-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/01/20/Nginx/">一、Nginx基础知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、Nginx安装"><a href="#一、Nginx安装" class="headerlink" title="一、Nginx安装"></a>一、Nginx安装</h2><p>在 CentOS 7.8 上安装 Nginx 通常分为几个步骤：</p>
+<h3 id="1-更新系统"><a href="#1-更新系统" class="headerlink" title="1. 更新系统"></a>1. 更新系统</h3><p>在开始之前，最好确保所有的系统软件都是最新的。打开终端并输入以下命令来更新您的系统：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会更新系统中所有已安装的软件包到最新版本。</p>
+<h3 id="2-添加-EPEL-仓库"><a href="#2-添加-EPEL-仓库" class="headerlink" title="2. 添加 EPEL 仓库"></a>2. 添加 EPEL 仓库</h3><p>由于 Nginx 不包含在 CentOS 的默认 YUM 仓库中，您需要添加 EPEL（Extra Packages for Enterprise Linux）仓库来获取 Nginx 的软件包。运行以下命令添加 EPEL 仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h3><p>现在 EPEL 仓库已经添加，您可以安装 Nginx 了。使用以下命令安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-启动-Nginx-服务"><a href="#4-启动-Nginx-服务" class="headerlink" title="4. 启动 Nginx 服务"></a>4. 启动 Nginx 服务</h3><p>安装完成后，您需要启动 Nginx 服务。使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-自动启动-Nginx"><a href="#5-自动启动-Nginx" class="headerlink" title="5. 自动启动 Nginx"></a>5. 自动启动 Nginx</h3><p>为了确保 Nginx 在每次系统启动时自动运行，使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-调整防火墙设置"><a href="#6-调整防火墙设置" class="headerlink" title="6. 调整防火墙设置"></a>6. 调整防火墙设置</h3><p>如果您的服务器运行的是 firewalld（CentOS 7 的默认防火墙），您需要允许 HTTP 和 HTTPS 流量。运行以下命令来更新防火墙设置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-验证-Nginx-安装"><a href="#7-验证-Nginx-安装" class="headerlink" title="7. 验证 Nginx 安装"></a>7. 验证 Nginx 安装</h3><p>在浏览器中输入您服务器的 IP 地址。如果 Nginx 安装成功，您应该会看到 Nginx 的默认欢迎页面。</p>
+<h3 id="8-配置-Nginx（可选）"><a href="#8-配置-Nginx（可选）" class="headerlink" title="8. 配置 Nginx（可选）"></a>8. 配置 Nginx（可选）</h3><p>Nginx 的主配置文件位于 <code>/etc/nginx/nginx.conf</code>。您可能需要根据您的需求来编辑此文件。网站的配置文件通常位于 <code>/etc/nginx/conf.d/</code> 目录中。</p>
+<h2 id="二、Nginx的配置文件"><a href="#二、Nginx的配置文件" class="headerlink" title="二、Nginx的配置文件"></a>二、Nginx的配置文件</h2><p>已经成功的安装了Nginx，以下是对配置文件的解释说明。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/01/20/Nginx/" data-id="clrm844j1000110tlfro33mdo" data-title="一、Nginx基础知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/01/12/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2024-01-11T16:15:50.716Z" itemprop="datePublished">2024-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/01/12/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/01/12/hello-world/" data-id="clr9ftd2t00003ctl83y49rpu" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/01/11/test/" class="article-date">
@@ -134,7 +441,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
     </div>
   </div>
 
@@ -144,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 16.67px;">ubuntu</a>
+      <a href="/blog/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
     </div>
   </div>
 
@@ -153,7 +460,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
     </div>
   </div>
 
@@ -166,23 +473,23 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/">三、Java基础-面试题27-39</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/25/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9814-26/">二、Java基础-面试题14-26</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/24/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%981-13/">一、Java基础-面试题1-13</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/28/Mabatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89SQL%E5%92%8C%E5%88%86%E9%A1%B5%E5%99%A8/">四、Mybatis-Plus常见用法-Mapper层自定义SQL</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/28/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-%E6%9D%A1%E4%BB%B6%E6%9E%84%E9%80%A0%E5%99%A8%E6%96%B9%E6%B3%95/">五、Mybatis-Plus常见用法-常用条件构造器方法</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Mapper%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">三、Mybatis-Plus常见用法-Mapper常用的基础方法</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/07/24/Mybatis-Plus%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95-Service_impl%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/">二、Mybatis-Plus常见用法-Service_impl常用的基础方法</a>
           </li>
         
       </ul>
