@@ -1,3 +1,8 @@
+---
+title: 四、Mybatis-Plus常见用法-Mapper层自定义SQL
+date: 2024-07-28 22:32:50
+tags: mybatisplus
+---
 ### Mapper层自定义SQL
 
 在 MyBatis-Plus 中，可以通过注解和 XML 配置文件两种方式编写自定义 SQL。以下是两种方式的详细说明和示例。

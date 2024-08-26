@@ -1,5 +1,5 @@
 ---
-title: 四、Mybatis-Plus常见用法-entity常用的注解
+title: 五、Mybatis-Plus常见用法-常用条件构造器方法
 date: 2024-07-28 22:32:50
 tags: mybatisplus
 ---

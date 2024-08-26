@@ -1,5 +1,5 @@
 ---
-title: 三、Nginx和Certbot安装和minio的域名映射
+title: 三、minio的域名映射
 date: 2024-06-12 17:33:50
 tags: ubuntu
 ---

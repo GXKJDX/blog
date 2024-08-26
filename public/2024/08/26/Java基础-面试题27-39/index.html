@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>三、Java基础-面试题27-39 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言 UML图示123456789101112131415161718192021222324classDiagram    class InterfaceA &#123;        &lt;&lt;interface&gt;&gt;        +methodA()    &#125;    class InterfaceB &#123;        &lt;&lt;interface&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三、Java基础-面试题27-39">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言 UML图示123456789101112131415161718192021222324classDiagram    class InterfaceA &#123;        &lt;&lt;interface&gt;&gt;        +methodA()    &#125;    class InterfaceB &#123;        &lt;&lt;interface&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/1705133708567-49955e01-446a-4fef-b441-4356180eac5c.png">
+<meta property="article:published_time" content="2024-08-26T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-08-26T12:52:01.816Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/1705133708567-49955e01-446a-4fef-b441-4356180eac5c.png">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java基础-面试题27-39" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/" class="article-date">
+  <time class="dt-published" datetime="2024-08-26T14:32:50.000Z" itemprop="datePublished">2024-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      三、Java基础-面试题27-39
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="前言-UML图示"><a href="#前言-UML图示" class="headerlink" title="前言 UML图示"></a>前言 UML图示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class InterfaceA &#123;</span><br><span class="line">        &lt;&lt;interface&gt;&gt;</span><br><span class="line">        +methodA()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class InterfaceB &#123;</span><br><span class="line">        &lt;&lt;interface&gt;&gt;</span><br><span class="line">        +methodB()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class BaseClass &#123;</span><br><span class="line">        +baseMethod()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class DerivedClass &#123;</span><br><span class="line">        +methodA()</span><br><span class="line">        +methodB()</span><br><span class="line">        +derivedMethod()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BaseClass &lt;|-- DerivedClass</span><br><span class="line">    InterfaceA &lt;|.. DerivedClass</span><br><span class="line">    InterfaceB &lt;|.. DerivedClass</span><br></pre></td></tr></table></figure>
+
+<h5 id="对应代码示例"><a href="#对应代码示例" class="headerlink" title="对应代码示例"></a>对应代码示例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义接口 InterfaceA</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">InterfaceA</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">methodA</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义接口 InterfaceB</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">InterfaceB</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">methodB</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义基类 BaseClass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BaseClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">baseMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Base method in BaseClass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义继承自 BaseClass 并实现 InterfaceA 和 InterfaceB 的 DerivedClass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DerivedClass</span> <span class="keyword">extends</span> <span class="title class_">BaseClass</span> <span class="keyword">implements</span> <span class="title class_">InterfaceA</span>, InterfaceB &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methodA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Method A implemented in DerivedClass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methodB</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Method B implemented in DerivedClass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">derivedMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Derived method in DerivedClass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">DerivedClass</span> <span class="variable">derived</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DerivedClass</span>();</span><br><span class="line">        derived.baseMethod();    <span class="comment">// 来自 BaseClass</span></span><br><span class="line">        derived.methodA();       <span class="comment">// 实现自 InterfaceA</span></span><br><span class="line">        derived.methodB();       <span class="comment">// 实现自 InterfaceB</span></span><br><span class="line">        derived.derivedMethod(); <span class="comment">// DerivedClass 特有的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="27-异常类"><a href="#27-异常类" class="headerlink" title="27 异常类"></a>27 异常类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[Throwable] --&gt; B[Exception]</span><br><span class="line">    A --&gt; C[Error]</span><br><span class="line">    </span><br><span class="line">    B --&gt; D[Checked Exception]</span><br><span class="line">    D --&gt; E[IOException]</span><br><span class="line">    D --&gt; F[SQLException]</span><br><span class="line">    D --&gt; G[ClassNotFoundException]</span><br><span class="line">    </span><br><span class="line">    B --&gt; H[RuntimeException]</span><br><span class="line">    H --&gt; I[NullPointerException]</span><br><span class="line">    H --&gt; J[ArrayIndexOutOfBoundsException]</span><br><span class="line">    H --&gt; K[ArithmeticException]</span><br><span class="line">    H --&gt; L[ClassCastException]</span><br><span class="line">    </span><br><span class="line">    C --&gt; M[OutOfMemoryError]</span><br><span class="line">    C --&gt; N[StackOverflowError]</span><br></pre></td></tr></table></figure>
+
+<p><strong>图解说明：</strong></p>
+<ul>
+<li><code>Throwable</code> 是所有异常类的根类，继承<code>Object</code>，实现了序列化接口，<code>Exception</code>和<code>Error</code>是两个最重要的子类。</li>
+<li>Exception是 Throwable的子类，表示可恢复的异常。<ul>
+<li><code>Checked Exception</code> 是所有受检异常的统称，需要捕获，需要处理的异常，直接继承自 <code>Exception</code> 类。常见的子类有 <code>IOException</code>、<code>SQLException</code>、<code>ClassNotFoundException</code> 等。</li>
+<li><code>RuntimeException</code> 是所有非受检异常的统称，继承自 <code>Exception</code> 类。常见的子类有 <code>NullPointerException</code>、<code>ArrayIndexOutOfBoundsException</code>、<code>ArithmeticException</code>、<code>ClassCastException</code> 等。</li>
+</ul>
+</li>
+<li><code>Error</code> 是 <code>Throwable</code> 的另一个子类，表示系统级的严重错误，通常不需要捕获，程序无法自动解决，只有退出运行才能解决。常见的子类有 <code>OutOfMemoryError</code> 和 <code>StackOverflowError</code>。</li>
+</ul>
+<h5 id="28-说说Java异常处理相关的几个关键字，以及简单用法？"><a href="#28-说说Java异常处理相关的几个关键字，以及简单用法？" class="headerlink" title="28 说说Java异常处理相关的几个关键字，以及简单用法？"></a>28 说说Java异常处理相关的几个关键字，以及简单用法？</h5><p>throws、throw、try、catch、finally</p>
+<ol>
+<li>try 包裹执行语句</li>
+<li>catch指定想要捕获的异常的类型</li>
+<li>finally确保一段代码不管发生什么异常都要被执行</li>
+<li>throw明确抛出一个异常</li>
+<li>throws用来声明一个方法可能抛出的异常</li>
+</ol>
+<h5 id="29-try中return-A，catch中return-B，finally中return-C，最终返回值是什么？"><a href="#29-try中return-A，catch中return-B，finally中return-C，最终返回值是什么？" class="headerlink" title="29 try中return A，catch中return B，finally中return C，最终返回值是什么？"></a>29 try中return A，catch中return B，finally中return C，最终返回值是什么？</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(testMethod());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">testMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//System.out.print(1/0); 异常代码</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;A&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;B&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;C&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ol>
+<li><strong><code>try</code> 块</strong>：<ul>
+<li><code>try</code> 块中的代码首先执行，并且因为 <code>return &quot;A&quot;;</code> 语句的存在，方法会准备返回 “A”。</li>
+<li>在准备返回值之前，Java会记住这个返回值，但并不会立即返回，而是继续执行 <code>finally</code> 块中的代码。</li>
+</ul>
+</li>
+<li><strong><code>catch</code> 块</strong>：<ul>
+<li>如果 <code>try</code> 块中的代码抛出了异常，那么会进入 <code>catch</code> 块。如果没有异常发生，<code>catch</code> 块就不会执行。</li>
+<li>但无论 <code>catch</code> 块是否执行，<code>finally</code> 块中的代码始终会执行。</li>
+</ul>
+</li>
+<li><strong><code>finally</code> 块</strong>：<ul>
+<li><code>finally</code> 块中的代码是无论如何都会执行的。即使 <code>try</code> 或 <code>catch</code> 中有 <code>return</code> 语句，<code>finally</code> 仍然会在方法返回之前执行。</li>
+<li>在 <code>finally</code> 块中，如果再次出现 <code>return</code> 语句，它会覆盖之前在 <code>try</code> 或 <code>catch</code> 中准备返回的值，并最终返回 <code>finally</code> 中的值。</li>
+</ul>
+</li>
+</ol>
+<p>总结：在try-catch-finally结构中，try和catch中的return的结果都会被暂存，检查finally后有没有return，有则会覆盖；尽量避免在 <code>finally</code> 块中使用 <code>return</code> 语句，因为这会导致代码的可读性下降和预期外的行为。</p>
+<h5 id="30-finally中代码一定会执行吗？"><a href="#30-finally中代码一定会执行吗？" class="headerlink" title="30 finally中代码一定会执行吗？"></a>30 finally中代码一定会执行吗？</h5><p>大多数情况下都是会执行的，有一些特殊的情况导致finally块中的代码不执行，如下：</p>
+<p>1、<strong>JVM 崩溃</strong>：如果在 <code>try</code> 或 <code>catch</code> 块执行过程中，JVM 进程突然崩溃（例如内存不足、硬件故障），<code>finally</code> 块可能不会执行。</p>
+<p>2、**System.exit()**：如果在 <code>try</code> 或 <code>catch</code> 块中调用了 <code>System.exit()</code>，则 JVM 会立即终止，不会再执行 <code>finally</code> 块。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;In try block&quot;</span>);</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;In finally block&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>System.exit(0)</code> 直接终止了 JVM，导致 <code>finally</code> 块没有执行。</p>
+<p>3、<strong>无限循环或死锁</strong>：如果在 <code>try</code> 块或 <code>catch</code> 块中出现了无限循环或死锁，<code>finally</code> 块可能永远不会执行，因为程序无法跳出循环或解决死锁。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="comment">// Infinite loop</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;In finally block&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，<code>finally</code> 块永远不会被执行，因为程序永远停留在无限循环中。</p>
+<h5 id="31-在处理异常的时候，我们应该要注意些什么？"><a href="#31-在处理异常的时候，我们应该要注意些什么？" class="headerlink" title="31 在处理异常的时候，我们应该要注意些什么？"></a>31 在处理异常的时候，我们应该要注意些什么？</h5><p>1.<code>RuntimeException</code> 不需要显式地 <code>throws</code></p>
+<p><strong>说明</strong>：<code>RuntimeException</code> 及其子类属于非受检异常（Unchecked Exception），在方法声明中不需要显式地用 <code>throws</code> 关键字抛出这些异常。</p>
+<p>2.<code>catch</code> 需要先从子类进行捕获</p>
+<p><strong>说明</strong>：在捕获异常时，如果有多个 <code>catch</code> 块，需要先捕获具体的子类异常，再捕获通用的父类异常，否则会导致编译错误。</p>
+<p>3.始终在 <code>finally</code> 中释放资源</p>
+<p><strong>说明</strong>：在使用 <code>try-catch</code> 处理异常时，如果有资源需要关闭（如文件、数据库连接等），应在 <code>finally</code> 块中释放资源，以确保即使出现异常，资源也能够得到正确的释放。</p>
+<p>4.不要在 <code>finally</code> 块中使用 <code>return</code> 语句</p>
+<p><strong>说明</strong>：在 <code>finally</code> 块中使用 <code>return</code> 语句会覆盖 <code>try</code> 或 <code>catch</code> 块中的 <code>return</code> 语句，从而导致不可预测的行为</p>
+<p>5.只捕获你能处理的异常</p>
+<p><strong>说明</strong>：不要随意捕获所有异常（如捕获 <code>Exception</code>），而应该只捕获你能够合理处理的异常。这有助于确保代码更加健壮，并且能够对错误做出合理的响应。</p>
+<h5 id="32-什么是AIO、BIO和NIO？"><a href="#32-什么是AIO、BIO和NIO？" class="headerlink" title="32 什么是AIO、BIO和NIO？"></a>32 什么是AIO、BIO和NIO？</h5><p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/1705133708567-49955e01-446a-4fef-b441-4356180eac5c.png" alt="1705133708567-49955e01-446a-4fef-b441-4356180eac5c"></p>
+<p><strong>BIO (Blocking I&#x2F;O)</strong>:<br>同步阻塞 I&#x2F;O，是 JDK 1.4 之前的传统 I&#x2F;O 模型。线程发起 I&#x2F;O 请求后，会被阻塞，直到数据准备好并完成 I&#x2F;O 操作后，线程才能继续执行其他任务。每个 I&#x2F;O 请求都由一个独立线程处理，因此在高并发情况下容易造成线程资源的浪费和系统负担。</p>
+<p><strong>NIO (Non-Blocking I&#x2F;O)</strong>:<br>同步非阻塞 I&#x2F;O，是 JDK 1.4 引入的 I&#x2F;O 模型。线程发起 I&#x2F;O 请求后不会阻塞，而是立即返回。用户线程可以继续处理其他任务，不必等待 I&#x2F;O 操作完成。通过轮询机制（Selector），线程可以检查 I&#x2F;O 操作是否已完成，并在数据就绪后进行处理。NIO 允许一个线程处理多个 I&#x2F;O 连接，显著提高了系统的并发处理能力。</p>
+<p><strong>AIO (Asynchronous I&#x2F;O)</strong>:<br>异步非阻塞 I&#x2F;O，是 JDK 7 引入的 I&#x2F;O 模型。线程发起 I&#x2F;O 请求后立即返回，不需要阻塞，也不需要轮询检查操作结果。I&#x2F;O 操作完成后，系统会自动回调指定的处理函数（CompletionHandler），通知调用方处理结果。AIO 更加高效，适合处理大量并发连接和复杂 I&#x2F;O 操作的场景。</p>
+<h5 id="33-Java是值传递还是引用传递？"><a href="#33-Java是值传递还是引用传递？" class="headerlink" title="33 Java是值传递还是引用传递？"></a>33 Java是值传递还是引用传递？</h5><p><strong>值传递和引用传递最大的区别就是传递过程中有没有复制出来一个副本，如果是传递副本，那就是值传递，否则就是引用传递。Java对象的传递，是通过复制的方式把引用关系传递了，因为有复制的过程，所以是值传递，</strong>只不过对于Java对象的传递，传递的内容是对象的引用。<strong>总的来说，Java只有值传递。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ValueReferenceExample</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 基本数据类型</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;Before modifyPrimitive: a = &quot;</span> + a);</span><br><span class="line">        modifyPrimitive(a);</span><br><span class="line">        System.out.println(<span class="string">&quot;After modifyPrimitive: a = &quot;</span> + a);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对象类型</span></span><br><span class="line">        <span class="type">MyObject</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyObject</span>();</span><br><span class="line">        obj.value = <span class="number">10</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;Before modifyObject: obj.value = &quot;</span> + obj.value);</span><br><span class="line">        modifyObject(obj);</span><br><span class="line">        System.out.println(<span class="string">&quot;After modifyObject: obj.value = &quot;</span> + obj.value);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对象引用重新分配</span></span><br><span class="line">        resetObject(obj);</span><br><span class="line">        System.out.println(<span class="string">&quot;After resetObject: obj.value = &quot;</span> + obj.value);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 值传递，传递的是副本</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">modifyPrimitive</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        x = <span class="number">10</span>;  <span class="comment">// 仅修改了副本，不影响原始变量</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 引用传递，复制引用地址并进行传递</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">modifyObject</span><span class="params">(MyObject o)</span> &#123;</span><br><span class="line">        o.value = <span class="number">20</span>;  <span class="comment">// 修改对象属性，因为都是指向同一个对象，影响到原始对象</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这个重新分配的引用仅在 resetObject 方法内部有效，并不影响 obj 的原始引用。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">resetObject</span><span class="params">(MyObject o)</span> &#123;</span><br><span class="line">        o = <span class="keyword">new</span> <span class="title class_">MyObject</span>();  <span class="comment">// 重新分配引用，不影响原始对象</span></span><br><span class="line">        o.value = <span class="number">30</span>;  <span class="comment">// 修改新对象的属性，原始对象不受影响</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyObject</span> &#123;</span><br><span class="line">    <span class="type">int</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="34-什么是深拷贝和浅拷贝？"><a href="#34-什么是深拷贝和浅拷贝？" class="headerlink" title="34 什么是深拷贝和浅拷贝？"></a>34 什么是深拷贝和浅拷贝？</h5><p><strong>浅拷贝(Shallow Copy)</strong>: 浅拷贝复制对象时，只复制对象的基本属性和对象的引用，引用对象不复制的实际内容。这意味着拷贝后的对象与原对象共享同一个引用对象的实例。</p>
+<p><strong>深拷贝(Deep Copy)</strong>: 深拷贝不仅复制对象的基本属性，还复制所有引用对象的实际内容。拷贝后的对象和原对象完全独立，没有任何共享的引用。</p>
+<h5 id="35-SimpleDateFormat是线程安全的吗？使用时应该注意什么？"><a href="#35-SimpleDateFormat是线程安全的吗？使用时应该注意什么？" class="headerlink" title="35 SimpleDateFormat是线程安全的吗？使用时应该注意什么？"></a>35 SimpleDateFormat是线程安全的吗？使用时应该注意什么？</h5><p><strong>答：</strong>非线程安全的，<code>SimpleDateFormat</code> 类在解析或格式化日期时会维护内部状态，比如 <code>Calendar</code> 对象，这些状态在多个线程并发访问时可能会相互干扰，导致格式化或解析的结果不正确，甚至可能抛出 <code>NumberFormatException</code> 或 <code>ArrayIndexOutOfBoundsException</code>。</p>
+<p><strong>如何在多线程环境中安全地使用 <code>SimpleDateFormat</code>？</strong></p>
+<p><strong>局部变量方式</strong>:</p>
+<ul>
+<li>每次调用 <code>formatDateWithSimpleDateFormat</code> 时，都会创建一个新的 <code>SimpleDateFormat</code> 实例，确保线程安全。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 使用局部变量确保线程安全</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">formatDateWithSimpleDateFormat</span><span class="params">(Date date)</span> &#123;</span><br><span class="line">    <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> sdf.format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>同步块</strong>:</p>
+<ul>
+<li><code>formatDateWithSynchronized</code> 方法使用 <code>synchronized</code> 关键字，确保同一时刻只有一个线程可以执行格式化操作，保证线程安全。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 使用同步块确保线程安全</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">SimpleDateFormat</span> <span class="variable">sharedSdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title function_">formatDateWithSynchronized</span><span class="params">(Date date)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> sharedSdf.format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**使用 <code>ThreadLocal</code>**：</p>
+<ul>
+<li>通过 <code>ThreadLocal</code> 为每个线程创建一个 <code>SimpleDateFormat</code> 实例，这样每个线程都有自己的实例，既保证了线程安全，又避免了性能问题。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;SimpleDateFormat&gt; sdf = ThreadLocal.withInitial(() -&gt; <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">formatDate</span><span class="params">(Date date)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> sdf.get().format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用替代方案</strong>：</p>
+<ul>
+<li>从 Java 8 开始，<code>java.time</code> 包中的 <code>DateTimeFormatter</code> 类提供了不可变的、线程安全的日期时间格式化工具，推荐使用它代替 <code>SimpleDateFormat</code>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span> DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">formatDate</span><span class="params">(LocalDate date)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> date.format(formatter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="36-什么是UUID？"><a href="#36-什么是UUID？" class="headerlink" title="36 什么是UUID？"></a>36 什么是UUID？</h5><p>UUID（Universally Unique Identifier），即通用唯一标识符，是一种标准化的128位数字标识符，用于标识信息中的唯一对象。UUID 是根据特定算法生成的，可以在分布式系统中用于唯一地标识信息，无需集中管理。UUID 的主要目的是确保不同时间、不同地点生成的ID是唯一的。</p>
+<h5 id="37-char能存储中文吗？"><a href="#37-char能存储中文吗？" class="headerlink" title="37 char能存储中文吗？"></a>37 char能存储中文吗？</h5><p>是的，<code>char</code> 可以存储中文字符。在Java中，<code>char</code> 数据类型是 16 位的无符号整数，使用 Unicode 编码（UTF-16）表示字符。Unicode 是一种字符编码标准，能够表示世界上几乎所有的字符集，包括中文字符。</p>
+<h5 id="38-while-true-和for-那个性能好？"><a href="#38-while-true-和for-那个性能好？" class="headerlink" title="38 while(true)和for(;;)那个性能好？"></a>38 while(true)和for(;;)那个性能好？</h5><p>都一样，都是做无限循环</p>
+<h5 id="39-ClassNotFoundException和NoClassDefFoundError的区别是什么？"><a href="#39-ClassNotFoundException和NoClassDefFoundError的区别是什么？" class="headerlink" title="39 ClassNotFoundException和NoClassDefFoundError的区别是什么？"></a>39 ClassNotFoundException和NoClassDefFoundError的区别是什么？</h5><ul>
+<li><p><code>ClassNotFoundException</code>发生在 <strong>运行时</strong>，是一个<strong>受检异常</strong>，表示在运行时动态加载类时找不到指定的类。通常由程序的逻辑错误引发，如类名拼写错误、类路径配置不当等。</p>
+</li>
+<li><p><code>NoClassDefFoundError</code>也发生在 <strong>运行时</strong>，是一个<strong>错误</strong>，表示 <code>JVM</code> 在加载一个已经编译过的类时，无法找到该类。通常由运行时环境的问题引发，如类路径中缺少类、类文件损坏等。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/" data-id="cm0azws7s0001z8u42a4n98x7" data-title="三、Java基础-面试题27-39" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          四、Java基础-面试题40-46
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/08/25/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9814-26/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">二、Java基础-面试题14-26</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/">三、Java基础-面试题27-39</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/25/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9814-26/">二、Java基础-面试题14-26</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/24/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%981-13/">一、Java基础-面试题1-13</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/07/31/MySQL%20%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">一、常用的 MySQL 命令示例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
