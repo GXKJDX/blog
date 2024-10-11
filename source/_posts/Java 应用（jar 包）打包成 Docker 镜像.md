@@ -7,7 +7,9 @@ tags: docker
 
 ​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 `Dockerfile`，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。
 
-​	1、使用Xftp，把jar上传到指定的目录下。2、创建Dockerfile文件。
+1、使用Xftp，把jar上传到指定的目录下。
+
+2、创建Dockerfile文件。
 
 ![](https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226162321338.png)
 
@@ -37,13 +39,13 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 #### 步骤 2: 构建 Docker 镜像
 
-在包含 `Dockerfile` 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker 镜像：
+在包含 `Dockerfile` 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker **镜像**：
 
 ```dockerfile
 docker build -t hotel-service .
 ```
 
-- `-t hotel-service` 为新构建的镜像设置了一个名字 `hotel-service`。
+- `-t hotel-service` 为新构建的**镜像**设置了一个名字 `hotel-service`。
 - `.` 指定了 Dockerfile 所在的目录（当前目录）。
 
 #### 步骤 3: 运行 Docker 容器
@@ -51,11 +53,12 @@ docker build -t hotel-service .
 使用以下命令运行你的应用：
 
 ```dockerfile
-docker run -d -p 84:84 myapplication
+docker run --name hotel-service -d -p 84:84 hotel-service
 ```
 
-- `-d` 表示后台运行容器。
-- `-p 84:84` 将容器的 84 端口映射到宿主机的 84 端口，允许外部访问。
+- `-d` 表示后台运行**容器**。
+- `--name` 表示将**容器**名为为`hotel-service`。
+- `-p 84:84` 将**容器**的 84 端口映射到宿主机的 84 端口，允许外部访问。
 
 确保你的应用配置为在 84 端口上监听，或者根据需要调整端口映射。
 

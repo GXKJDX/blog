@@ -6,16 +6,16 @@
   
   <title>五、jar包打包成 Docker 镜像 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Java 应用（jar 包）打包成 Docker 镜像​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 Dockerfile，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。 ​	1、使用Xftp，把jar上传到指定的目录下。2、创建Doc">
+  <meta name="description" content="Java 应用（jar 包）打包成 Docker 镜像​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 Dockerfile，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。 1、使用Xftp，把jar上传到指定的目录下。 2、创建Dock">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五、jar包打包成 Docker 镜像">
 <meta property="og:url" content="https://github.com/GXKJDX/blog/2024/06/10/Java%20%E5%BA%94%E7%94%A8%EF%BC%88jar%20%E5%8C%85%EF%BC%89%E6%89%93%E5%8C%85%E6%88%90%20Docker%20%E9%95%9C%E5%83%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Java 应用（jar 包）打包成 Docker 镜像​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 Dockerfile，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。 ​	1、使用Xftp，把jar上传到指定的目录下。2、创建Doc">
+<meta property="og:description" content="Java 应用（jar 包）打包成 Docker 镜像​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 Dockerfile，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。 1、使用Xftp，把jar上传到指定的目录下。 2、创建Dock">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226162321338.png">
 <meta property="article:published_time" content="2024-06-10T14:32:50.000Z">
-<meta property="article:modified_time" content="2024-07-31T15:04:34.046Z">
+<meta property="article:modified_time" content="2024-10-10T13:23:34.619Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -101,7 +101,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h3 id="Java-应用（jar-包）打包成-Docker-镜像"><a href="#Java-应用（jar-包）打包成-Docker-镜像" class="headerlink" title="Java 应用（jar 包）打包成 Docker 镜像"></a>Java 应用（jar 包）打包成 Docker 镜像</h3><p>​	要将一个 Java 应用（jar 包）打包成 Docker 镜像，你需要编写一个 <code>Dockerfile</code>，这是一个文本文件，包含了构建 Docker 镜像所需的指令。以下是一个简单的示例流程，展示如何将一个 Spring Boot 应用的 jar 包转换成 Docker 镜像。</p>
-<p>​	1、使用Xftp，把jar上传到指定的目录下。2、创建Dockerfile文件。</p>
+<p>1、使用Xftp，把jar上传到指定的目录下。</p>
+<p>2、创建Dockerfile文件。</p>
 <p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/image-20240226162321338.png"></p>
 <h4 id="步骤-1-准备-Dockerfile"><a href="#步骤-1-准备-Dockerfile" class="headerlink" title="步骤 1: 准备 Dockerfile"></a>步骤 1: 准备 Dockerfile</h4><ol>
 <li><strong>创建 Dockerfile</strong>: 在你的 Java 项目根目录下创建一个名为 <code>Dockerfile</code> 的文件（无文件扩展名）。</li>
@@ -109,19 +110,20 @@
 </ol>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方的Java运行环境作为基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add --no-cache fontconfig ttf-dejavu</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置时区（可选）</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">ln</span> -snf /usr/share/zoneinfo/<span class="variable">$TZ</span> /etc/localtime &amp;&amp; <span class="built_in">echo</span> <span class="variable">$TZ</span> &gt; /etc/timezone</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将jar包添加到容器中，注意修改路径以匹配你的jar包位置</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> jinzijing-hotel-2.0.0.jar app.jar</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露容器内部的端口号，与Spring Boot应用的端口一致</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">84</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器启动时运行jar包</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/app.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="步骤-2-构建-Docker-镜像"><a href="#步骤-2-构建-Docker-镜像" class="headerlink" title="步骤 2: 构建 Docker 镜像"></a>步骤 2: 构建 Docker 镜像</h4><p>在包含 <code>Dockerfile</code> 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker 镜像：</p>
+<h4 id="步骤-2-构建-Docker-镜像"><a href="#步骤-2-构建-Docker-镜像" class="headerlink" title="步骤 2: 构建 Docker 镜像"></a>步骤 2: 构建 Docker 镜像</h4><p>在包含 <code>Dockerfile</code> 的目录下，打开终端或命令提示符，运行以下命令来构建 Docker <strong>镜像</strong>：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t hotel-service .</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>-t hotel-service</code> 为新构建的镜像设置了一个名字 <code>hotel-service</code>。</li>
+<li><code>-t hotel-service</code> 为新构建的<strong>镜像</strong>设置了一个名字 <code>hotel-service</code>。</li>
 <li><code>.</code> 指定了 Dockerfile 所在的目录（当前目录）。</li>
 </ul>
 <h4 id="步骤-3-运行-Docker-容器"><a href="#步骤-3-运行-Docker-容器" class="headerlink" title="步骤 3: 运行 Docker 容器"></a>步骤 3: 运行 Docker 容器</h4><p>使用以下命令运行你的应用：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d -p 84:84 myapplication</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> --name hotel-service -d -p 84:84 hotel-service</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>-d</code> 表示后台运行容器。</li>
-<li><code>-p 84:84</code> 将容器的 84 端口映射到宿主机的 84 端口，允许外部访问。</li>
+<li><code>-d</code> 表示后台运行<strong>容器</strong>。</li>
+<li><code>--name</code> 表示将<strong>容器</strong>名为为<code>hotel-service</code>。</li>
+<li><code>-p 84:84</code> 将<strong>容器</strong>的 84 端口映射到宿主机的 84 端口，允许外部访问。</li>
 </ul>
 <p>确保你的应用配置为在 84 端口上监听，或者根据需要调整端口映射。</p>
 <h4 id="步骤4：测试SpringBoot服务"><a href="#步骤4：测试SpringBoot服务" class="headerlink" title="步骤4：测试SpringBoot服务"></a>步骤4：测试SpringBoot服务</h4><p>使用以下命令测试你的应用是否能正常运行</p>
