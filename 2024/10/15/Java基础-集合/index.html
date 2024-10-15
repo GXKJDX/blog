@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>五、Java基础-集合 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言Java 集合框架可以分为两条大的支线： ①、Collection，主要由 List、Set、Queue 组成：  List 代表有序、可重复的集合，典型代表就是封装了动态数组的 ArrayList和封装了链表的 LinkedList； Set 代表无序、不可重复的集合，典型代表就是 HashSet 和 TreeSet； Queue 代表队列，典型代表就是双端队列 ArrayDeque，以及">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五、Java基础-集合">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/10/15/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言Java 集合框架可以分为两条大的支线： ①、Collection，主要由 List、Set、Queue 组成：  List 代表有序、可重复的集合，典型代表就是封装了动态数组的 ArrayList和封装了链表的 LinkedList； Set 代表无序、不可重复的集合，典型代表就是 HashSet 和 TreeSet； Queue 代表队列，典型代表就是双端队列 ArrayDeque，以及">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/collection.png">
+<meta property="og:image" content="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/gailan-02.png">
+<meta property="article:published_time" content="2024-10-15T13:32:50.000Z">
+<meta property="article:modified_time" content="2024-10-15T13:35:09.533Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/collection.png">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java基础-集合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/10/15/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/" class="article-date">
+  <time class="dt-published" datetime="2024-10-15T13:32:50.000Z" itemprop="datePublished">2024-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      五、Java基础-集合
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="https://qinyunjian-1316017204.cos.ap-guangzhou.myqcloud.com/images/typora/collection.png" alt="collection"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>Java 集合框架</strong>可以分为两条大的支线：</p>
+<p>①、<code>Collection</code>，主要由 <code>List</code>、<code>Set</code>、<code>Queue</code> 组成：</p>
+<ul>
+<li><code>List</code> 代表有序、可重复的集合，典型代表就是封装了动态数组的 <code>ArrayList</code>和封装了链表的 <code>LinkedList</code>；</li>
+<li><code>Set</code> 代表无序、不可重复的集合，典型代表就是 <code>HashSet</code> 和 <code>TreeSet</code>；</li>
+<li><code>Queue</code> 代表队列，典型代表就是双端队列 <code>ArrayDeque</code>，以及优先级队列 <code>PriorityQueue</code></li>
+</ul>
+<p>②、<code>Map</code>，代表键值对的集合，典型代表就是 <code>HashMap</code></p>
+<h3 id="1、List"><a href="#1、List" class="headerlink" title="1、List"></a>1、List</h3><p><code>List</code> 的特点是存取有序，可以存放重复的元素，可以用下标对元素进行操作。</p>
+<h4 id="1-1-ArrayList"><a href="#1-1-ArrayList" class="headerlink" title="1.1 ArrayList"></a>1.1 ArrayList</h4><p> <code>ArrayList</code> 的增删改查。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个集合</span></span><br><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">list.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历集合 for 循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 遍历集合 for each</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">list.remove(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 遍历集合</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素</span></span><br><span class="line">list.set(<span class="number">1</span>, <span class="string">&quot;apple&quot;</span>);</span><br><span class="line"><span class="comment">// 遍历集合</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单介绍一下 <code>ArrayList</code> 的特征</p>
+<ul>
+<li><code>ArrayList</code> 是由数组实现的，支持随机存取，也就是可以通过下标直接存取元素；</li>
+<li>从尾部插入和删除元素会比较快捷，从中间插入和删除元素会比较低效，因为涉及到数组元素的复制和移动；</li>
+<li>如果内部数组的容量不足时会自动扩容，因此当元素非常庞大的时候，效率会比较低。</li>
+</ul>
+<h4 id="1-2、LinkedList"><a href="#1-2、LinkedList" class="headerlink" title="1.2、LinkedList"></a>1.2、LinkedList</h4><p> <code>LinkedList</code> 的增删改查，和 <code>ArrayList</code> 几乎没什么差别。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个集合</span></span><br><span class="line">LinkedList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;String&gt;();</span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">list.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历集合 for 循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 遍历集合 for each</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">list.remove(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 遍历集合</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素</span></span><br><span class="line">list.set(<span class="number">1</span>, <span class="string">&quot;apple&quot;</span>);</span><br><span class="line"><span class="comment">// 遍历集合</span></span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过，<code>LinkedList</code> 和 <code>ArrayList</code> 仍然有较大的不同</p>
+<ul>
+<li><code>LinkedList</code> 是由双向链表实现的，不支持随机存取，只能从一端开始遍历，直到找到需要的元素后返回；</li>
+<li>任意位置插入和删除元素都很方便，因为只需要改变前一个节点和后一个节点的引用即可，不像 <code>ArrayList</code> 那样需要复制和移动数组元素；</li>
+<li>因为每个元素都存储了前一个和后一个节点的引用，所以相对来说，占用的内存空间会比 <code>ArrayList</code> 多一些。</li>
+</ul>
+<h4 id="1-3-Vector-和-Stack"><a href="#1-3-Vector-和-Stack" class="headerlink" title="1.3 Vector 和 Stack"></a>1.3 Vector 和 Stack</h4><p><code>List</code> 的实现类还有一个 <code>Vector</code>，是一个元老级的类，比 <code>ArrayList</code> 出现得更早。<code>ArrayList</code> 和 <code>Vector</code> 非常相似，只不过 <code>Vector</code> 是线程安全的，像 <code>get</code>、<code>set</code>、<code>add</code> 这些方法都加了 <code>synchronized</code> 关键字，就导致执行效率会比较低，所以现在已经很少用了。</p>
+<p><code>add</code> 方法的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">    elementData[elementCount++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种加了同步方法的类，注定会被淘汰掉，就像<code>StringBuilder</code> 取代 <code>StringBuffer</code>那样。JDK 源码也说了：</p>
+<blockquote>
+<p>如果不需要线程安全，建议使用 ArrayList 代替 Vector。</p>
+</blockquote>
+<h3 id="2、Set"><a href="#2、Set" class="headerlink" title="2、Set"></a>2、Set</h3><p><code>Set</code> 的特点是存取无序，不可以存放重复的元素，不可以用下标对元素进行操作，和 <code>List</code> 有很多不同。</p>
+<h4 id="2-1-HashSet"><a href="#2-1-HashSet" class="headerlink" title="2.1 HashSet"></a>2.1 HashSet</h4><p><code>HashSet</code> 其实是由 <code>HashMap</code> 实现的，只不过值由一个固定的 <code>Object</code> 对象填充，而键用于操作，<code>HashSet</code>源码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashSet</span>&lt;E&gt; <span class="keyword">extends</span> <span class="title class_">AbstractSet</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">Set</span>&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dummy value to associate with an Object in the backing Map</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Object</span> <span class="variable">PRESENT</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HashSet</span><span class="params">()</span> &#123;</span><br><span class="line">        map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> map.put(e, PRESENT)==<span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">remove</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> map.remove(o)==PRESENT;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际开发中，<code>HashSet</code> 并不常用，比如，如果我们需要按照顺序存储一组元素，那么 <code>ArrayList</code> 和 <code>LinkedList</code> 可能更适合；如果我们需要存储键值对并根据键进行查找，那么 <code>HashMap</code> 可能更适合。</p>
+<p>增删改查代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个新的HashSet</span></span><br><span class="line">HashSet&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出HashSet的元素个数</span></span><br><span class="line">System.out.println(<span class="string">&quot;HashSet size: &quot;</span> + set.size()); <span class="comment">// output: 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断元素是否存在于HashSet中</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">contains2</span> <span class="operator">=</span> set.contains(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;Does set contain &#x27;apple&#x27;? &quot;</span> + contains2); <span class="comment">// output: true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">remove2</span> <span class="operator">=</span> set.remove(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;Removed &#x27;apple&#x27;? &quot;</span> + remove2); <span class="comment">// output: true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素，需要先删除后添加</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">removeChenmo</span> <span class="operator">=</span> set.remove(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">addBuChenmo</span> <span class="operator">=</span> set.add(<span class="string">&quot;不banana&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;Modified set? &quot;</span> + (removeChenmo &amp;&amp; addBuChenmo)); <span class="comment">// output: true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出修改后的HashSet</span></span><br><span class="line">System.out.println(<span class="string">&quot;HashSet after modification: &quot;</span> + set); <span class="comment">// output: [cherry, 不banana]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>HashSet</code> 主要用于去重，比如，我们需要统计一篇文章中有多少个不重复的单词，就可以使用 <code>HashSet</code> 来实现。</p>
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 HashSet 对象</span></span><br><span class="line">HashSet&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出 HashSet 的元素个数</span></span><br><span class="line">System.out.println(<span class="string">&quot;HashSet size: &quot;</span> + set.size()); <span class="comment">// output: 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 HashSet</span></span><br><span class="line"><span class="keyword">for</span> (String s : set) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的例子可以看得出，<code>HashSet</code> 会自动去重，因为它是用 <code>HashMap</code> 实现的，<code>HashMap</code>的键是唯一的（哈希值），相同键的值会覆盖掉原来的值，于是第二次 <code>set.add(&quot;banana&quot;)</code> 的时候就覆盖了第一次的 <code>set.add(&quot;banana&quot;)</code>。</p>
+<p>我在的时候用到了 <code>HashSet</code>，大家可以通过链接去查看一下。</p>
+<h4 id="2-2-LinkedHashSet"><a href="#2-2-LinkedHashSet" class="headerlink" title="2.2 LinkedHashSet"></a>2.2 LinkedHashSet</h4><p><code>LinkedHashSet</code> 虽然继承自 <code>HashSet</code>，其实是由 <code>LinkedHashMap</code>实现的。</p>
+<p><code>LinkedHashSet</code> 的无参构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">LinkedHashSet</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="number">16</span>, <span class="number">.75f</span>, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码的意思是它将调用父类的 <code>HashSet</code> 的一个有参构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashSet(<span class="type">int</span> initialCapacity, <span class="type">float</span> loadFactor, <span class="type">boolean</span> dummy) &#123;</span><br><span class="line">    map = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;(initialCapacity, loadFactor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p> <code>LinkedHashSet</code> 的增删改查示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LinkedHashSet&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">LinkedHashSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">set.remove(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素</span></span><br><span class="line">set.remove(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;banana的力量&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">has3</span> <span class="operator">=</span> set.contains(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;set包含cherry吗？&quot;</span> + has3);</span><br></pre></td></tr></table></figure>
+
+<p>在以上代码中，我们首先创建了一个 <code>LinkedHashSet</code> 对象，然后使用 <code>add</code> 方法依次添加了三个元素：<code>banana</code>、<code>apple</code>和<code>cherry</code>。接着，我们使用 <code>remove</code> 方法删除了<code>apple</code>这个元素，并使用 <code>remove</code> 和 <code>add</code> 方法修改了<code>banana</code>这个元素。最后，我们使用 <code>contains</code> 方法查找了<code>cherry</code>这个元素是否存在于 <code>set</code> 中，并打印了结果。<code>LinkedHashSet</code> 是一种基于哈希表实现的 <code>Set</code> 接口，它继承自 <code>HashSet</code>，并且使用链表维护了元素的插入顺序。因此，它既具有 <code>HashSet</code> 的快速查找、插入和删除操作的优点，又可以维护元素的插入顺序。</p>
+<h4 id="2-3-TreeSet"><a href="#2-3-TreeSet" class="headerlink" title="2.3 TreeSet"></a>2.3 TreeSet</h4><p>是的，与 <code>TreeMap</code> 相似，<code>TreeSet</code> 是一种基于红黑树实现的有序集合，它实现了 <code>SortedSet</code> 接口，可以自动对集合中的元素进行排序。按照键的自然顺序或指定的比较器顺序进行排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 TreeSet 对象</span></span><br><span class="line">TreeSet&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">System.out.println(set); <span class="comment">// 输出 [banana, apple, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">set.remove(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">System.out.println(set); <span class="comment">// 输出 [banana, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素：TreeSet 中的元素不支持直接修改，需要先删除再添加</span></span><br><span class="line">set.remove(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;qyj&quot;</span>);</span><br><span class="line">System.out.println(set); <span class="comment">// 输出 [banana, qyj]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素</span></span><br><span class="line">System.out.println(set.contains(<span class="string">&quot;banana&quot;</span>)); <span class="comment">// 输出 true</span></span><br><span class="line">System.out.println(set.contains(<span class="string">&quot;apple&quot;</span>)); <span class="comment">// 输出 false</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，<code>TreeSet</code> 不允许插入 <code>null</code> 元素，否则会抛出 <code>NullPointerException</code> 异常。</p>
+<h3 id="3、Queue"><a href="#3、Queue" class="headerlink" title="3、Queue"></a>3、Queue</h3><p><code>Queue</code>，也就是队列，通常遵循先进先出（<code>FIFO</code>）的原则，新元素插入到队列的尾部，访问元素返回队列的头部。</p>
+<h4 id="3-1-ArrayDeque"><a href="#3-1-ArrayDeque" class="headerlink" title="3.1 ArrayDeque"></a>3.1 ArrayDeque</h4><p>从名字上可以看得出，<code>ArrayDeque</code> 是一个基于数组实现的双端队列，为了满足可以同时在数组两端插入或删除元素的需求，数组必须是循环的，也就是说数组的任何一点都可以被看作是起点或者终点。</p>
+<p>这是一个包含了 4 个元素的双端队列，和一个包含了 5 个元素的双端队列。</p>
+<p><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/gailan-02.png" alt="img"></p>
+<p><code>head</code> 指向队首的第一个有效的元素，<code>tail</code> 指向队尾第一个可以插入元素的空位，因为是循环数组，所以 <code>head</code> 不一定从是从 0 开始，<code>tail</code> 也不一定总是比 <code>head</code> 大。<code>ArrayDeque</code> 的增删改查示例：。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个ArrayDeque</span></span><br><span class="line">ArrayDeque&lt;String&gt; deque = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">deque.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">deque.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">deque.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">deque.remove(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素</span></span><br><span class="line">deque.remove(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">deque.add(<span class="string">&quot;banana的力量&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">has3</span> <span class="operator">=</span> deque.contains(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;deque包含cherry吗？&quot;</span> + has3);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-LinkedList"><a href="#3-2-LinkedList" class="headerlink" title="3.2 LinkedList"></a>3.2 LinkedList</h4><p><code>LinkedList</code> 一般应该归在 <code>List</code> 下，只不过，它也实现了 <code>Deque</code> 接口，可以作为队列来使用。等于说，<code>LinkedList</code> 同时实现了 <code>Stack</code>、<code>Queue</code>、<code>PriorityQueue</code> 的所有功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LinkedList</span>&lt;E&gt; <span class="keyword">extends</span> <span class="title class_">AbstractSequentialList</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">List</span>&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>换句话说，<code>LinkedList</code> 和 <code>ArrayDeque</code> 都是 Java 集合框架中的双向队列（deque），它们都支持在队列的两端进行元素的插入和删除操作。不过，<code>LinkedList</code> 和 <code>ArrayDeque</code> 在实现上有一些不同：</p>
+<ul>
+<li>底层实现方式不同：<code>LinkedList</code> 是基于链表实现的，而 <code>ArrayDeque</code> 是基于数组实现的。</li>
+<li>随机访问的效率不同：由于底层实现方式的不同，<code>LinkedList</code> 对于随机访问的效率较低，时间复杂度为 O(n)，而 <code>ArrayDeque</code> 可以通过下标随机访问元素，时间复杂度为 O(1)。</li>
+<li>迭代器的效率不同：<code>LinkedList</code> 对于迭代器的效率比较低，因为需要通过链表进行遍历，时间复杂度为 O(n)，而 <code>ArrayDeque</code> 的迭代器效率比较高，因为可以直接访问数组中的元素，时间复杂度为 O(1)。</li>
+<li>内存占用不同：由于 <code>LinkedList</code> 是基于链表实现的，它在存储元素时需要额外的空间来存储链表节点，因此内存占用相对较高，而 <code>ArrayDeque</code> 是基于数组实现的，内存占用相对较低。</li>
+</ul>
+<p>因此，在选择使用 <code>LinkedList</code> 还是 <code>ArrayDeque</code> 时，需要根据具体的业务场景和需求来选择。如果需要在双向队列的两端进行频繁的插入和删除操作，并且需要随机访问元素，可以考虑使用 <code>ArrayDeque</code>；如果需要在队列中间进行频繁的插入和删除操作，可以考虑使用 <code>LinkedList</code>。</p>
+<p>来一段 <code>LinkedList</code> 作为队列时候的增删改查吧，注意和它作为 <code>List</code> 的时候有很大的不同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 LinkedList 对象</span></span><br><span class="line">LinkedList&lt;String&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">queue.offer(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [banana, apple, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">queue.poll();</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [apple, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素：LinkedList 中的元素不支持直接修改，需要先删除再添加</span></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">queue.offer(<span class="string">&quot;王大二&quot;</span>);</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [cherry, 王大二]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素：LinkedList 中的元素可以使用 get() 方法进行查找</span></span><br><span class="line">System.out.println(queue.get(<span class="number">0</span>)); <span class="comment">// 输出 cherry</span></span><br><span class="line">System.out.println(queue.contains(<span class="string">&quot;banana&quot;</span>)); <span class="comment">// 输出 false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素：使用迭代器的方式查找cherry</span></span><br><span class="line"><span class="comment">// 使用迭代器依次遍历元素并查找</span></span><br><span class="line">Iterator&lt;String&gt; iterator = queue.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">element</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">    <span class="keyword">if</span> (element.equals(<span class="string">&quot;cherry&quot;</span>)) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;找到了：&quot;</span> + element);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用 <code>LinkedList</code> 作为队列时，可以使用 offer() 方法将元素添加到队列的末尾，使用 poll() 方法从队列的头部删除元素。另外，由于 <code>LinkedList</code> 是链表结构，不支持随机访问元素，因此不能使用下标访问元素，需要使用迭代器或者 poll() 方法依次遍历元素。</p>
+<h4 id="3-3-PriorityQueue"><a href="#3-3-PriorityQueue" class="headerlink" title="3.3 PriorityQueue"></a>3.3 PriorityQueue</h4><p><code>PriorityQueue</code> 是一种优先级队列，它的出队顺序与元素的优先级有关，执行 <code>remove</code> 或者 <code>poll</code> 方法，返回的总是优先级最高的元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 PriorityQueue 对象</span></span><br><span class="line">PriorityQueue&lt;String&gt; queue = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">queue.offer(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [banana, apple, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">queue.poll();</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [apple, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改元素：PriorityQueue 不支持直接修改元素，需要先删除再添加</span></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">queue.offer(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">System.out.println(queue); <span class="comment">// 输出 [张三, cherry]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素：PriorityQueue 不支持随机访问元素，只能访问队首元素</span></span><br><span class="line">System.out.println(queue.peek()); <span class="comment">// 输出 张三</span></span><br><span class="line">System.out.println(queue.contains(<span class="string">&quot;cherry&quot;</span>)); <span class="comment">// 输出 true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过 for 循环的方式查找cherry</span></span><br><span class="line"><span class="keyword">for</span> (String element : queue) &#123;</span><br><span class="line">    <span class="keyword">if</span> (element.equals(<span class="string">&quot;cherry&quot;</span>)) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;找到了：&quot;</span> + element);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要想有优先级，元素就需要实现 <code>Comparable</code> 接口或者 <code>Comparator</code> 接口。</p>
+<p>这里先来一段通过实现 <code>Comparator</code> 接口按照年龄姓名排序的优先级队列吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> chineseScore;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> mathScore;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> chineseScore, <span class="type">int</span> mathScore)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.chineseScore = chineseScore;</span><br><span class="line">        <span class="built_in">this</span>.mathScore = mathScore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getChineseScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> chineseScore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getMathScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mathScore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Student&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, 总成绩=&quot;</span> + (chineseScore + mathScore) +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;Student&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student s1, Student s2)</span> &#123;</span><br><span class="line">        <span class="comment">// 比较总成绩</span></span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s2.getChineseScore() + s2.getMathScore(),</span><br><span class="line">                s1.getChineseScore() + s1.getMathScore());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PriorityQueueComparatorExample</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个按照总成绩排序的优先级队列</span></span><br><span class="line">        PriorityQueue&lt;Student&gt; queue = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">StudentComparator</span>());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素</span></span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;apple&quot;</span>, <span class="number">80</span>, <span class="number">90</span>));</span><br><span class="line">        System.out.println(queue);</span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;cherry&quot;</span>, <span class="number">95</span>, <span class="number">95</span>));</span><br><span class="line">        System.out.println(queue);</span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;qinyunjian&quot;</span>, <span class="number">90</span>, <span class="number">95</span>));</span><br><span class="line">        System.out.println(queue);</span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;banana&quot;</span>, <span class="number">90</span>, <span class="number">80</span>));</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            System.out.print(queue.poll() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Student</code> 是一个学生对象，包含姓名、语文成绩和数学成绩。</p>
+<p><code>StudentComparator</code> 实现了 <code>Comparator</code> 接口，对总成绩做了一个排序。</p>
+<p><code>PriorityQueue</code> 是一个优先级队列，参数为 <code>StudentComparator</code>，然后我们添加了 4 个学生对象进去。</p>
+<p>来看一下输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Student&#123;name=&#x27;apple&#x27;, 总成绩=170&#125;]</span><br><span class="line">[Student&#123;name=&#x27;cherry&#x27;, 总成绩=190&#125;, Student&#123;name=&#x27;apple&#x27;, 总成绩=170&#125;]</span><br><span class="line">[Student&#123;name=&#x27;cherry&#x27;, 总成绩=190&#125;, Student&#123;name=&#x27;apple&#x27;, 总成绩=170&#125;, Student&#123;name=&#x27;qinyunjian&#x27;, 总成绩=185&#125;]</span><br><span class="line">Student&#123;name=&#x27;cherry&#x27;, 总成绩=190&#125; Student&#123;name=&#x27;qinyunjian&#x27;, 总成绩=185&#125; Student&#123;name=&#x27;banana&#x27;, 总成绩=170&#125; Student&#123;name=&#x27;apple&#x27;, 总成绩=170&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们使用 <code>offer</code> 方法添加元素，最后用 <code>while</code> 循环遍历元素（通过 <code>poll</code> 方法取出元素），从结果可以看得出，<code>PriorityQueue</code>按照学生的总成绩由高到低进行了排序。</p>
+<h3 id="4、Map"><a href="#4、Map" class="headerlink" title="4、Map"></a>4、Map</h3><p><code>Map</code> 保存的是键值对，键要求保持唯一性，值可以重复。</p>
+<h4 id="4-1-HashMap"><a href="#4-1-HashMap" class="headerlink" title="4.1 HashMap"></a>4.1 HashMap</h4><p><code>HashMap</code> 实现了 <code>Map</code> 接口，可以根据键快速地查找对应的值——通过哈希函数将键映射到哈希表中的一个索引位置，从而实现快速访问。</p>
+<p>这里先大致了解一下 <code>HashMap</code> 的特点：</p>
+<ul>
+<li><code>HashMap</code> 中的键和值都可以为 <code>null</code>。如果键为 <code>null</code>，则将该键映射到哈希表的第一个位置。</li>
+<li>可以使用迭代器或者 <code>forEach</code> 方法遍历 <code>HashMap</code> 中的键值对。</li>
+<li><code>HashMap</code> 有一个初始容量和一个负载因子。初始容量是指哈希表的初始大小，负载因子是指哈希表在扩容之前可以存储的键值对数量与哈希表大小的比率。默认的初始容量是 16，负载因子是 0.75。</li>
+</ul>
+<p>来个简单的增删改查吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 HashMap 对象</span></span><br><span class="line">HashMap&lt;String, String&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加键值对</span></span><br><span class="line">hashMap.put(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定键的值</span></span><br><span class="line"><span class="type">String</span> <span class="variable">value1</span> <span class="operator">=</span> hashMap.get(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;banana对应的值为：&quot;</span> + value1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改键对应的值</span></span><br><span class="line">hashMap.put(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;chenmo&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value2</span> <span class="operator">=</span> hashMap.get(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;修改后banana对应的值为：&quot;</span> + value2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除指定键的键值对</span></span><br><span class="line">hashMap.remove(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 HashMap</span></span><br><span class="line"><span class="keyword">for</span> (String key : hashMap.keySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> hashMap.get(key);</span><br><span class="line">    System.out.println(key + <span class="string">&quot; 对应的值为：&quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-LinkedHashMap"><a href="#4-2-LinkedHashMap" class="headerlink" title="4.2 LinkedHashMap"></a>4.2 LinkedHashMap</h4><p><code>HashMap</code> 已经非常强大了，但它是无序的。如果我们需要一个有序的 <code>Map</code>，就要用到<code>LinkedHashMap</code> 是 <code>HashMap</code> 的子类，它使用链表来记录插入&#x2F;访问元素的顺序。</p>
+<p><code>LinkedHashMap</code> 可以看作是 <code>HashMap</code> + <code>LinkedList</code> 的合体，它使用了哈希表来存储数据，又用了双向链表来维持顺序。</p>
+<p>来一个简单的例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 LinkedHashMap，插入的键值对为 banana apple cherry</span></span><br><span class="line">LinkedHashMap&lt;String, String&gt; linkedHashMap = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">linkedHashMap.put(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">linkedHashMap.put(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">linkedHashMap.put(<span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 LinkedHashMap</span></span><br><span class="line"><span class="keyword">for</span> (String key : linkedHashMap.keySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> linkedHashMap.get(key);</span><br><span class="line">    System.out.println(key + <span class="string">&quot; 对应的值为：&quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">banana 对应的值为：1</span><br><span class="line">apple 对应的值为：2</span><br><span class="line">cherry 对应的值为：3</span><br></pre></td></tr></table></figure>
+
+<p>从结果中可以看得出来，<code>LinkedHashMap</code> 维持了键值对的插入顺序。为了和 <code>LinkedHashMap</code> 做对比，我们用同样的数据试验一下 <code>HashMap</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个HashMap，插入的键值对为 banana apple cherry</span></span><br><span class="line">HashMap&lt;String, String&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">hashMap.put(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 HashMap</span></span><br><span class="line"><span class="keyword">for</span> (String key : hashMap.keySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> hashMap.get(key);</span><br><span class="line">    System.out.println(key + <span class="string">&quot; 对应的值为：&quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">banana 对应的值为：1</span><br><span class="line">cherry 对应的值为：3</span><br><span class="line">apple 对应的值为：2</span><br></pre></td></tr></table></figure>
+
+<p><code>HashMap</code> 没有维持键值对的插入顺序。</p>
+<h4 id="4-3-TreeMap"><a href="#4-3-TreeMap" class="headerlink" title="4.3 TreeMap"></a>4.3 TreeMap</h4><p>实现了 <code>SortedMap</code> 接口，可以自动将键按照自然顺序或指定的比较器顺序排序，并保证其元素的顺序。内部使用红黑树来实现键的排序和查找。</p>
+<p>同样来一个增删改查的 <code>demo</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 TreeMap 对象</span></span><br><span class="line">Map&lt;String, String&gt; treeMap = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向 TreeMap 中添加键值对</span></span><br><span class="line">treeMap.put(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">treeMap.put(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">treeMap.put(<span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找键值对</span></span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;banana&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (treeMap.containsKey(name)) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;找到了 &quot;</span> + name + <span class="string">&quot;: &quot;</span> + treeMap.get(name));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;没有找到 &quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改键值对</span></span><br><span class="line">name = <span class="string">&quot;apple&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (treeMap.containsKey(name)) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;修改前的 &quot;</span> + name + <span class="string">&quot;: &quot;</span> + treeMap.get(name));</span><br><span class="line">    treeMap.put(name, <span class="string">&quot;new2&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;修改后的 &quot;</span> + name + <span class="string">&quot;: &quot;</span> + treeMap.get(name));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;没有找到 &quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除键值对</span></span><br><span class="line">name = <span class="string">&quot;cherry&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (treeMap.containsKey(name)) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;删除前的 &quot;</span> + name + <span class="string">&quot;: &quot;</span> + treeMap.get(name));</span><br><span class="line">    treeMap.remove(name);</span><br><span class="line">    System.out.println(<span class="string">&quot;删除后的 &quot;</span> + name + <span class="string">&quot;: &quot;</span> + treeMap.get(name));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;没有找到 &quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 TreeMap</span></span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : treeMap.entrySet()) &#123;</span><br><span class="line">    System.out.println(entry.getKey() + <span class="string">&quot;: &quot;</span> + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与 <code>HashMap</code> 不同的是，<code>TreeMap</code> 会按照键的顺序来进行排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个 TreeMap 对象</span></span><br><span class="line">Map&lt;String, String&gt; treeMap = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向 TreeMap 中添加键值对</span></span><br><span class="line">treeMap.put(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;cat&quot;</span>);</span><br><span class="line">treeMap.put(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;apple&quot;</span>);</span><br><span class="line">treeMap.put(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 TreeMap</span></span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : treeMap.entrySet()) &#123;</span><br><span class="line">    System.out.println(entry.getKey() + <span class="string">&quot;: &quot;</span> + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a: apple</span><br><span class="line">b: banana</span><br><span class="line">c: cat</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/10/15/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/" data-id="cm2ahnlmc000dp0u45894b70n" data-title="五、Java基础-集合" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">四、Java基础-面试题40-46</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Java/" style="font-size: 20px;">Java</a> <a href="/blog/tags/css/" style="font-size: 12.5px;">css</a> <a href="/blog/tags/docker/" style="font-size: 17.5px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 17.5px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 15px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/10/15/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">五、Java基础-集合</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/">三、Java基础-面试题27-39</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/25/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9814-26/">二、Java基础-面试题14-26</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/24/JavaScript%20%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/">一、JavaScript-数组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
