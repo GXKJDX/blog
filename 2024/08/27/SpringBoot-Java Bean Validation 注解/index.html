@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>一、SpringBoot Java Bean Validation 注解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="常用的 Java Bean Validation 注解包括：  校验空值：@NotNull, @NotEmpty, @NotBlank, @Null 校验长度：@Size, @Length 校验数字：@Min, @Max, @DecimalMin, @DecimalMax, @Range, @Digits 校验日期：@Past, @Future 校验格式：@Email, @Pattern 校验布尔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一、SpringBoot Java Bean Validation 注解">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/08/27/SpringBoot-Java%20Bean%20Validation%20%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用的 Java Bean Validation 注解包括：  校验空值：@NotNull, @NotEmpty, @NotBlank, @Null 校验长度：@Size, @Length 校验数字：@Min, @Max, @DecimalMin, @DecimalMax, @Range, @Digits 校验日期：@Past, @Future 校验格式：@Email, @Pattern 校验布尔">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-08-27T14:32:50.000Z">
+<meta property="article:modified_time" content="2025-04-11T14:18:51.402Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-SpringBoot-Java Bean Validation 注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/08/27/SpringBoot-Java%20Bean%20Validation%20%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2024-08-27T14:32:50.000Z" itemprop="datePublished">2024-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      一、SpringBoot Java Bean Validation 注解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>常用的 Java Bean Validation 注解包括：</p>
+<ul>
+<li>校验空值：<code>@NotNull</code>, <code>@NotEmpty</code>, <code>@NotBlank</code>, <code>@Null</code></li>
+<li>校验长度：<code>@Size</code>, <code>@Length</code></li>
+<li>校验数字：<code>@Min</code>, <code>@Max</code>, <code>@DecimalMin</code>, <code>@DecimalMax</code>, <code>@Range</code>, <code>@Digits</code></li>
+<li>校验日期：<code>@Past</code>, <code>@Future</code></li>
+<li>校验格式：<code>@Email</code>, <code>@Pattern</code></li>
+<li>校验布尔值：<code>@AssertTrue</code>, <code>@AssertFalse</code></li>
+<li>校验对象嵌套：<code>@Valid</code></li>
+</ul>
+<h3 id="1-空值校验相关注解"><a href="#1-空值校验相关注解" class="headerlink" title="1. 空值校验相关注解"></a><strong>1. 空值校验相关注解</strong></h3><p><strong><code>@NotNull</code></strong></p>
+<ul>
+<li><p>校验字段值是否为 <code>null</code>，不允许为 <code>null</code>。</p>
+</li>
+<li><p>适用类型：所有对象类型。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotNull(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@NotEmpty</code></strong></p>
+<ul>
+<li><p>校验字段是否为空，适用于 <strong>字符串、集合、数组、Map</strong> 等类型，不能为空或长度为0。</p>
+</li>
+<li><p>适用类型：字符串、集合、数组、Map。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotEmpty(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@NotBlank</code></strong></p>
+<ul>
+<li><p>校验字段是否为非空字符串，并且不能为空或只包含空白字符。</p>
+</li>
+<li><p>适用类型：字符串。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotBlank(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Null</code></strong></p>
+<ul>
+<li><p>校验字段值是否为 <code>null</code>，通常用于校验不允许赋值的字段。</p>
+</li>
+<li><p>适用类型：所有对象类型。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Null(message = &quot;字段必须为空&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String someField;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="2-长度校验相关注解"><a href="#2-长度校验相关注解" class="headerlink" title="2. 长度校验相关注解"></a><strong>2. 长度校验相关注解</strong></h3><p><strong><code>@Size</code></strong></p>
+<ul>
+<li><p>校验字符串、集合、数组的长度。</p>
+</li>
+<li><p>适用类型：字符串、集合、数组。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Size(min = 5, max = 20, message = &quot;用户名长度必须在5到20之间&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Length</code></strong> (Hibernate Validator)</p>
+<ul>
+<li><p>校验字符串的长度，类似于 <code>@Size</code>，但它专门用于字符串长度校验。</p>
+</li>
+<li><p>适用类型：字符串。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Length(min = 5, max = 10, message = &quot;密码长度必须在5到10之间&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String password;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="3-数值范围校验相关注解"><a href="#3-数值范围校验相关注解" class="headerlink" title="3. 数值范围校验相关注解"></a><strong>3. 数值范围校验相关注解</strong></h3><p><strong><code>@Min</code></strong></p>
+<ul>
+<li><p>校验字段值是否大于或等于指定的最小值。</p>
+</li>
+<li><p>适用类型：数值类型（<code>int</code>, <code>long</code>, <code>double</code>）。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Min(value = 18, message = &quot;年龄不能小于18岁&quot;)</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> age;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Max</code></strong></p>
+<ul>
+<li><p>校验字段值是否小于或等于指定的最大值。</p>
+</li>
+<li><p>适用类型：数值类型（<code>int</code>, <code>long</code>, <code>double</code>）。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Max(value = 100, message = &quot;年龄不能大于100岁&quot;)</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> age;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@DecimalMin</code> 和 <code>@DecimalMax</code></strong></p>
+<ul>
+<li><p>校验小数类型字段的最小值和最大值。</p>
+</li>
+<li><p>适用类型：<code>BigDecimal</code> 或 <code>double</code> 类型。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DecimalMin(value = &quot;0.0&quot;, inclusive = true, message = &quot;金额不能小于0&quot;)</span></span><br><span class="line"><span class="keyword">private</span> BigDecimal amount;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Range</code></strong> (Hibernate Validator)</p>
+<ul>
+<li><p>校验字段值是否在指定范围内，适用于数值类型。</p>
+</li>
+<li><p>适用类型：数值类型（<code>int</code>, <code>long</code>, <code>BigDecimal</code> 等）。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Range(min = 1, max = 100, message = &quot;数值必须在1到100之间&quot;)</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> rangeValue;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Digits</code></strong></p>
+<ul>
+<li><p>校验数字是否符合规定的整数位和小数位的范围。</p>
+</li>
+<li><p>适用类型：<code>BigDecimal</code>、<code>double</code> 等数值类型。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Digits(integer = 10, fraction = 2, message = &quot;价格必须是数字，且最多两位小数&quot;)</span></span><br><span class="line"><span class="keyword">private</span> BigDecimal price;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="4-日期相关校验注解"><a href="#4-日期相关校验注解" class="headerlink" title="4. 日期相关校验注解"></a><strong>4. 日期相关校验注解</strong></h3><p><strong><code>@Past</code></strong></p>
+<ul>
+<li><p>校验日期是否是过去的日期。</p>
+</li>
+<li><p>适用类型：<code>java.util.Date</code> 或 <code>java.time</code> 类。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Past(message = &quot;出生日期必须是过去的日期&quot;)</span></span><br><span class="line"><span class="keyword">private</span> Date birthDate;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Future</code></strong></p>
+<ul>
+<li><p>校验日期是否是未来的日期。</p>
+</li>
+<li><p>适用类型：<code>java.util.Date</code> 或 <code>java.time</code> 类。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Future(message = &quot;交付日期必须是未来日期&quot;)</span></span><br><span class="line"><span class="keyword">private</span> Date deliveryDate;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="5-格式校验相关注解"><a href="#5-格式校验相关注解" class="headerlink" title="5. 格式校验相关注解"></a><strong>5. 格式校验相关注解</strong></h3><p><strong><code>@Email</code></strong></p>
+<ul>
+<li><p>校验字段值是否为有效的电子邮件格式。</p>
+</li>
+<li><p>适用类型：<code>String</code>。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Email(message = &quot;请输入有效的邮箱地址&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String email;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@Pattern</code></strong></p>
+<ul>
+<li><p>校验字段值是否符合指定的正则表达式。</p>
+</li>
+<li><p>适用类型：<code>String</code>。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pattern(regexp = &quot;^[a-zA-Z0-9_]+$&quot;, message = &quot;用户名只能包含字母、数字和下划线&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="6-布尔值校验注解"><a href="#6-布尔值校验注解" class="headerlink" title="6. 布尔值校验注解"></a><strong>6. 布尔值校验注解</strong></h3><p><strong><code>@AssertTrue</code></strong></p>
+<ul>
+<li><p>校验字段值是否为 <code>true</code>。</p>
+</li>
+<li><p>适用类型：<code>boolean</code> 或 <code>Boolean</code>。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AssertTrue(message = &quot;必须同意用户协议&quot;)</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> agreeTerms;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>@AssertFalse</code></strong></p>
+<ul>
+<li><p>校验字段值是否为 <code>false</code>。</p>
+</li>
+<li><p>适用类型：<code>boolean</code> 或 <code>Boolean</code>。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AssertFalse(message = &quot;此操作不可执行&quot;)</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> operationForbidden;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="7-对象校验相关注解"><a href="#7-对象校验相关注解" class="headerlink" title="7. 对象校验相关注解"></a><strong>7. 对象校验相关注解</strong></h3><p><code>@Valid</code></p>
+<ul>
+<li><p>用于嵌套对象的校验。</p>
+</li>
+<li><p>适用类型：嵌套对象。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="meta">@Valid</span></span><br><span class="line">    <span class="keyword">private</span> Address address; <span class="comment">// Address 类也有自己的校验规则</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="8-其他校验注解"><a href="#8-其他校验注解" class="headerlink" title="8. 其他校验注解"></a><strong>8. 其他校验注解</strong></h3><p><code>@NotBlank</code> (Spring)</p>
+<ul>
+<li><p>校验字段是否为非空且不为仅空白字符。</p>
+</li>
+<li><p>适用类型：<code>String</code>。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotBlank(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="常见的使用场景和示例"><a href="#常见的使用场景和示例" class="headerlink" title="常见的使用场景和示例"></a>常见的使用场景和示例</h3><h4 id="1-校验请求参数（请求体）"><a href="#1-校验请求参数（请求体）" class="headerlink" title="1. 校验请求参数（请求体）"></a>1. <strong>校验请求参数（请求体）</strong></h4><p>在 Spring Boot 控制器中，常见的场景是校验 POST 或 PUT 请求中的请求体。假设你有一个用户注册接口，需要校验用户信息：</p>
+<p><strong>User.java（实体类）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line">    <span class="meta">@Size(min = 5, max = 30, message = &quot;用户名长度必须在5到30之间&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;密码不能为空&quot;)</span></span><br><span class="line">    <span class="meta">@Size(min = 8, max = 20, message = &quot;密码长度必须在8到20之间&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Email(message = &quot;邮箱格式不正确&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UserController.java（控制器）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.validation.annotation.Validated;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> javax.validation.Valid;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过@Valid触发校验</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/register&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">register</span><span class="params">(<span class="meta">@Valid</span> <span class="meta">@RequestBody</span> User user)</span> &#123;</span><br><span class="line">        <span class="comment">// 如果校验失败，会自动返回400错误，提示校验信息</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;用户注册成功!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-校验查询参数"><a href="#2-校验查询参数" class="headerlink" title="2. 校验查询参数"></a>2. <strong>校验查询参数</strong></h4><p>除了请求体中的数据，很多时候我们也需要校验查询参数。例如，校验用户的查询条件（如分页参数、排序字段等）：</p>
+<p><strong>QueryParams.java（查询参数类）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QueryParams</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Min(value = 1, message = &quot;页码不能小于1&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> page;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Min(value = 1, message = &quot;每页记录数不能小于1&quot;)</span></span><br><span class="line">    <span class="meta">@Max(value = 100, message = &quot;每页记录数不能超过100&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pattern(regexp = &quot;name|email|phone&quot;, message = &quot;排序字段不合法&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String sortBy;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pattern(regexp = &quot;asc|desc&quot;, message = &quot;排序方式不合法&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String sortOrder;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UserController.java（控制器）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过@Validated触发校验（校验查询参数）</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getUserList</span><span class="params">(<span class="meta">@Validated</span> <span class="meta">@ModelAttribute</span> QueryParams queryParams)</span> &#123;</span><br><span class="line">        <span class="comment">// 查询逻辑</span></span><br><span class="line">        <span class="keyword">return</span> userService.getUserList(queryParams);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>@Validated</code> 触发了对 <code>QueryParams</code> 的校验，确保 <code>page</code>、<code>size</code> 和 <code>sortBy</code> 等字段符合预期的规则。</p>
+<h4 id="3-校验嵌套对象"><a href="#3-校验嵌套对象" class="headerlink" title="3. 校验嵌套对象"></a>3. <strong>校验嵌套对象</strong></h4><p>当一个对象内嵌有其他对象时，可以使用 <code>@Valid</code> 或 <code>@Validated</code> 来递归触发嵌套对象的校验。</p>
+<p><strong>Address.java（嵌套对象）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Address</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;省份不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String province;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;城市不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;街道不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String street;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>User.java（包含嵌套对象）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Valid</span>  <span class="comment">// 触发嵌套对象Address的校验</span></span><br><span class="line">    <span class="keyword">private</span> Address address;  <span class="comment">// 地址对象</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UserController.java（控制器）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/create&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createUser</span><span class="params">(<span class="meta">@Valid</span> <span class="meta">@RequestBody</span> User user)</span> &#123;</span><br><span class="line">        <span class="comment">// 当User的address字段校验失败时，会自动返回400错误</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;用户创建成功!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>User</code> 类有一个嵌套的 <code>Address</code> 类，通过 <code>@Valid</code> 注解，Spring 会自动校验 <code>Address</code> 类中的字段。</p>
+<h4 id="4-校验更新操作的字段（使用校验分组）"><a href="#4-校验更新操作的字段（使用校验分组）" class="headerlink" title="4. 校验更新操作的字段（使用校验分组）"></a>4. <strong>校验更新操作的字段（使用校验分组）</strong></h4><p>在某些情况下，针对不同操作（如创建、更新）会有不同的校验规则。可以通过校验分组来实现不同场景下的校验。</p>
+<p><strong>CreateGroup.java（分组接口）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CreateGroup</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UpdateGroup.java（分组接口）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UpdateGroup</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>User.java（实体类）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;用户名不能为空&quot;, groups = &#123;CreateGroup.class, UpdateGroup.class&#125;)</span></span><br><span class="line">    <span class="meta">@Size(min = 5, max = 30, message = &quot;用户名长度必须在5到30之间&quot;, groups = &#123;CreateGroup.class, UpdateGroup.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;密码不能为空&quot;, groups = &#123;CreateGroup.class&#125;)</span></span><br><span class="line">    <span class="meta">@Size(min = 8, max = 20, message = &quot;密码长度必须在8到20之间&quot;, groups = &#123;CreateGroup.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Email(message = &quot;邮箱格式不正确&quot;, groups = &#123;UpdateGroup.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UserController.java（控制器）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/create&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createUser</span><span class="params">(<span class="meta">@Validated(CreateGroup.class)</span> <span class="meta">@RequestBody</span> User user)</span> &#123;</span><br><span class="line">        <span class="comment">// 仅校验CreateGroup中的字段</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;用户创建成功!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateUser</span><span class="params">(<span class="meta">@Validated(UpdateGroup.class)</span> <span class="meta">@RequestBody</span> User user)</span> &#123;</span><br><span class="line">        <span class="comment">// 仅校验UpdateGroup中的字段</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;用户更新成功!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过不同的校验分组，你可以在创建用户时校验用户名和密码，但在更新用户时只校验邮箱。</p>
+<h4 id="5-校验集合对象"><a href="#5-校验集合对象" class="headerlink" title="5. 校验集合对象"></a>5. <strong>校验集合对象</strong></h4><p>如果一个字段是集合类型，且集合内的每个元素都需要校验，可以使用 <code>@Valid</code> 注解来校验集合中的每个元素。</p>
+<p><strong>User.java（包含集合）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull(message = &quot;用户名不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Valid</span>  <span class="comment">// 校验集合中的每个元素</span></span><br><span class="line">    <span class="meta">@NotEmpty(message = &quot;角色列表不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;<span class="meta">@NotNull(message = &quot;角色不能为空&quot;)</span> String&gt; roles;  <span class="comment">// 角色列表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// getters and setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>UserController.java（控制器）</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/users&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;/create&quot;)</span><br><span class="line">    public String createUser(@Valid @RequestBody User user) &#123;</span><br><span class="line">        // 校验失败时会返回400错误，提示哪些角色无效</span><br><span class="line">        return &quot;用户创建成功!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，如果 <code>roles</code> 中有 <code>null</code> 或者是空的，Spring 会根据注解规则抛出验证异常。</p>
+<h4 id="6-校验方法参数（局部验证）"><a href="#6-校验方法参数（局部验证）" class="headerlink" title="6. 校验方法参数（局部验证）"></a>6. <strong>校验方法参数（局部验证）</strong></h4><p>除了全局校验（如类上的注解），你还可以在方法参数上进行校验。</p>
+<p><strong>UserService.java（服务类）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.validation.constraints.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateUserInfo</span><span class="params">(<span class="meta">@NotNull</span> <span class="meta">@Size(min = 5)</span> String userName)</span> &#123;</span><br><span class="line">        <span class="comment">// 如果userName不符合条件，会抛出ConstraintViolationException</span></span><br><span class="line">        System.out.println(<span class="string">&quot;用户名更新为：&quot;</span> + userName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>常见的校验注解使用示例包括：</p>
+<ol>
+<li><strong>校验请求参数</strong>：在 Spring 控制器中使用 <code>@Valid</code> 校验请求体或 <code>@Validated</code> 校验查询参数。</li>
+<li><strong>校验嵌套对象</strong>：通过在父类对象字段上使用 <code>@Valid</code> 来校验嵌套对象。</li>
+<li><strong>校验分组</strong>：使用不同的分组来为不同的操作（如创建、更新）定义不同的校验规则。</li>
+<li><strong>校验集合对象</strong>：使用 <code>@Valid</code> 校验集合中的每个元素。</li>
+<li><strong>校验方法参数</strong>：方法级别的校验，用于校验方法传入的参数。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/08/27/SpringBoot-Java%20Bean%20Validation%20%E6%B3%A8%E8%A7%A3/" data-id="cm9cvl5df0001v0u46m2fbgq5" data-title="一、SpringBoot Java Bean Validation 注解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          四、Java基础-面试题40-46
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/08/26/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9827-39/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">三、Java基础-面试题27-39</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Java/" style="font-size: 20px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/blog/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 16.67px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2025/04/11/JavaScript-%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2025/04/11/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">五、Java基础-集合</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/10/15/JavaScript-js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/">一、JavaScript-数组</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/27/SpringBoot-Java%20Bean%20Validation%20%E6%B3%A8%E8%A7%A3/">一、SpringBoot Java Bean Validation 注解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
