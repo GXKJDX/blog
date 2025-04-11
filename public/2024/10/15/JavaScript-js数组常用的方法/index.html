@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>一、JavaScript-数组 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 JavaScript 数组常用的方法前置条件值 &#x3D;&gt; 表达式 代表的是一个箭头函数的定义方式。下面是更详细的解释：  值：这是箭头函数的参数，可以是一个或多个参数。如果只有一个参数，可以省略圆括号；如果有多个参数，则必须使用圆括号包裹起来。 例如：  单个参数：num &#x3D;&gt; ... 多个参数：(num, num2) &#x3D;&gt; ...   表达式：这是箭头函数的主体。如果箭头函数只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一、JavaScript-数组">
+<meta property="og:url" content="https://github.com/GXKJDX/blog/2024/10/15/JavaScript-js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 JavaScript 数组常用的方法前置条件值 &#x3D;&gt; 表达式 代表的是一个箭头函数的定义方式。下面是更详细的解释：  值：这是箭头函数的参数，可以是一个或多个参数。如果只有一个参数，可以省略圆括号；如果有多个参数，则必须使用圆括号包裹起来。 例如：  单个参数：num &#x3D;&gt; ... 多个参数：(num, num2) &#x3D;&gt; ...   表达式：这是箭头函数的主体。如果箭头函数只">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-15T14:32:50.000Z">
+<meta property="article:modified_time" content="2024-10-15T13:41:02.643Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/GXKJDX/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript-js数组常用的方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/10/15/JavaScript-js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2024-10-15T14:32:50.000Z" itemprop="datePublished">2024-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      一、JavaScript-数组
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="1-JavaScript-数组常用的方法"><a href="#1-JavaScript-数组常用的方法" class="headerlink" title="1 JavaScript 数组常用的方法"></a>1 JavaScript 数组常用的方法</h4><h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p><code>值 =&gt; 表达式</code> 代表的是一个箭头函数的定义方式。下面是更详细的解释：</p>
+<ul>
+<li><p><strong>值</strong>：这是箭头函数的参数，可以是一个或多个参数。如果只有一个参数，可以省略圆括号；如果有多个参数，则必须使用圆括号包裹起来。</p>
+<p>例如：</p>
+<ul>
+<li>单个参数：<code>num =&gt; ...</code></li>
+<li>多个参数：<code>(num, num2) =&gt; ...</code></li>
+</ul>
+</li>
+<li><p><strong>表达式</strong>：这是箭头函数的主体。如果箭头函数只有一个表达式，那么可以省略花括号（<code>&#123;&#125;</code>）和 <code>return</code> 关键字，直接返回这个表达式的结果。</p>
+<p>例如：</p>
+<ul>
+<li><code>num =&gt; num * 2</code>：返回 <code>num</code> 的两倍。</li>
+<li><code>num =&gt; &#123; console.log(num); &#125;</code>：打印 <code>num</code>，但因为有花括号，所以需要使用 <code>return</code> 才能返回值。</li>
+</ul>
+</li>
+</ul>
+<p><code>[...array]</code>：</p>
+<ul>
+<li><p>这是扩展运算符（Spread Operator）的使用，它用于将数组 <code>numbers</code> 的所有元素展开成一个新的数组。</p>
+<p>例如：</p>
+<ul>
+<li><code>const array = [1, 9, 6, 3, 7, 4, 5]</code>; <code>const sorted = [...array]</code>; <code>sorted</code>是复制原数组得到的新数组。</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-纯数组"><a href="#1-纯数组" class="headerlink" title="1 纯数组"></a>1 纯数组</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// forEach() （循环遍历数组）</span></span><br><span class="line">numbers.<span class="title function_">forEach</span>(<span class="function"><span class="params">num</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(num)); <span class="comment">// 1, 9, 6, 3, 7, 4, 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// map() （创建新数组，包含每个元素的平方）</span></span><br><span class="line"><span class="keyword">const</span> squares = numbers.<span class="title function_">map</span>(<span class="function"><span class="params">num</span> =&gt;</span> num * num);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(squares); <span class="comment">// [1, 81, 36, 9, 49, 16, 25]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter() （过滤出大于5的元素）</span></span><br><span class="line"><span class="keyword">const</span> filtered = numbers.<span class="title function_">filter</span>(<span class="function"><span class="params">num</span> =&gt;</span> num &gt; <span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filtered); <span class="comment">// [9, 6, 7]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reduce() （计算数组元素的总和）</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, num</span>) =&gt;</span> acc + num, <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum); <span class="comment">// 35</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// find() （查找第一个大于5的元素）</span></span><br><span class="line"><span class="keyword">const</span> found = numbers.<span class="title function_">find</span>(<span class="function"><span class="params">num</span> =&gt;</span> num &gt; <span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(found); <span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// some() （检查是否存在偶数）</span></span><br><span class="line"><span class="keyword">const</span> hasEven = numbers.<span class="title function_">some</span>(<span class="function"><span class="params">num</span> =&gt;</span> num % <span class="number">2</span> === <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasEven); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// every() （检查是否所有元素都是正数）</span></span><br><span class="line"><span class="keyword">const</span> allPositive = numbers.<span class="title function_">every</span>(<span class="function"><span class="params">num</span> =&gt;</span> num &gt; <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(allPositive); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sort() （按升序排序数组）</span></span><br><span class="line"><span class="keyword">const</span> sorted = [...numbers].<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sorted); <span class="comment">// [1, 3, 4, 5, 6, 7, 9]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reverse() （反转数组顺序）</span></span><br><span class="line"><span class="keyword">const</span> reversed = [...numbers].<span class="title function_">reverse</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reversed); <span class="comment">// [5, 4, 7, 3, 6, 9, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() （检查数组是否包含5）</span></span><br><span class="line"><span class="keyword">const</span> includesFive = numbers.<span class="title function_">includes</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(includesFive); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf() （查找9在数组中的索引）</span></span><br><span class="line"><span class="keyword">const</span> index = numbers.<span class="title function_">indexOf</span>(<span class="number">9</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(index); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// splice() （删除索引2的元素，并插入100）</span></span><br><span class="line"><span class="keyword">const</span> modified = [...numbers];</span><br><span class="line">modified.<span class="title function_">splice</span>(<span class="number">2</span>, <span class="number">1</span>, <span class="number">100</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(modified); <span class="comment">// [1, 9, 100, 3, 7, 4, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() （提取索引1到4的片段）</span></span><br><span class="line"><span class="keyword">const</span> sliced = numbers.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sliced); <span class="comment">// [9, 6, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// push() （向数组末尾添加元素）</span></span><br><span class="line">numbers.<span class="title function_">push</span>(<span class="number">10</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers); <span class="comment">// [1, 9, 6, 3, 7, 4, 5, 10]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// pop() （删除数组末尾的元素）</span></span><br><span class="line"><span class="keyword">const</span> popped = numbers.<span class="title function_">pop</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(popped); <span class="comment">// 10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers); <span class="comment">// [1, 9, 6, 3, 7, 4, 5]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-数组对象"><a href="#2-数组对象" class="headerlink" title="2 数组对象"></a>2 数组对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">232</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.0&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;草甘膦水剂&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">233</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.0&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;妙耕桶签&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">234</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.0&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;41%草甘膦桶&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">255</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.1&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;外购半成品&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">256</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.1&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;妙耕桶签&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">257</span>, <span class="attr">fnumber</span>: <span class="string">&quot;01030252_V1.1&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;41%草甘膦桶&quot;</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// forEach() （循环遍历数组对象）</span></span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(item)); <span class="comment">// 打印每个对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// map() （提取fnumber属性，创建新数组）</span></span><br><span class="line"><span class="keyword">const</span> fnumbers = data.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">fnumber</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fnumbers); <span class="comment">// [&quot;01030252_V1.0&quot;, &quot;01030252_V1.0&quot;, &quot;01030252_V1.0&quot;, &quot;01030252_V1.1&quot;, &quot;01030252_V1.1&quot;, &quot;01030252_V1.1&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter() （过滤出唯一的fnumber对象）</span></span><br><span class="line"><span class="keyword">const</span> uniqueItems = data.<span class="title function_">filter</span>(<span class="function">(<span class="params">item, index, self</span>) =&gt;</span></span><br><span class="line">    index === self.<span class="title function_">findIndex</span>(<span class="function"><span class="params">t</span> =&gt;</span> t.<span class="property">fnumber</span> === item.<span class="property">fnumber</span>)</span><br><span class="line">);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(uniqueItems); <span class="comment">// 唯一fnumber的对象数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reduce() （统计每个fnumber的数量）</span></span><br><span class="line"><span class="keyword">const</span> countByFnumber = data.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> &#123;</span><br><span class="line">    acc[item.<span class="property">fnumber</span>] = (acc[item.<span class="property">fnumber</span>] || <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(countByFnumber); <span class="comment">// &#123; &quot;01030252_V1.0&quot;: 3, &quot;01030252_V1.1&quot;: 3 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// find() （查找包含“桶”的项目）</span></span><br><span class="line"><span class="keyword">const</span> foundItem = data.<span class="title function_">find</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">fmaterialgroupname</span>.<span class="title function_">includes</span>(<span class="string">&quot;桶&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foundItem); <span class="comment">// 找到的第一个包含“桶”的对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// some() （检查是否存在“草”的产品）</span></span><br><span class="line"><span class="keyword">const</span> hasGrass = data.<span class="title function_">some</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">fmaterialgroupname</span>.<span class="title function_">includes</span>(<span class="string">&quot;草&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasGrass); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// every() （检查所有对象是否都有id属性）</span></span><br><span class="line"><span class="keyword">const</span> allHaveId = data.<span class="title function_">every</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">id</span> !== <span class="literal">undefined</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(allHaveId); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sort() （按id排序数组对象）</span></span><br><span class="line"><span class="keyword">const</span> sortedById = [...data].<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.<span class="property">id</span> - b.<span class="property">id</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sortedById); <span class="comment">// 按id升序排序的对象数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reverse() （反转数组对象顺序）</span></span><br><span class="line"><span class="keyword">const</span> reversedData = [...data].<span class="title function_">reverse</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reversedData); <span class="comment">// 反转后的对象数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() （检查fnumber数组中是否存在某个值）</span></span><br><span class="line"><span class="keyword">const</span> fnumberExists = fnumbers.<span class="title function_">includes</span>(<span class="string">&quot;01030252_V1.0&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fnumberExists); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf() （查找某个fnumber在数组中的索引）</span></span><br><span class="line"><span class="keyword">const</span> indexOfFnumber = fnumbers.<span class="title function_">indexOf</span>(<span class="string">&quot;01030252_V1.0&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(indexOfFnumber); <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// splice() （删除索引2的对象，并插入新对象）</span></span><br><span class="line"><span class="keyword">const</span> modifiedData = [...data];</span><br><span class="line">modifiedData.<span class="title function_">splice</span>(<span class="number">2</span>, <span class="number">1</span>, &#123; <span class="attr">id</span>: <span class="number">300</span>, <span class="attr">fnumber</span>: <span class="string">&quot;新项目&quot;</span>, <span class="attr">fmaterialgroupname</span>: <span class="string">&quot;新材料&quot;</span> &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(modifiedData); <span class="comment">// 删除后的新数组对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() （提取数组对象的片段）</span></span><br><span class="line"><span class="keyword">const</span> slicedData = data.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(slicedData); <span class="comment">// [索引1到4的对象数组]</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/GXKJDX/blog/2024/10/15/JavaScript-js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="cm9cvl5dd0000v0u4bcgchtek" data-title="一、JavaScript-数组" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2025/04/11/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          五、Java基础-集合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">四、Java基础-面试题40-46</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mybatisplus/" rel="tag">mybatisplus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Java/" style="font-size: 20px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/blog/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/docker/" style="font-size: 20px;">docker</a> <a href="/blog/tags/mybatisplus/" style="font-size: 20px;">mybatisplus</a> <a href="/blog/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/blog/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/blog/tags/ubuntu/" style="font-size: 16.67px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2025/04/11/JavaScript-%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2025/04/11/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">五、Java基础-集合</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/10/15/JavaScript-js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/">一、JavaScript-数组</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/27/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95%E9%A2%9840-46/">四、Java基础-面试题40-46</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/08/27/SpringBoot-Java%20Bean%20Validation%20%E6%B3%A8%E8%A7%A3/">一、SpringBoot Java Bean Validation 注解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

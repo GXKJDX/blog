@@ -36,6 +36,7 @@ EXPOSE 84
 # 在容器启动时运行jar包
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 ```
+注意: ADD jinzijing-hotel-2.0.0.jar app.jar 命令中，jinzijing-hotel-2.0.0.jar 的位置应该时相对路径，而不是绝对路径
 
 #### 步骤 2: 构建 Docker 镜像
 
